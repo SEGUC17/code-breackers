@@ -13,6 +13,7 @@ router.post('/', function(req, res){
 	var end_work = req.body.end_work;
 	var working_days = req.body.working_days;
 	var reservation_date = req.body.reservation_date;
+	var reservation_hour = req.body.reservation_hour;
         console.log(userName); 
 
 	//req.checkBody('userName', 'Username is required').notEmpty();
@@ -34,19 +35,32 @@ router.post('/', function(req, res){
 			begin_work: begin_work,
 			end_work: end_work,
 			working_days: working_days,
-			reservation_date: reservation_date
+			reservation_date: reservation_date,
+			reservation_hour: reservation_hour
 		});
 
-		newReservation.save(function(err)
-		{
-			if (err) throw err;
-			console.log('New Reservation!!!!');
-		});
 
-		Reservation.createReservation(newReservation, function(err, Reservation){
-			if(err) throw err;
-			console.log(Reservation);
-		});
+		Reservation.findOne({serviceName:req.body.serviceName, reservation_date: req.body.reservation_date, reservation_hour:
+				req.body.reservation_hour},function(err,trackReservation){
+				if(trackReservation){
+					
+				console.log("Reserved!");
+			}
+				if (!(trackReservation)){
+					Reservation.createReservation(newReservation, function(err, Reservation){
+				if(err) throw err;
+
+				console.log(Reservation);
+				});
+				}
+
+				//checking if a reservation is done --- omar and sarah
+				// check if service is opened on that
+
+			});
+				
+
+		
 
 		//req.flash('success_msg', 'You are registered and can now login');
 

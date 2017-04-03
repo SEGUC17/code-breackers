@@ -20,6 +20,9 @@ var ReservationSchema = mongoose.Schema({
 	},
 	reservation_date: {
 		type: Date
+	},
+	reservation_hour: {
+		type: Number
 	}
 });
 
@@ -29,6 +32,7 @@ var Reservation = module.exports = mongoose.model('Reservation', ReservationSche
 module.exports.createReservation = function(newReservation, callback){
 	newReservation.save(callback);
 }
+
 
 module.exports.getUserByUsername = function(userName, callback){
 	var query = {userName: userName};
