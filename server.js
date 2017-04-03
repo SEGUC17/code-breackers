@@ -18,6 +18,8 @@ var window = doc.defaultView;
 $ = require('jquery')(window);
 
 
+
+
 mongoose.connect(DB_URI);
 
 app.use(bodyParser.urlencoded({extended:false}));
@@ -31,15 +33,38 @@ app.set('views', 'views');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 
+
+require('./app/routes.js')(app);
+
 app.get('/',function(req, res){
   res.render('index.ejs');
 
 });
 
-app.post('/test', function (req, res) {
-    console.log('works');
+app.get('/serviceController.js', function (req, res) {
+    res.render('index.ejs');
 });
 
+app.post('/createService',serviceController.createService,function(req, res){
+	res.render('index.ejs');
+
+});
+
+app.get('/Category1',serviceController.getServiceByCategory,function(req, res){
+	res.render('index1.ejs');
+
+});
+
+app.get('/Location1',serviceController.getServiceByLocation,function(req, res){
+	res.render('index1.ejs');
+
+});
+
+
+app.get('/Date',serviceController.getServiceByDate,function(req, res){
+	res.render('index1.ejs');
+
+});
 
 
 app.listen('3000', function (){

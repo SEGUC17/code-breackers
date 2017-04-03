@@ -10,7 +10,9 @@ var serviceSchema = mongoose.Schema({
     location:{
       type:String,
       required:true
-    }
+    },
+
+    time : { type : Date, default: Date.now }
 
 })
 
