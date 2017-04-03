@@ -16,3 +16,32 @@ var jsdom = require("jsdom").jsdom;
 var doc = jsdom();
 var window = doc.defaultView;
 $ = require('jquery')(window);
+
+
+mongoose.connect(DB_URI);
+
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(express.static(__dirname+ '/public'));
+app.use(cookieParser());
+app.use(session({secret: 'anystringoftext',
+				 saveUninitialized: true,
+				 resave: true}));
+
+app.set('views', 'views');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'ejs');
+
+app.get('/',function(req, res){
+  res.render('index.ejs');
+
+});
+
+app.post('/test', function (req, res) {
+    console.log('works');
+});
+
+
+
+app.listen('3000', function (){
+    console.log("Listening for Local Host 3000");
+});
