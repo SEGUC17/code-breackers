@@ -68,8 +68,10 @@ router.post('/', function(req, res){
 	//}
 
 });
+
+
 router.get('/change', function(req,res){
-res.render('change.html', {title: "Reservation"})
+res.render('change.html', {title: "Change Reservation"})
 });
 
 
@@ -99,11 +101,18 @@ router.post('/change', function(req, res){
 		Reservation.findOne({userName:req.body.userName,serviceName:req.body.serviceName,reservation_date: req.body.old_reservation_date,reservation_hour:
 				req.body.old_reservation_hour},function(err,trackReservation2){
 				if(trackReservation2){
-				{$set:{old_reservation_hour : req.body.new_reservation_hour}};
-				{$set:{old_reservation_date : req.body.new_reservation_date}};
-					
-                
-      				console.log("changed!");
+				
+				trackReservation2.reservation_hour = req.body.new_reservation_hour;
+				trackReservation2.reservation_date = req.body.new_reservation_date;
+
+				Reservation.changeReservation(trackReservation2, function(err, Reservation){
+				if(err) throw err;
+
+				console.log(Reservation);
+				});
+
+				console.log(trackReservation2);
+				console.log("changed!");
 			}
 				if (!(trackReservation2)){
 
@@ -125,6 +134,7 @@ router.post('/change', function(req, res){
 	//}
 
 });
+
 
 
 module.exports = router;
