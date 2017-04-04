@@ -1,6 +1,7 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
 <script src="serviceController.js"></script>
 
 	<script>
@@ -54,9 +55,29 @@
 		             <button type="button" id = "Date" class="btn btn-primary btn-md"><a href="Date">Recently Added</a></button>
 								 <h3 class="text-muted">Offers</h3>
 								 <button type="button" id = "Offers" class="btn btn-primary btn-md"><a href="Offers">Current Offers</a></button>
+								 <h3 class="text-muted">Rating</h3>
+								 <button type="button" id = "Offers" class="btn btn-primary btn-md"><a href="Rating">Rating</a></button>
 			        </div>
 		        </div>
-						
+
+						<div>
+
+						<form name="" method="get" action="/location-suggestions" role="form" class="form-vertical" novalidate="novalidate" autocomplete="off">
+
+						    <label for="cityId" class="required">Choose a location</label>
+						    <select id="myselect">
+						    <option value="1">Mr</option>
+						    <option value="2">Mrs</option>
+						    <option value="3">Ms</option>
+						    <option value="4">Dr</option>
+						    <option value="5">Prof</option>
+						</select>
+
+						<button type="submit" id="button" name="button" class="btn btn-primary btn-block">Show services</button>
+					</form>
+
+						</div>
+
 
   <form action="/createService" method="post">
 		<div class="form-group">
@@ -66,6 +87,10 @@
     <div class="form-group">
 			<label>location</label>
 			<input type="text" class="form-control" name="location">
+		</div>
+		<div class="form-group">
+			<label>Rate</label>
+			<input type="text" class="form-control" name="rating">
 		</div>
 		<button type="submit" class="btn btn-warning btn-lg">submit</button>
 	</form>

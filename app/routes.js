@@ -27,9 +27,13 @@ module.exports = function(app){
 
 	});
 
+	app.get('/location-suggestions',serviceController.getServiceByCategoryy,function(req, res){
+		res.render('index2.ejs');
+
+	});
+
 	app.get('/Location1',serviceController.getServiceByLocation,function(req, res){
 		res.render('index1.ejs');
-
 	});
 
 
@@ -39,6 +43,11 @@ module.exports = function(app){
 	});
 
 	app.get('/Offers',serviceController.getServiceByOffer,function(req, res){
+		res.render('index1.ejs');
+
+	});
+
+	app.get('/Rating',serviceController.getServiceByRating,function(req, res){
 		res.render('index1.ejs');
 
 	});

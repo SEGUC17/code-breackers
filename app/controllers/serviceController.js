@@ -1,5 +1,9 @@
 let Service = require('../models/service');
 var $  = require('jquery');
+var jsdom = require("jsdom").jsdom;
+var doc = jsdom();
+var window = doc.defaultView;
+$ = require('jquery')(window);
 
 
 //
@@ -12,6 +16,9 @@ var $  = require('jquery');
 //
 //
 // };
+
+
+
 
 let serviceController = {
 
@@ -39,15 +46,15 @@ let serviceController = {
 
   getServiceByCategoryy:function(req, res){
 
-      //var Category = document.getElementById('Category').innerText;
-      console.log(Category + "dwkgfgfgfgfgfgfgfgfgfgfgfgffg");
+      var Category = $( "#myselect" ).val();
+      console.log(Category);
 
       Service.find({category: Category}, function(err, services) {
 
           if(err)
               res.send(err.message);
           else
-            res.render('index1.ejs', services);
+            res.render('index2.ejs', services);
 
             console.log(services + "llllllllllllllllllllllllll");
 
@@ -112,18 +119,25 @@ let serviceController = {
      else
       res.render('index1.ejs', {services});
 
-   })
+   })},
 
+   getServiceByRating: function(req,res){
 
+     Service.find(function(err, services){
+       services.sort(function(a, b) {
+     a = a.rating;
+     b = b.rating;
+     return a>b ? -1 : a<b ? 1 : 0;
+       });
+       console.log(services);
 
+     if (err)
+      res.send(err.message)
 
+     else
+      res.render('index1.ejs', {services});
 
-    }
-
-
-
-
-
+   })}
 
 }
 
