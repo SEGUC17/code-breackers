@@ -12,7 +12,9 @@ var serviceSchema = mongoose.Schema({
       required:true
     },
 
-    time : { type : Date, default: Date.now }
+    time : { type : Date, default: Date.now },
+
+    currentOffers: {type: Boolean, default: false }
 
 })
 

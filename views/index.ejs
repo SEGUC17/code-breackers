@@ -1,7 +1,7 @@
 <html>
 <head>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
- <script src="serviceController.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="serviceController.js"></script>
 
 	<script>
     $( document ).ready(function() {
@@ -14,20 +14,16 @@
         console.log( "window loaded" );
     });
     </script>
+
 </head>
 <body>
 <div class="container">
-
-
-
       <div class="row">
 
 					<div class="col-xs-16 col-md-12">
 
-
-	           <h3 class="text-muted">Category</h3>
-	          <button type="button" id = "Category1" class="btn btn-primary btn-md" >
-							<a href="Category1">Category1</a></button>
+	          <h3 class="text-muted">Category</h3>
+	          <button type="button" id = "Category1" class="btn btn-primary btn-md"><a href="Category1">Category1</a></button>
             <button type="button" id = "Category2" class="btn btn-primary btn-md" >Category2</button>
             <button type="button" id = "Category" class="btn btn-primary btn-md">Category3</button>
             <button type="button" id = "Category" class="btn btn-primary btn-md"><a href="Category4">Category4</a></button>
@@ -42,8 +38,7 @@
 
 
 		           <h3 class="text-muted">Location</h3>
-		          <button type="button" id = "Location" class="btn btn-primary btn-md" >
-								<a href="Location1">Location1</a></button>
+		          <button type="button" id = "Location" class="btn btn-primary btn-md" ><a href="Location1">Location1</a></button>
 	            <button type="button" id = "Location" class="btn btn-primary btn-md" >Location2</button>
 	            <button type="button" id = "Location" class="btn btn-primary btn-md">Location3</button>
 	            <button type="button" id = "Location" class="btn btn-primary btn-md"><a href="Category4">Location4</a></button>
@@ -55,16 +50,13 @@
 					<div class="row">
 
 							<div class="col-xs-16 col-md-12">
-
-
 			           <h3 class="text-muted">Recently Added</h3>
-
-		            <button type="button" id = "Date" class="btn btn-primary btn-md"><a href="Date">Recently Added</a></button>
-
+		             <button type="button" id = "Date" class="btn btn-primary btn-md"><a href="Date">Recently Added</a></button>
+								 <h3 class="text-muted">Offers</h3>
+								 <button type="button" id = "Offers" class="btn btn-primary btn-md"><a href="Offers">Current Offers</a></button>
 			        </div>
-
 		        </div>
-
+						
 
   <form action="/createService" method="post">
 		<div class="form-group">
@@ -75,7 +67,6 @@
 			<label>location</label>
 			<input type="text" class="form-control" name="location">
 		</div>
-
 		<button type="submit" class="btn btn-warning btn-lg">submit</button>
 	</form>
 
@@ -88,17 +79,9 @@
       <label>location</label>
       <input type="text" class="form-control" name="location">
     </div>
-
     <button type="submit" class="btn btn-warning btn-lg">update</button>
   </form>
-
-
-
-
-
-
-
-
+</div>
 
 
 </body>

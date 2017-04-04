@@ -100,8 +100,26 @@ let serviceController = {
       else
        res.render('index1.ejs', {services});
 
-    })
-  }
+    })},
+
+    getServiceByOffer : function(req,res){
+
+     Service.find({currentOffers: true}, function(err, services){
+
+     if (err)
+      res.send(err.message)
+
+     else
+      res.render('index1.ejs', {services});
+
+   })
+
+
+
+
+
+    }
+
 
 
 
