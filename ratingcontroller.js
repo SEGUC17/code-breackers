@@ -1,15 +1,15 @@
-let rating = require('../models/rating');
+let rating = require('../models/rating.js');
 
 let ratingcontroller = {
 
     getAllnames:function(req, res){
 
-        names.find(function(err, serviceprovidernames){
+        service.find(function(err, servicename){
 
             if(err)
                 res.send(err.message);
             else
-                res.render('ratingpage', {servceprovidernames});
+                res.render('ratingpage', {servicename});
         })
     },
 
@@ -30,4 +30,4 @@ let ratingcontroller = {
     }
 }
 
-module.exports = projectController;
+module.exports = ratingcontroller;
