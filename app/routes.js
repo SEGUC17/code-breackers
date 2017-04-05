@@ -13,44 +13,44 @@ module.exports = function(app){
 
 	});
 
-	app.get('/serviceController.js', function (req, res) {
-	    res.render('index.ejs');
-	});
-
 	app.post('/createService',serviceController.createService,function(req, res){
 		res.render('index.ejs');
 
 	});
 
-	app.get('/Category1',serviceController.getServiceByCategory,function(req, res){
-		res.render('index1.ejs');
+	app.post('/getCategory',serviceController.getServiceByCategory,function(req, res){
+		res.render('FilteredServices.ejs');
 
 	});
 
-	app.get('/location-suggestions',serviceController.getServiceByCategoryy,function(req, res){
-		res.render('index2.ejs');
 
-	});
 
-	app.get('/Location1',serviceController.getServiceByLocation,function(req, res){
-		res.render('index1.ejs');
+	app.post('/getLocation',serviceController.getServiceByLocation,function(req, res){
+		console.log(req.body);
+		res.render('FilteredServices.ejs');
 	});
 
 
 	app.get('/Date',serviceController.getServiceByDate,function(req, res){
-		res.render('index1.ejs');
+		console.log(req.body);
+		res.render('FilteredServices.ejs');
 
 	});
 
 	app.get('/Offers',serviceController.getServiceByOffer,function(req, res){
-		res.render('index1.ejs');
+		res.render('FilteredServices.ejs');
 
 	});
 
 	app.get('/Rating',serviceController.getServiceByRating,function(req, res){
-		res.render('index1.ejs');
+		res.render('FilteredServices.ejs');
 
 	});
+
+	app.get('/searchByKeyword',serviceController.getServiceByKeyword,function(req, res){
+ 	 res.render('FilteredServices.ejs');
+
+  });
 
 
 

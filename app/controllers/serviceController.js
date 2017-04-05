@@ -1,92 +1,56 @@
 let Service = require('../models/service');
-var $  = require('jquery');
-var jsdom = require("jsdom").jsdom;
-var doc = jsdom();
-var window = doc.defaultView;
-$ = require('jquery')(window);
-
-
-//
-// function getB(){
-//
-//   var Category = document.getElementById("Category1").innerText;
-//   //var Category = $('#Category1').text();
-//   console.log(Category +  "kdiejiehfuhefbehbfhebfhjebhjfbejhbfejhbfjebfehu");
-//   res.render('home.ejs');
-//
-//
-// };
-
-
 
 
 let serviceController = {
 
+  createService: function(req, res){
+
+    let service = new Service(req.body);
+
+    service.save(function(err, service){
+        if(err){
+            res.send(err.message)
+            console.log(err);
+        }
+        else{
+            console.log(service);
+            res.redirect('/');
+        }
+    })
+  },
+
       getServiceByCategory:function(req, res){
 
-          //var Category = document.getElementById('Category').innerText;
-          //var Category = document.getElementById("Category").innerText;
-          //console.log(Category +  "kdiejiehfuhefbehbfhebfhjebhjfbejhbfejhbfjebfehu");
+        var Category = req.body.selectpicker;
+        console.log(Category.name);
 
-            //var Category = document.getElementById("Category1").innerText;
-            //console.log(Category +  "kdiejiehfuhefbehbfhebfhjebhjfbejhbfejhbfjebfehu");
 
-          Service.find({category: 'Category1'}, function(err, services) {
-              console.log(services + "llllllllllllllllllllllllll");
+          Service.find({category: Category}, function(err, services) {
+
               if(err)
                   res.send(err.message);
               else
-                res.render('index1.ejs', {services});
-
+                res.render('FilteredServices.ejs', {services});
 
       })
 
     },
 
-
-  getServiceByCategoryy:function(req, res){
-
-      var Category = $( "#myselect" ).val();
-      console.log(Category);
-
-      Service.find({category: Category}, function(err, services) {
-
-          if(err)
-              res.send(err.message);
-          else
-            res.render('index2.ejs', services);
-
-            console.log(services + "llllllllllllllllllllllllll");
-
-      })
-    },
-
-      createService: function(req, res){
-
-        let service = new Service(req.body);
-
-        service.save(function(err, service){
-            if(err){
-                res.send(err.message)
-                console.log(err);
-            }
-            else{
-                console.log(service);
-                res.redirect('/');
-            }
-        })
-      },
 
 
       getServiceByLocation: function(req,res){
 
-        Service.find({location: 'Location1'}, function(err, services){
+        var locationn = req.body.selectpicker;
+        console.log(locationn.name);
+        Service.find({location: locationn}, function(err, services){
 
         if (err)
          res.send(err.message)
 
         else
-         res.render('index1.ejs', {services});
+         res.render('FilteredServices.ejs', {services});
+
+         console.log(services);
 
       })
     },
@@ -105,7 +69,7 @@ let serviceController = {
        res.send(err.message)
 
       else
-       res.render('index1.ejs', {services});
+       res.render('FilteredServices.ejs', {services});
 
     })},
 
@@ -117,7 +81,7 @@ let serviceController = {
       res.send(err.message)
 
      else
-      res.render('index1.ejs', {services});
+      res.render('FilteredServices.ejs', {services});
 
    })},
 
@@ -135,10 +99,33 @@ let serviceController = {
       res.send(err.message)
 
      else
-      res.render('index1.ejs', {services});
+      res.render('FilteredServices.ejs', {services});
 
    })}
 
+,
+
+getServiceByKeyword: function (req,res)
+{
+  if(req.query.search) {
+		const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+		Service.find({"name": regex}, function(err, services) {
+			if(err) {
+				res.send(err.message);
+			} if(services.length < 1) {
+				res.render('FilteredServices.ejs', {services});  ///plugs in some flags g is global and i is ignore upper case
+			} else {
+				res.render('FilteredServices.ejs', {services});
+			}
+		});
+
+
+}},
+
+
 }
+
+function escapeRegex(text) {
+return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&"); }
 
 module.exports = serviceController;

@@ -2,6 +2,11 @@ var mongoose = require('mongoose');
 
 var serviceSchema = mongoose.Schema({
 
+    name: {
+      type:String,
+      required:true
+    },
+
     category:{
       type:String,
       required:true

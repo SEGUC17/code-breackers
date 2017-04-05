@@ -7,6 +7,7 @@ var DB_URI = "mongodb://localhost:27017/platform";
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 let Service = require('./app/models/service');
+var flash = require('connect-flash');
 
 
 var serviceController = require('./app/controllers/serviceController');
@@ -16,7 +17,6 @@ var jsdom = require("jsdom").jsdom;
 var doc = jsdom();
 var window = doc.defaultView;
 $ = require('jquery')(window);
-
 
 
 

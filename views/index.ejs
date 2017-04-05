@@ -1,52 +1,48 @@
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-
-<script src="serviceController.js"></script>
-
-	<script>
-    $( document ).ready(function() {
-        console.log( "document loaded" );
-				var Category = document.getElementById("Category1").innerText;
-				console.log(Category);
-    });
-
-    $( window ).on( "load", function() {
-        console.log( "window loaded" );
-    });
-    </script>
-
 </head>
 <body>
 <div class="container">
-      <div class="row">
 
-					<div class="col-xs-16 col-md-12">
-
-	          <h3 class="text-muted">Category</h3>
-	          <button type="button" id = "Category1" class="btn btn-primary btn-md"><a href="Category1">Category1</a></button>
-            <button type="button" id = "Category2" class="btn btn-primary btn-md" >Category2</button>
-            <button type="button" id = "Category" class="btn btn-primary btn-md">Category3</button>
-            <button type="button" id = "Category" class="btn btn-primary btn-md"><a href="Category4">Category4</a></button>
-
-	        </div>
-
-        </div>
-
-				<div class="row">
-
-						<div class="col-xs-16 col-md-12">
+	 <form action = "/searchByKeyword" method = "GET" class = "form-group">
+		  <div>
+				<input type = "text" name = "search" placeholder="Search By Keyword....">
+				<input type = "Submit" value = "Search" class = "form-group">
+		 </div>
+  </form>
 
 
-		           <h3 class="text-muted">Location</h3>
-		          <button type="button" id = "Location" class="btn btn-primary btn-md" ><a href="Location1">Location1</a></button>
-	            <button type="button" id = "Location" class="btn btn-primary btn-md" >Location2</button>
-	            <button type="button" id = "Location" class="btn btn-primary btn-md">Location3</button>
-	            <button type="button" id = "Location" class="btn btn-primary btn-md"><a href="Category4">Location4</a></button>
+	<form id="tableForm" action="/getCategory" method="post">
+			<select class="selectpicker" data-style="btn-info" name="selectpicker">
+					<optgroup label="Select Category">
 
-		        </div>
+							<option name="table1" value="Cinema">Cinema</option>
+							<option name="table2" value="Escape Rooms">Escape Rooms</option>
+							<option name="table3" value="Laser Tag">Laser Tag</option>
+							<option name="table3" value="Outdoor Activties">Outdoor Activties</option>
+							<option name="table3" value="Camps">Camps</option>
+							<option name="table3" value="Indoor Skiing">Indoor Skiing</option>
+					</optgroup>
+			</select>
+			<input type="submit" />
+	</form>
 
-	        </div>
+	<form id="tableForm" action="/getLocation" method="post">
+	    <select class="selectpicker" data-style="btn-info" name="selectpicker">
+	        <optgroup label="Select Location">
+
+	            <option name="table1" value="6th of October">6th of October</option>
+	            <option name="table2" value="Agouza">Agouza</option>
+	            <option name="table3" value="Ard el Golf">Ard el Golf</option>
+							<option name="table3" value="Dokki">Dokki</option>
+							<option name="table3" value="Downtown">Downtown</option>
+							<option name="table3" value="El Katameya">El Katameya</option>
+							<option name="table3" value="El Obour City">El Obour City</option>
+	        </optgroup>
+	    </select>
+	    <input type="submit" />
+	</form>
+
 
 					<div class="row">
 
@@ -60,23 +56,6 @@
 			        </div>
 		        </div>
 
-						<div>
-
-						<form name="" method="get" action="/location-suggestions" role="form" class="form-vertical" novalidate="novalidate" autocomplete="off">
-
-						    <label for="cityId" class="required">Choose a location</label>
-						    <select id="myselect">
-						    <option value="1">Mr</option>
-						    <option value="2">Mrs</option>
-						    <option value="3">Ms</option>
-						    <option value="4">Dr</option>
-						    <option value="5">Prof</option>
-						</select>
-
-						<button type="submit" id="button" name="button" class="btn btn-primary btn-block">Show services</button>
-					</form>
-
-						</div>
 
 
   <form action="/createService" method="post">
@@ -91,6 +70,10 @@
 		<div class="form-group">
 			<label>Rate</label>
 			<input type="text" class="form-control" name="rating">
+		</div>
+		<div class="form-group">
+			<label>Name</label>
+			<input type="text" class="form-control" name="name">
 		</div>
 		<button type="submit" class="btn btn-warning btn-lg">submit</button>
 	</form>
@@ -107,7 +90,6 @@
     <button type="submit" class="btn btn-warning btn-lg">update</button>
   </form>
 </div>
-
 
 </body>
 </html>
