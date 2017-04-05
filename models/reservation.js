@@ -34,6 +34,11 @@ module.exports.createReservation = function(newReservation, callback){
 }
 
 
+module.exports.changeReservation = function(changeReservation, callback){
+	changeReservation.save(callback);
+}
+
+
 module.exports.getUserByUsername = function(userName, callback){
 	var query = {userName: userName};
 	Reservation.findOne(query, callback);
