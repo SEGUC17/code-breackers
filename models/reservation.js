@@ -33,10 +33,15 @@ module.exports.createReservation = function(newReservation, callback){
 	newReservation.save(callback);
 }
 
-
 module.exports.changeReservation = function(changeReservation, callback){
 	changeReservation.save(callback);
 }
+
+
+module.exports.deleteReservation = function(deletedReservation, callback){
+	deletedReservation.remove(callback);
+}
+
 
 
 module.exports.getUserByUsername = function(userName, callback){
