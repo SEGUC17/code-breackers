@@ -1,16 +1,29 @@
 // require dependincies
 var express = require('express');
 var router = express.Router();
-var serviceControllerController = require('./controllers/servicecontroller');
+var serviceController = require('./controllers/servicecontroller');
 var multer = require ('multer');
 var upload = multer ({ dest:'public/uploads'})
+
+/*let services = require('../models/service');
+let location = require('../models/location');
+let category = require('../models/category');*/
 
 
  router.get('/', function(req, res){
    console.log("addservice");
    res.render('addservice');
-   console.log("addservice");
 });
+
+router.post('/AS',serviceController.createService);
+
+router.post('/myservice',function(req, res, next) {
+  res.redirect('betngan');
+});
+
+router.get('/betngan',serviceController.getMyService);
+
+
    router.get('/images', function(req, res, next) {
      res.render('images', { title: 'Express' });
    });
@@ -24,22 +37,29 @@ var upload = multer ({ dest:'public/uploads'})
    console.log("addservice");
  });
 
+ // router.get('/myproject', projectController.getMyProject , function (req , res){
+ //    console.log("listenn");
+ //  });
+ router.get('/viewservice', serviceController.getAllServices, function (req , res){
+   console.log("haygeb el service");
+ });
+
 // UPDATE SERVICE ROUTES
 //PUT to update a blob by ID
 	router.put(function(req, res) {
 	    // Get our REST or form values. These rely on the "name" attributes
-	    var servicename = req.body.servicename;
+	    var serviceName = req.body.serviceName;
 	    var description = req.body.description;
 	    var address = req.body.address;
 	    var price = req.body.price;
       var location = req.body.location;
       var category = req.body.category;
 
-	    //find the document by ID
+	    //find the servcie by ID
 	    mongoose.model('service').findById(req.id, function (err, service) {
 	        //update it
 	        service.update({
-	            servicename : servicename,
+	            serviceName : serviceName,
 	            description : description,
 	            address : address,
 	            price : price,
@@ -96,5 +116,48 @@ router.delete('/:id/edit', function (req, res){
         }
     });
 });
+
+/*
+router.post(function(req, res) {
+    // Get values from POST request. These can be done through forms or REST calls. These rely on the "name" attributes for forms
+    var servicename = req.body.servicename;
+    var category = req.body.category;
+    var location= req.body.location;
+    var price = req.body.price;
+    var address = req.body.address;
+    var description = req.body.description;
+    //call the create function for our database
+    mongoose.model('service').create({
+        servicename : servicename,
+        category: category,
+        location : location,
+        price : price,
+        address : address,
+        description : description
+
+    }, function (err, services) {
+          if (err) {
+              res.send("There was a problem adding the information to the database.");
+          } else {
+              //Blob has been created
+              console.log('POST creating new services: ' + services);
+              res.format({
+                  //HTML response will set the location and redirect back to the home page. You could also create a 'success' page if that's your thing
+                html: function(){
+                    // If it worked, set the header so the address bar doesn't still say /adduser
+
+                    // And forward to success page
+                    res.redirect("/images");
+                },
+                //JSON response will show the newly created blob
+                json: function(){
+                    res.json(services);
+                }
+            });
+          }
+    })
+});
+*/
+
 
 module.exports = router;
