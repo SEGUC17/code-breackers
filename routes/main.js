@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var Reservation = require('../models/reservation');
+var randomstring=require("randomstring");
+
 
 router.get('/', function(req,res){
 res.render('reserve.html', {title: "Reservation"})
@@ -119,15 +121,31 @@ router.post('/change', function(req, res){
 				console.log("no such reservation");
 				}
 
+				//checking if a reservation is done --- omar and sarah
+				// check if service is opened on that
+
 			});
 				
 
+		
 
+
+		//req.flash('success_msg', 'You are registered and can now login');
+
+		//res.redirect('loginafter');
+	//}
+
+});
+router.get('/promo', function(req,res){
+res.render('promo.html', {title: "Create PromoCode"})
 });
 
 
+router.post('/promo',function(req,res){
+var promo= randomstring.generate(7);
+console.log(promo);
 
-
+});
 
 
 router.get('/delete', function(req,res){
@@ -165,11 +183,25 @@ router.post('/delete', function(req, res){
 				
 				console.log("No such reservation");
 				
+				//checking if a reservation is done --- omar and sarah
+				// check if service is opened on that
+
 			}
 				
 
+		
+
+
+		//req.flash('success_msg', 'You are registered and can now login');
+
+		//res.redirect('loginafter');
+	//}
 
  } });});
+
+
+
+
 
 
 
