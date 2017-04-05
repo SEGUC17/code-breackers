@@ -1,4 +1,5 @@
-let rating = require('../models/rating.js');
+let rating = require('../models/rate.js');
+
 
 let ratingcontroller = {
 

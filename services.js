@@ -10,9 +10,9 @@ var serviceSchema = mongoose.Schema({
     location:{type: mongoose.Schema.Types.ObjectId, ref: 'locationSchema'},
     category:{type: mongoose.Schema.Types.ObjectId, ref: 'categorySchema'},
     img:{type: mongoose.Schema.Types.ObjectId, ref: 'imageS'},
-    rating = [RSchema]
+    rating = [rSchema]
 });
-var RSchema= serviceSchema.find(servicename).populate('ratings._item').exec(function(err, user){
+var Schema= serviceSchema.find(servicename).populate('ratings._item').exec(function(err, user){
 if(err || !user)
 return next(new Error('Service username not found !!!!'));
 console.log(user.rating);
