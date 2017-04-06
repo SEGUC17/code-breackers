@@ -54,6 +54,8 @@ router.get('/betngan',serviceController.getMyService);
 	    var price = req.body.price;
       var location = req.body.location;
       var category = req.body.category;
+      var workingdays = req.body.workingdays;
+      var offer = req.body.offer;
 
 	    //find the servcie by ID
 	    mongoose.model('service').findById(req.id, function (err, services) {
@@ -84,7 +86,7 @@ router.get('/betngan',serviceController.getMyService);
 	           }
 	        })
 	    });
-	})
+	});
   //DELETE a Service by ID
 router.delete('/:id/edit', function (req, res){
     //find a Service by ID
@@ -116,6 +118,9 @@ router.delete('/:id/edit', function (req, res){
         }
     });
 });
+module.exports = router;
+
+
 
 /*
 router.post(function(req, res) {
@@ -158,6 +163,3 @@ router.post(function(req, res) {
     })
 });
 */
-
-
-module.exports = router;

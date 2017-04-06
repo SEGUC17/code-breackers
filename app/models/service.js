@@ -39,7 +39,8 @@ var serviceSchema = mongoose.Schema({
       ref: 'imageS'
     },
  rating:{
-   type: Number
+   type: Number,
+   value:0
  },
  workingdays : {
    type:String,
@@ -52,10 +53,6 @@ beginWorkingHours :{
 endWorkingHours :{
   type:Number,
   required: true
-}
-rating :{
-type : Number,
-value : 0
 },
 offer:{
   type: String
@@ -64,5 +61,7 @@ offer:{
 });
 
 var Service = mongoose.model("service", serviceSchema);
+
+
 
 module.exports = Service;
