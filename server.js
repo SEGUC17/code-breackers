@@ -16,11 +16,13 @@ var mongoose = require('mongoose');
 var http = require('http');
 require('rootpath')();
 
+
+var nodemailer = require("nodemailer");  
+
 var serviceController = require('./app/controllers/serviceController');
 
 mongoose.connect('mongodb://localhost/milestone');
 var db = mongoose.connection;
-
 
 app.set('views',__dirname + '/views');
 app.set('view engine', 'ejs');
@@ -37,6 +39,18 @@ app.use(session({
     saveUninitialized: true,
     resave: true
 }));
+
+var smtpTransport = nodemailer.createTransport({
+    service: "gmail",
+    host: "smtp.gmail.com",
+    port: 587,
+    auth: {
+        user: "kareemabdelaziz771996@gmail.com",
+        pass: "killer8kman"
+    },
+    tls: {rejectUnauthorized: false},
+    debug:true
+});
 
 
 //layla
