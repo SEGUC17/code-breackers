@@ -34,12 +34,12 @@ let serviceController = {
 
 
       getDetails: function(req, res){
-      Service.find({service._id:req.body._id},function(err, service){
+      Service.find({Service_id:req.body._id},function(err, servicex){
       
       if(err)
         res.send(err.message)
       else
-        res.render('sprofile', {service});
+        res.render('sprofile', {servicex});
     
       })
 }
