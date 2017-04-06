@@ -33,26 +33,17 @@ let serviceController = {
       },
 
 
-    getServiceDetails:function(req, res){
-        Service.find(function(err, service){
-            if(err)
-                res.send(err.message);
-            else
-                res.render('sprofile', {service});
-
-            console.log(service);
-        })
-    },
-
-    getCurrentService:function(req, res){
-        service.find(function(err, service){
-            for(var i = 0;i<services.length;i++){
-                if(i.service.Category === service.Category)
-                    res.render('sprofile', {service});
-            }
-        })
-    } 
-
+      getDetails: function(req, res){
+      Service.find({category:req.body.category},function(err, service){
+      console.log(req.body.category);
+      if(err)
+        res.send(err.message)
+      else
+        res.render('sprofile', {service});
+    
+      })
 }
+}
+
 
 module.exports = serviceController;

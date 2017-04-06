@@ -25,15 +25,10 @@ module.exports = function(app){
 
 	});
 
-	app.get('/service',serviceController.getServiceDetails,function(req, res){
+	app.post('/service',serviceController.getDetails,function(req, res){
 		res.render('sprofile.ejs');
 	});
 
-	
-    
-app.get('/sprofile',serviceController.getServiceDetails,function(req, res){
-		res.render('sprofile.ejs');
-	});
 
 
 };
