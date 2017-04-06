@@ -1,18 +1,13 @@
 var express = require('express');
 var router = express.Router();
-var complaintController = require('/home/youssef/Desktop/folder/app/controller/complaintController.js');
-var reviewController = require('/home/youssef/Desktop/folder/app/controller/reviewController.js');
+var complaintController = require('../app/controllers/complaintController.js');
+var reviewController = require('../app/controllers/reviewController.js');
 var serviceController = require('../app/controllers/serviceController');
 //var upload = multer ({ dest:'public/uploads'});
 var multer = require ('multer');
 var Reservation = require('../app/models/reservation');
 var randomstring=require("randomstring");
 var nodemailer = require("nodemailer");
-var complaintController = require('/home/youssef/Desktop/folder/app/controllers/complaintController.js');
-var reviewController = require('/home/youssef/Desktop/folder/app/controllers/reviewController.js');
-
-module.exports = router;
-
 
 
 var smtpTransport = nodemailer.createTransport({
@@ -118,15 +113,6 @@ router.get('/send',function(req,res){
 
 //nadeen
 router.post('/AS',serviceController.createService);
-
-
-//router.post('/myservice',function(req, res, next) {
-//  res.redirect('betngan'); });
-
-
-//router.post('/images', upload.any(),function(req, res, next) {
-//    res.send(req.files); });
-
 
 router.put('/updateservice',function(req, res) {
 	    var serviceName = req.body.serviceName;
@@ -347,4 +333,5 @@ service.findOne({serviceName:req.body.serviceName},function(err,service2){
 
 
 module.exports = router;
+
 

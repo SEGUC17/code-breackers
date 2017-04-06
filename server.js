@@ -6,7 +6,6 @@ var mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var flash = require('connect-flash');
-let Service = require('./app/models/service');
 var path = require('path');
 var multer = require ('multer');
 var logger = require('morgan');
@@ -15,6 +14,10 @@ var exphbs = require('express-handlebars');
 var mongo = require('mongodb');
 var http = require('http');
 require('rootpath')();
+var serviceController = require('./app/controllers/serviceController');
+let Service = require('./app/models/service');
+
+
 
 
 var nodemailer = require("nodemailer");  
@@ -102,8 +105,31 @@ var smtpTransport = nodemailer.createTransport({
   });
   
 /////
+//ahmed
+
+ app.get('/rezk',function(req, res){
+	  res.render('xyz.ejs');
+
+	});
+
+	app.get('/services',serviceController.getAllServices,function(req, res){
+	  res.render('index2.ejs');
+
+	});
+
+	app.get('/service',serviceController.getDetails,function(req, res){
+	  res.render('sprofile.ejs');
+
+	});
+  
+
 
 app.listen(3000, function(){
 console.log("The app is running on port 3000!!!")
 
 });
+
+  
+
+
+

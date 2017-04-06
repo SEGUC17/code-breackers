@@ -1,5 +1,4 @@
-{
-  "name": "milestone",
+{ "name": "milestone",
   "version": "1.0.0",
   "dependencies": {
     "body-parser": "^1.17.1",
@@ -34,3 +33,4 @@
     "start": "node server.js"
   }
 }
+
