@@ -1,25 +1,70 @@
-let service = require('../models/service');
+let Service = require('../models/service');
+let location = require('../models/location');
+let category = require('../models/category');
 
 let servicecontroller = {
 
 
     createService:function(req, res){
-        let service = new service(req.body);
-
-        service.save(function(err, service){
+      let service = new Service(req.body);
+        console.log("wasal el controller");
+        service.save(function(err, services){
             if(err){
                 res.send(err.message)
                 console.log(err);
             }
             else{
 
-                res.redirect('/addservice'); //render
+                res.redirect('/viewservice'); //render
                 console.log("...");
 
             }
         })
-    }
-  }
+    },
+    createrating:function(req, res){
+        let rating = new Rating(req.body);
+
+        rating.save(function(err, ratings){
+            if(err){
+                res.send(err.message)
+                console.log(err);
+            }
+            else{
+
+                console.log(rating);
+                res.redirect('/viewservice');
+            }
+        })
+},
+    getAllServices:function(req, res){
+
+            Service.find(function(err, services){
+
+                if(err)
+                    res.send(err.message);
+                else
+                    res.render('viewservice', {services});
+            })
+        },
+
+  getMyService:function(req, res){
+
+         Service.find({ serviceName : req.body.serviceName } , function(err, services){
+
+             if(err)
+                 res.send(err.message);
+             else
+                res.render('specficService', {services});
+                 //console.log("plisten");
+         })
+     }
+
+
+   }
+
+  //POST a new blob
+
+  module.exports = servicecontroller;
   /*  getMyServices:function(req, res){
 
       service.find({ username : req.body.username } , function(err, projects){
@@ -33,7 +78,7 @@ let servicecontroller = {
   },
 }
 
-module.exports = servicecontroller;
+
 
 /*  getAllProjects:function(req, res){
 
