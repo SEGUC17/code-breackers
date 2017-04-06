@@ -1,18 +1,11 @@
-  //nadeen service schema
-
 var mongoose = require('mongoose');
-//require('./category');
-var mongoose = require('mongoose');
-//require('./category');
 var serviceSchema = mongoose.Schema({
     serviceName:{
         type:String,
         required:true,
         unique:true
     },
-
-  //  URL:String, //video's link
-
+	
     description : {
     type: String,
     required:true
@@ -29,47 +22,57 @@ var serviceSchema = mongoose.Schema({
     },
 
     location:{
-      type: mongoose.Schema.Types.ObjectId,
-    //   ref: 'locationSchema'
+      type: String,
+      required: true
     },
 
     category:{
         type: String,
-      /*  ref: 'categorySchema'*/
+        required: true
       },
 
    img:{
       type: mongoose.Schema.Types.ObjectId,
       ref: 'imageS'
     },
- rating:{
+	
+   rating:{
    type: Number,
    value:0
  },
- workingdays : {
+	
+   workingdays : {
    type:String,
    required: true
  },
-beginWorkingHours :{
+	
+  beginWorkingHours :{
   type:Number,
   required: true
 },
-endWorkingHours :{
+	
+  endWorkingHours :{
   type:Number,
   required: true
 },
-offer:{
+	
+  offerDescription:{
   type: String
-}
+},
+	
+  currentOffers: {type: Boolean, default: false},
+	
+  time : { type : Date, default: Date.now },
+  
+  review :[{
+    type: mongoose.Schema.Types.ObjectId,
+    ref:'Review'
+  }];
+
+});
 
 });
 
 var Service = mongoose.model("service", serviceSchema);
 
-
-
 module.exports = Service;
-
-module.exports.changeRating = function(changeRating, callback){
-	changeReservation.save(callback);
-}
