@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var upload = multer ({ dest:'public/uploads'});
+//var upload = multer ({ dest:'public/uploads'});
 var multer = require ('multer');
 
 var serviceController = require('./controllers/servicecontroller');
@@ -8,6 +8,7 @@ var Reservation = require('../app/models/reservation');
 var randomstring=require("randomstring");
 
 //nadeen
+
 
 router.get('/addservice', function(req, res){
    console.log("addservice");
@@ -60,8 +61,8 @@ router.post('/myservice',function(req, res, next) {
   res.redirect('betngan'); });
 
 
-router.post('/images', upload.any(),function(req, res, next) {
-     res.send(req.files); });
+//router.post('/images', upload.any(),function(req, res, next) {
+//    res.send(req.files); });
 
 
 router.put('/updateservice',function(req, res) {
@@ -234,13 +235,13 @@ router.post('/delete', function(req, res){
 	var reservation_date = req.body.reservation_date;
 	var reservation_hour = req.body.reservation_hour;
 
-	req.checkBody('userName', 'Username is required').notEmpty();
-	req.checkBody('serviceName', 'ServiceName is required').notEmpty();
+	//req.checkBody('userName', 'Username is required').notEmpty();
+	//req.checkBody('serviceName', 'ServiceName is required').notEmpty();
 	//req.checkBody('begin_work', 'begin_work is required').notEmpty();
 	//req.checkBody('end_work', 'end_work is required').notEmpty();
 	//req.checkBody('working_days', 'working_days is required').notEmpty();
-	req.checkBody('reservation_date', 'reservation_date is required').notEmpty();
-	req.checkBody('reservation_hour', 'reservation_hour is required').notEmpty();
+	//req.checkBody('reservation_date', 'reservation_date is required').notEmpty();
+	//req.checkBody('reservation_hour', 'reservation_hour is required').notEmpty();
 
 	/*var errors = req.validationErrors();
 
@@ -254,12 +255,14 @@ router.post('/delete', function(req, res){
 				Reservation.deleteReservation(trackReservation3, function(err){
       				console.log("Deleted!");
 			});
+				 } 
+
 				if (!(trackReservation3)){
 				
 				console.log("No such reservation");
 
 
-			} } });});
+			}});});
 
 
 router.post('/promo',function(req,res){
