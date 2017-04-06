@@ -109,7 +109,7 @@ getServiceByKeyword: function (req,res)
 {
   if(req.query.search) {
 		const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-		Service.find({"name": regex}, function(err, services) {
+		Service.find({"serviceName": regex}, function(err, services) {
 			if(err) {
 				res.send(err.message);
 			} if(services.length < 1) {
