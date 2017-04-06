@@ -1,53 +1,70 @@
-// require dependincies
 var express = require('express');
 var router = express.Router();
-var serviceController = require('./controllers/servicecontroller');
+var upload = multer ({ dest:'public/uploads'});
 var multer = require ('multer');
-var upload = multer ({ dest:'public/uploads'})
 
-/*let services = require('../models/service');
-let location = require('../models/location');
-let category = require('../models/category');*/
+var serviceController = require('./controllers/servicecontroller');
+var Reservation = require('../app/models/reservation');
+var randomstring=require("randomstring");
 
+//nadeen
 
- router.get('/', function(req, res){
+router.get('/addservice', function(req, res){
    console.log("addservice");
    res.render('addservice');
-});
-
-router.post('/AS',serviceController.createService);
-
-router.post('/myservice',function(req, res, next) {
-  res.redirect('betngan');
 });
 
 router.get('/betngan',serviceController.getMyService);
 
 
-   router.get('/images', function(req, res, next) {
-     res.render('images', { title: 'Express' });
-   });
+router.get('/images', function(req, res, next) {
+     res.render('images', { title: 'Express' });});
 
-   router.post('/images', upload.any(),function(req, res, next) {
-     res.send(req.files);
-   });
 
- router.get('/addservice', function(req, res){
+router.get('/addservice', function(req, res){
    res.render('addservice');
-   console.log("addservice");
- });
+   console.log("addservice"); });
 
- // router.get('/myproject', projectController.getMyProject , function (req , res){
- //    console.log("listenn");
- //  });
- router.get('/viewservice', serviceController.getAllServices, function (req , res){
+
+router.get('/viewservice', serviceController.getAllServices, function (req , res){
    console.log("haygeb el service");
  });
 
-// UPDATE SERVICE ROUTES
-//PUT to update a service by ID
-	router.put('/updateservice',function(req, res) {
-	    // Get our REST or form values. These rely on the "name" attributes
+//sarah & omar
+router.get('/reserve', function(req,res){
+res.render('reserve.html', {title: "Reservation"})
+});
+
+//omar
+router.get('/change', function(req,res){
+res.render('change.html', {title: "Change Reservation"})
+});
+
+//sarah
+
+router.get('/delete', function(req,res){
+res.render('delete.html', {title: "Delete Reservation"})
+});
+
+
+router.get('/promo', function(req,res){
+res.render('promo.html', {title: "Create PromoCode"})
+});
+
+
+//nadeen
+router.post('/AS',serviceController.createService);
+
+
+router.post('/myservice',function(req, res, next) {
+  res.redirect('betngan'); });
+
+
+router.post('/images', upload.any(),function(req, res, next) {
+     res.send(req.files); });
+
+
+router.put('/updateservice',function(req, res) {
 	    var serviceName = req.body.serviceName;
 	    var description = req.body.description;
 	    var address = req.body.address;
@@ -57,9 +74,7 @@ router.get('/betngan',serviceController.getMyService);
       var workingdays = req.body.workingdays;
       var offer = req.body.offer;
 
-	    //find the servcie by ID
 	    mongoose.model('service').findById(req.id, function (err, services) {
-	        //update it
 	        service.update({
 	            serviceName : serviceName,
 	            description : description,
@@ -73,93 +88,188 @@ router.get('/betngan',serviceController.getMyService);
 	              res.send("There was a problem updating the information to the database: " + err);
 	          }
 	          else {
-	                  //HTML responds by going back to the page or you can be fancy and create a new view that shows a success page.
 	                  res.format({
 	                      html: function(){
 	                           res.redirect("/serviceview/" + service._id);
 	                     },
-	                     //JSON responds showing the updated values
 	                    json: function(){
 	                           res.json(service);
-	                     }
-	                  });
-	           }
-	        })
-	    });
-	});
-  //DELETE a Service by ID
+	                     } 
+                 });
+            } 
+          })
+      });
+});
+
+
 router.delete('/:id/edit', function (req, res){
-    //find a Service by ID
     mongoose.model('service').findById(req.id, function (err, service) {
         if (err) {
             return console.error(err);
         } else {
-            //remove it from Mongo
             service.remove(function (err, service) {
                 if (err) {
                     return console.error(err);
                 } else {
-                    //Returning success messages saying it was deleted
                     console.log('DELETE removing ID: ' + service._id);
                     res.format({
-                        //HTML returns us back to the main or success page
                           html: function(){
                                res.redirect("/serviceView");
                          },
-                         //JSON returns the item with the message that is has been deleted
                         json: function(){
                                res.json({message : 'deleted',
                                    item : service
                                });
                          }
-                      });
+                    });
                 }
             });
         }
     });
 });
+
+// sarah and omar 
+router.post('/reserve', function(req, res){
+	var userName = req.body.userName;
+	var serviceName = req.body.serviceName;
+	var begin_work = req.body.begin_work;
+	var end_work = req.body.end_work;
+	var working_days = req.body.working_days;
+	var reservation_date = req.body.reservation_date;
+	var reservation_hour = req.body.reservation_hour;
+        console.log(userName); 
+
+	//req.checkBody('userName', 'Username is required').notEmpty();
+	//req.checkBody('serviceName', 'ServiceName is required').notEmpty();
+	//req.checkBody('begin_work', 'begin_work is required').notEmpty();
+	//req.checkBody('end_work', 'end_work is required').notEmpty();
+	//req.checkBody('working_days', 'working_days is required').notEmpty();
+	//req.checkBody('reservation_date', 'reservation_date is required').notEmpty();
+	//req.checkBody('reservation_hour', 'reservation_hour is required').notEmpty();
+
+		var newReservation = new Reservation({
+			userName: userName,
+			serviceName: serviceName,
+			begin_work: begin_work,
+			end_work: end_work,
+			working_days: working_days,
+			reservation_date: reservation_date,
+			reservation_hour: reservation_hour
+		});
+
+
+		Reservation.findOne({serviceName:req.body.serviceName, reservation_date: req.body.reservation_date, reservation_hour:
+				req.body.reservation_hour},function(err,trackReservation){
+				if(trackReservation){
+					
+				console.log("Reserved!");
+			}
+				if (!(trackReservation)){
+					Reservation.createReservation(newReservation, function(err, Reservation){
+				if(err) throw err;
+
+				console.log(Reservation);
+				});
+				}
+
+			});
+			
+
+});
+
+//omar
+
+router.post('/change', function(req, res){
+	var userName = req.body.userName;
+	var serviceName = req.body.serviceName;
+	var old_reservation_date = req.body.old_reservation_date;
+	var old_reservation_hour = req.body.old_reservation_hour;
+	var new_reservation_date = req.body.new_reservation_date;
+	var new_reservation_hour = req.body.new_reservation_hour;
+        console.log(userName); 
+
+	//req.checkBody('userName', 'Username is required').notEmpty();
+	//req.checkBody('serviceName', 'ServiceName is required').notEmpty();
+	//req.checkBody('begin_work', 'begin_work is required').notEmpty();
+	//req.checkBody('end_work', 'end_work is required').notEmpty();
+	//req.checkBody('working_days', 'working_days is required').notEmpty();
+	//req.checkBody('old_reservation_date', 'reservation_date is required').notEmpty();
+	//req.checkBody('old_reservation_hour', 'reservation_hour is required').notEmpty();
+	//req.checkBody('new_reservation_date', 'reservation_date is required').notEmpty();
+	//req.checkBody('new_reservation_hour', 'reservation_hour is required').notEmpty();
+		
+		Reservation.findOne({userName:req.body.userName,serviceName:req.body.serviceName,reservation_date: req.body.old_reservation_date,reservation_hour:
+				req.body.old_reservation_hour},function(err,trackReservation2){
+				if(trackReservation2){
+				
+				trackReservation2.reservation_hour = req.body.new_reservation_hour;
+				trackReservation2.reservation_date = req.body.new_reservation_date;
+
+				Reservation.changeReservation(trackReservation2, function(err, Reservation){
+				if(err) throw err;
+
+				console.log(Reservation);
+				});
+
+				console.log(trackReservation2);
+				console.log("changed!");
+			}
+				if (!(trackReservation2)){
+
+				console.log("no such reservation");
+				}
+
+			});
+				
+
+		
+});
+
+//sarah
+
+
+router.post('/delete', function(req, res){
+	var userName = req.body.userName;
+	var serviceName = req.body.serviceName;
+	var reservation_date = req.body.reservation_date;
+	var reservation_hour = req.body.reservation_hour;
+
+	req.checkBody('userName', 'Username is required').notEmpty();
+	req.checkBody('serviceName', 'ServiceName is required').notEmpty();
+	//req.checkBody('begin_work', 'begin_work is required').notEmpty();
+	//req.checkBody('end_work', 'end_work is required').notEmpty();
+	//req.checkBody('working_days', 'working_days is required').notEmpty();
+	req.checkBody('reservation_date', 'reservation_date is required').notEmpty();
+	req.checkBody('reservation_hour', 'reservation_hour is required').notEmpty();
+
+	/*var errors = req.validationErrors();
+
+	if(errors){
+		res.redirect('/');
+	} else {*/
+		
+		Reservation.findOne({userName:req.body.userName,serviceName:req.body.serviceName,reservation_date: req.body.reservation_date,reservation_hour:
+				req.body.reservation_hour},function(err,trackReservation3){
+				if(trackReservation3){
+				Reservation.deleteReservation(trackReservation3, function(err){
+      				console.log("Deleted!");
+			});
+				if (!(trackReservation3)){
+				
+				console.log("No such reservation");
+
+
+			} } });});
+
+
+router.post('/promo',function(req,res){
+var promo= randomstring.generate(7);
+console.log(promo);
+
+});
+
+
+
+
 module.exports = router;
 
-
-
-/*
-router.post(function(req, res) {
-    // Get values from POST request. These can be done through forms or REST calls. These rely on the "name" attributes for forms
-    var servicename = req.body.servicename;
-    var category = req.body.category;
-    var location= req.body.location;
-    var price = req.body.price;
-    var address = req.body.address;
-    var description = req.body.description;
-    //call the create function for our database
-    mongoose.model('service').create({
-        servicename : servicename,
-        category: category,
-        location : location,
-        price : price,
-        address : address,
-        description : description
-
-    }, function (err, services) {
-          if (err) {
-              res.send("There was a problem adding the information to the database.");
-          } else {
-              //Blob has been created
-              console.log('POST creating new services: ' + services);
-              res.format({
-                  //HTML response will set the location and redirect back to the home page. You could also create a 'success' page if that's your thing
-                html: function(){
-                    // If it worked, set the header so the address bar doesn't still say /adduser
-
-                    // And forward to success page
-                    res.redirect("/images");
-                },
-                //JSON response will show the newly created blob
-                json: function(){
-                    res.json(services);
-                }
-            });
-          }
-    })
-});
-*/
