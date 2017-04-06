@@ -1,4 +1,4 @@
-let Review = require('/home/youssef/Desktop/folder/app/models/review.js');
+let Review = require('../app/models/review.js');
 
 
 let ReviewController  = {
