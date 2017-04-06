@@ -15,9 +15,6 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var http = require('http');
 require('rootpath')();
-var nodemailer = require("nodemailer");
-
-
 
 var serviceController = require('./app/controllers/serviceController');
 
@@ -35,25 +32,12 @@ app.use(session({ secret: "secrett", resave: false, saveUninitialized: true }));
 app.use(cookieParser());
 app.use(router);
 
-
-
 app.use(session({
     secret: 'secret',
     saveUninitialized: true,
     resave: true
 }));
 
-var smtpTransport = nodemailer.createTransport({
-    service: "gmail",
-    host: "smtp.gmail.com",
-    port: 587,
-    auth: {
-        user: "kareemabdelaziz771996@gmail.com",
-        pass: "killer8kman"
-    },
-    tls: {rejectUnauthorized: false},
-    debug:true
-});
 
 //layla
 	app.get('/search',function(req, res){
@@ -99,4 +83,3 @@ app.listen(3000, function(){
 console.log("The app is running on port 3000!!!")
 
 });
-
