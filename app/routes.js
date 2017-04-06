@@ -13,24 +13,16 @@ module.exports = function(app, passport){
         res.render('signupSP.ejs', { message: req.flash('signupMessage') });
     });
   app.post('/signupSP', passport.authenticate('local-signup2', {
-        successRedirect: '/',
+        successRedirect: '/page',
         failureRedirect: '/signupSP',
         failureFlash: true
     }));
-app.get('/index', function(req, res){
-        res.render('index.ejs', { message: req.flash('signupMessage') });
+ app.get('/page', function(req, res){
+        res.render('page.ejs', { message: req.flash('signupMessage') });
     });
  
-
-
-
-
-
-
-
-
-    app.get('/', function(req, res){
-        res.render('index.ejs');
+    app.get('/page', function(req, res){
+        res.render('page.ejs');
     });
 
     app.get('/login', function(req, res){
@@ -48,7 +40,7 @@ app.get('/index', function(req, res){
 
 
     app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect: '/',
+        successRedirect: '/page',
         failureRedirect: '/signup',
         failureFlash: true
     }));
@@ -73,7 +65,7 @@ app.get('/index', function(req, res){
 
     app.get('/logout', function(req, res){
         req.logout();
-        res.redirect('/');
+        res.redirect('/page');
     })
 };
 
