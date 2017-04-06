@@ -1,4 +1,5 @@
-{ "name": "milestone",
+{
+  "name": "milestone",
   "version": "1.0.0",
   "dependencies": {
     "body-parser": "^1.17.1",
@@ -18,10 +19,8 @@
     "mongodb": "^2.2.24",
     "mongoose": "^4.9.2",
     "morgan": "^1.8.1",
-    "muter": "^0.6.0",
     "multer": "^1.3.0",
     "mysql": "*",
-    "nodemailer": "latest",
     "nodemon": "^1.11.0",
     "path": "^0.12.7",
     "request": "^2.81.0",
