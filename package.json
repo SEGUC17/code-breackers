@@ -1,0 +1,20 @@
+{
+  "name": "seproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kareem",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express-session": "^1.15.2",
+    "nodemailer": "latest",
+    "express": "latest",
+    "mongoose": "^4.9.3",
+    "muter": "^0.6.0",
+    "nodemon": "^1.11.0"
+  }
+}
