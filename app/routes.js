@@ -24,8 +24,16 @@ module.exports = function(app){
 	  res.render('index2.ejs');
 
 	});
-    
 
+	app.get('/service',serviceController.getServiceDetails,function(req, res){
+		res.render('sprofile.ejs');
+	});
+
+	
+    
+app.get('/sprofile',serviceController.getServiceDetails,function(req, res){
+		res.render('sprofile.ejs');
+	});
 
 
 };
