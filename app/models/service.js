@@ -56,7 +56,6 @@ var serviceSchema = mongoose.Schema({
   type:Number,
   required: true
   },
-
   currentOffers:{
   type: String
   },
@@ -66,9 +65,7 @@ var serviceSchema = mongoose.Schema({
   review :[{
     type: mongoose.Schema.Types.ObjectId,
     ref:'Review'
-  }]
-
-
+  }];
 
 });
 
