@@ -41,23 +41,23 @@ var serviceSchema = mongoose.Schema({
    type: Number,
    value:0
  },
- 
+
   workingdays : {
    type:String,
    required: true
  },
-  
+
   beginWorkingHours :{
   type:Number,
   required: true
   },
-  
+
   endWorkingHours :{
   type:Number,
   required: true
   },
   
-  currentOffers:{
+ currentOffers:{
   type: String
   },
   

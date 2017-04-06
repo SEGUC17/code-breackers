@@ -2,17 +2,17 @@ var express = require('express');
 var router = require('./app/routes');
 var app = express();
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-let Service = require('./app/models/service');
 var flash = require('connect-flash');
+let Service = require('./app/models/service');
 var path = require('path');
 var multer = require ('multer');
 var logger = require('morgan');
 var favicon = require ('serve-favicon');
 var exphbs = require('express-handlebars');
 var mongo = require('mongodb');
-var mongoose = require('mongoose');
 var http = require('http');
 require('rootpath')();
 
@@ -91,7 +91,16 @@ var smtpTransport = nodemailer.createTransport({
 		console.log(req.body);
 		res.render('FilteredServices.ejs');
 	});
-
+  
+//youssef
+  app.post('/createComplaint', complaintController.createComplaint, function(req, res){
+    res.render('complains.ejs');
+  });
+  
+  app.post('/createReview', reviewController.createReview, function(req, res){
+    res.render('reviews.ejs');
+  });
+  
 /////
 
 app.listen(3000, function(){

@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
+var complaintController = require('/home/youssef/Desktop/folder/app/controller/complaintController.js');
+var reviewController = require('/home/youssef/Desktop/folder/app/controller/reviewController.js');
 var serviceController = require('../app/controllers/serviceController');
 //var upload = multer ({ dest:'public/uploads'});
 var multer = require ('multer');
 var Reservation = require('../app/models/reservation');
 var randomstring=require("randomstring");
-
-
 var nodemailer = require("nodemailer");
 
 
@@ -90,6 +90,19 @@ router.get('/send',function(req,res){
     	 }
 });
 });
+
+//youssef
+
+	router.get('/',function(req, res){
+	  res.render('complains.ejs');
+	});
+
+  router.get('/addreview',function(req, res){
+	  res.render('reviews.ejs');
+	});
+
+
+
 
 //nadeen
 router.post('/AS',serviceController.createService);
