@@ -1,3 +1,5 @@
+var User = require('./models/user');
+var sp = require('./models/sp');
 var express = require('express');
 var router = express.Router();
 var complaintController = require('../app/controllers/complaintController.js');
@@ -8,6 +10,7 @@ var multer = require ('multer');
 var Reservation = require('../app/models/reservation');
 var randomstring=require("randomstring");
 var nodemailer = require("nodemailer");
+
 
 
 var smtpTransport = nodemailer.createTransport({
