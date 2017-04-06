@@ -133,21 +133,32 @@ router.put('/updateservice',function(req, res) {
 	    var description = req.body.description;
 	    var address = req.body.address;
 	    var price = req.body.price;
-        var location = req.body.location;
-        var category = req.body.category;
-        var workingdays = req.body.workingdays;
-        var offer = req.body.offer;
+            var location = req.body.location;
+            var category = req.body.category;
+            var workingdays = req.body.workingdays;
+	    var beginWorkingHours = req.body.beginWorkingHours;
+	    var endWorkingHours = req.body.endWorkingHours;
+            var offerDescription = req.body.offerDescription;
 
 	    mongoose.model('service').findById(req.id, function (err, services) {
-	        service.update({
+	        services.update({
 	            serviceName : serviceName,
 	            description : description,
 	            address : address,
 	            price : price,
-              location : location,
-              category : category
+                    location : location,
+                    category : category,
+		    beginWorkingHours : beginWorkingHours,
+		    endWorkingHours : endWorkingHours,
+	            offerDescription : offerDescription
 
-	        }, function (err, serviceID) {
+	        } if (services.offerDescription = ""){
+			services.currentOffers == false;
+		}
+		    else if (services.offerDescription !== ""){
+			services.currentOffers == true;
+		}
+		    , function (err, serviceID) {
 	          if (err) {
 	              res.send("There was a problem updating the information to the database: " + err);
 	          }
