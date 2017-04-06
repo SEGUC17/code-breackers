@@ -1,12 +1,14 @@
-var express    =    require('express');
-var app        =    express();
+var express = require('express');
+var router = require('./app/routes');
+var app = express();
 var bodyParser = require('body-parser');
-var path = require('path');
-var session =require('express-session');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
+let Service = require('./app/models/service');
+var flash = require('connect-flash');
+var path = require('path');
 var multer = require ('multer');
 var logger = require('morgan');
-var path = require ('path');
 var favicon = require ('serve-favicon');
 var exphbs = require('express-handlebars');
 var mongo = require('mongodb');
@@ -14,11 +16,14 @@ var mongoose = require('mongoose');
 var http = require('http');
 require('rootpath')();
 
-
+var serviceController = require('./app/controllers/serviceController');
 var router = require('app/routes.js');
 
 mongoose.connect('mongodb://localhost/milestone');
 var db = mongoose.connection;
+
+
+
 var app = express();
 app.set('views',__dirname + '/views');
 app.set('view engine', 'ejs');
@@ -36,6 +41,19 @@ app.use(session({
     resave: true
 }));
 
+
+var $  = require('jquery');
+var jsdom = require("jsdom").jsdom;
+var doc = jsdom();
+var window = doc.defaultView;
+$ = require('jquery')(window);
+
+
+require('./app/routes.js')(app);
+
+
+
 app.listen(3000, function(){
 console.log("The app is running on port 3000!!!")
+
 });

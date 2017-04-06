@@ -1,11 +1,37 @@
 var express = require('express');
 var router = express.Router();
+var serviceController = require('./controllers/serviceController');
 //var upload = multer ({ dest:'public/uploads'});
 var multer = require ('multer');
 
 var serviceController = require('./controllers/servicecontroller');
 var Reservation = require('../app/models/reservation');
 var randomstring=require("randomstring");
+
+//layla
+  router.get('/search',function(req, res){
+	  res.render('index.ejs');
+	});
+
+  router.get('/Date',serviceController.getServiceByDate,function(req, res){
+		console.log(req.body);
+		res.render('FilteredServices.ejs');
+	});
+
+  router.get('/Offers',serviceController.getServiceByOffer,function(req, res){
+		res.render('FilteredServices.ejs');
+	});
+
+	router.get('/Rating',serviceController.getServiceByRating,function(req, res){
+		res.render('FilteredServices.ejs');
+
+	});
+
+	router.get('/searchByKeyword',serviceController.getServiceByKeyword,function(req, res){
+ 	 res.render('FilteredServices.ejs');
+
+  });
+
 
 //nadeen
 
@@ -19,34 +45,37 @@ router.get('/betngan',serviceController.getMyService);
 
 
 router.get('/images', function(req, res, next) {
-     res.render('images', { title: 'Express' });});
+     res.render('images', { title: 'Express' });
+});
 
 
 router.get('/addservice', function(req, res){
    res.render('addservice');
-   console.log("addservice"); });
+   console.log("addservice"); 
+});
 
 
 router.get('/viewservice', serviceController.getAllServices, function (req , res){
    console.log("haygeb el service");
  });
 
+
 //sarah & omar
 router.get('/reserve', function(req,res){
 res.render('reserve.html', {title: "Reservation"})
 });
+
 
 //omar
 router.get('/change', function(req,res){
 res.render('change.html', {title: "Change Reservation"})
 });
 
-//sarah
 
+//sarah
 router.get('/delete', function(req,res){
 res.render('delete.html', {title: "Delete Reservation"})
 });
-
 
 router.get('/promo', function(req,res){
 res.render('promo.html', {title: "Create PromoCode"})
@@ -140,14 +169,6 @@ router.post('/reserve', function(req, res){
 	var reservation_hour = req.body.reservation_hour;
         console.log(userName); 
 
-	//req.checkBody('userName', 'Username is required').notEmpty();
-	//req.checkBody('serviceName', 'ServiceName is required').notEmpty();
-	//req.checkBody('begin_work', 'begin_work is required').notEmpty();
-	//req.checkBody('end_work', 'end_work is required').notEmpty();
-	//req.checkBody('working_days', 'working_days is required').notEmpty();
-	//req.checkBody('reservation_date', 'reservation_date is required').notEmpty();
-	//req.checkBody('reservation_hour', 'reservation_hour is required').notEmpty();
-
 		var newReservation = new Reservation({
 			userName: userName,
 			serviceName: serviceName,
@@ -188,16 +209,6 @@ router.post('/change', function(req, res){
 	var new_reservation_date = req.body.new_reservation_date;
 	var new_reservation_hour = req.body.new_reservation_hour;
         console.log(userName); 
-
-	//req.checkBody('userName', 'Username is required').notEmpty();
-	//req.checkBody('serviceName', 'ServiceName is required').notEmpty();
-	//req.checkBody('begin_work', 'begin_work is required').notEmpty();
-	//req.checkBody('end_work', 'end_work is required').notEmpty();
-	//req.checkBody('working_days', 'working_days is required').notEmpty();
-	//req.checkBody('old_reservation_date', 'reservation_date is required').notEmpty();
-	//req.checkBody('old_reservation_hour', 'reservation_hour is required').notEmpty();
-	//req.checkBody('new_reservation_date', 'reservation_date is required').notEmpty();
-	//req.checkBody('new_reservation_hour', 'reservation_hour is required').notEmpty();
 		
 		Reservation.findOne({userName:req.body.userName,serviceName:req.body.serviceName,reservation_date: req.body.old_reservation_date,reservation_hour:
 				req.body.old_reservation_hour},function(err,trackReservation2){
@@ -235,20 +246,6 @@ router.post('/delete', function(req, res){
 	var reservation_date = req.body.reservation_date;
 	var reservation_hour = req.body.reservation_hour;
 
-	//req.checkBody('userName', 'Username is required').notEmpty();
-	//req.checkBody('serviceName', 'ServiceName is required').notEmpty();
-	//req.checkBody('begin_work', 'begin_work is required').notEmpty();
-	//req.checkBody('end_work', 'end_work is required').notEmpty();
-	//req.checkBody('working_days', 'working_days is required').notEmpty();
-	//req.checkBody('reservation_date', 'reservation_date is required').notEmpty();
-	//req.checkBody('reservation_hour', 'reservation_hour is required').notEmpty();
-
-	/*var errors = req.validationErrors();
-
-	if(errors){
-		res.redirect('/');
-	} else {*/
-		
 		Reservation.findOne({userName:req.body.userName,serviceName:req.body.serviceName,reservation_date: req.body.reservation_date,reservation_hour:
 				req.body.reservation_hour},function(err,trackReservation3){
 				if(trackReservation3){
@@ -272,7 +269,26 @@ console.log(promo);
 });
 
 
+//layla
+
+	router.post('/createService',serviceController.createService,function(req, res){
+		res.render('index.ejs');
+
+	});
+
+	router.post('/getCategory',serviceController.getServiceByCategory,function(req, res){
+		res.render('FilteredServices.ejs');
+
+	});
+
+	router.post('/getLocation',serviceController.getServiceByLocation,function(req, res){
+		console.log(req.body);
+		res.render('FilteredServices.ejs');
+	});
+
 
 
 module.exports = router;
+
+
 
