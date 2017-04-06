@@ -8,30 +8,6 @@ var serviceController = require('./controllers/servicecontroller');
 var Reservation = require('../app/models/reservation');
 var randomstring=require("randomstring");
 
-//layla
-  router.get('/search',function(req, res){
-	  res.render('index.ejs');
-	});
-
-  router.get('/Date',serviceController.getServiceByDate,function(req, res){
-		console.log(req.body);
-		res.render('FilteredServices.ejs');
-	});
-
-  router.get('/Offers',serviceController.getServiceByOffer,function(req, res){
-		res.render('FilteredServices.ejs');
-	});
-
-	router.get('/Rating',serviceController.getServiceByRating,function(req, res){
-		res.render('FilteredServices.ejs');
-
-	});
-
-	router.get('/searchByKeyword',serviceController.getServiceByKeyword,function(req, res){
- 	 res.render('FilteredServices.ejs');
-
-  });
-
 
 //nadeen
 
@@ -269,22 +245,7 @@ console.log(promo);
 });
 
 
-//layla
-
-	router.post('/createService',serviceController.createService,function(req, res){
-		res.render('index.ejs');
-
-	});
-
-	router.post('/getCategory',serviceController.getServiceByCategory,function(req, res){
-		res.render('FilteredServices.ejs');
-
-	});
-
-	router.post('/getLocation',serviceController.getServiceByLocation,function(req, res){
-		console.log(req.body);
-		res.render('FilteredServices.ejs');
-	});
+	
 
 
 

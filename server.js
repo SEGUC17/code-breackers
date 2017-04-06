@@ -17,14 +17,11 @@ var http = require('http');
 require('rootpath')();
 
 var serviceController = require('./app/controllers/serviceController');
-var router = require('app/routes.js');
 
 mongoose.connect('mongodb://localhost/milestone');
 var db = mongoose.connection;
 
 
-
-var app = express();
 app.set('views',__dirname + '/views');
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
@@ -42,16 +39,45 @@ app.use(session({
 }));
 
 
-var $  = require('jquery');
-var jsdom = require("jsdom").jsdom;
-var doc = jsdom();
-var window = doc.defaultView;
-$ = require('jquery')(window);
+//layla
+	app.get('/search',function(req, res){
+	  res.render('index.ejs');
+	});
 
+	app.get('/Date',serviceController.getServiceByDate,function(req, res){
+		console.log(req.body);
+		res.render('FilteredServices.ejs');
+	});
 
-require('./app/routes.js')(app);
+	app.get('/Offers',serviceController.getServiceByOffer,function(req, res){
+		res.render('FilteredServices.ejs');
+	});
 
+	app.get('/Rating',serviceController.getServiceByRating,function(req, res){
+		res.render('FilteredServices.ejs');
 
+	});
+
+	app.get('/searchByKeyword',serviceController.getServiceByKeyword,function(req, res){
+ 	 res.render('FilteredServices.ejs');
+
+  });
+
+    app.post('/createService',serviceController.createService,function(req, res){
+		res.render('index.ejs');
+
+	});
+
+	app.post('/getCategory',serviceController.getServiceByCategory,function(req, res){
+		res.render('FilteredServices.ejs');
+
+	});
+
+	app.post('/getLocation',serviceController.getServiceByLocation,function(req, res){
+		console.log(req.body);
+		res.render('FilteredServices.ejs');
+	});
+/////
 
 app.listen(3000, function(){
 console.log("The app is running on port 3000!!!")
