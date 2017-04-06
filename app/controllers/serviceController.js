@@ -122,7 +122,6 @@ getServiceByKeyword: function (req,res)
 
 }},
 
-
 }
 
 function escapeRegex(text) {

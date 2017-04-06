@@ -61,7 +61,10 @@ var serviceSchema = mongoose.Schema({
   type: String
   },
   
-  time : { type : Date, default: Date.now }
+  time : {type : Date, default: Date.now },
+
+ reviews: {type: String}
+
 
 });
 

@@ -1,11 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var emailController = require('app/controllers/emailController');
-var serviceController = require('app/controllers/serviceController');
+var serviceController = require('../app/controllers/serviceController');
 //var upload = multer ({ dest:'public/uploads'});
 var multer = require ('multer');
-
-var serviceController = require('./controllers/servicecontroller');
 var Reservation = require('../app/models/reservation');
 var randomstring=require("randomstring");
 
@@ -36,8 +33,6 @@ router.get('/addservice', function(req, res){
    res.render('addservice');
 });
 
-router.get('/betngan',serviceController.getMyService);
-
 
 router.get('/images', function(req, res, next) {
      res.render('images', { title: 'Express' });
@@ -48,11 +43,6 @@ router.get('/addservice', function(req, res){
    res.render('addservice');
    console.log("addservice"); 
 });
-
-
-router.get('/viewservice', serviceController.getAllServices, function (req , res){
-   console.log("haygeb el service");
- });
 
 
 //sarah & omar
@@ -105,8 +95,8 @@ router.get('/send',function(req,res){
 router.post('/AS',serviceController.createService);
 
 
-router.post('/myservice',function(req, res, next) {
-  res.redirect('betngan'); });
+//router.post('/myservice',function(req, res, next) {
+//  res.redirect('betngan'); });
 
 
 //router.post('/images', upload.any(),function(req, res, next) {
@@ -118,10 +108,10 @@ router.put('/updateservice',function(req, res) {
 	    var description = req.body.description;
 	    var address = req.body.address;
 	    var price = req.body.price;
-      var location = req.body.location;
-      var category = req.body.category;
-      var workingdays = req.body.workingdays;
-      var offer = req.body.offer;
+        var location = req.body.location;
+        var category = req.body.category;
+        var workingdays = req.body.workingdays;
+        var offer = req.body.offer;
 
 	    mongoose.model('service').findById(req.id, function (err, services) {
 	        service.update({
