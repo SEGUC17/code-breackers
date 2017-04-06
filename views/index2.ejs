@@ -7,7 +7,7 @@
             <div class="row">
                 <% for(var i=0; i<services.length; i++){%>
                     <div class="card col-xs-4">
-                         <button type="button" id = "Location" class="btn btn-primary btn-md" ><a href="service">service</a></button>
+                         <button type="button" id = i class="btn btn-primary btn-md" name = "<%= services[i].category%>" value = <%= services[i].category %><a href="/service">service</a></button>
                          <h4 class="card-title"> <%= services[i].location %></h4>
                          <h4 class="card-title"> <%= services[i].category %></h4>
                          <h4 class="card-title"> <%= services[i].rating %></h4>                         

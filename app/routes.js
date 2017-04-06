@@ -25,7 +25,8 @@ module.exports = function(app){
 
 	});
 
-	app.post('/service',serviceController.getDetails,function(req, res){
+	app.get('/service',serviceController.getDetails,function(req, res){
+		
 		res.render('sprofile.ejs');
 	});
 

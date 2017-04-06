@@ -34,8 +34,8 @@ let serviceController = {
 
 
       getDetails: function(req, res){
-      Service.find({category:req.body.category},function(err, service){
-      console.log(req.body.category);
+      Service.find({service._id:req.body._id},function(err, service){
+      
       if(err)
         res.send(err.message)
       else
@@ -43,6 +43,8 @@ let serviceController = {
     
       })
 }
+
+
 }
 
 
