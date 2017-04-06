@@ -1,4 +1,4 @@
-let Complaint = require('/home/youssef/Desktop/folder/app/models/complaint.js');
+let Complaint = require('../app/models/complaint.js');
 
 
 let ComplaintController  = {
