@@ -36,7 +36,7 @@ var serviceSchema = mongoose.Schema({
    type: mongoose.Schema.Types.ObjectId,
    ref: 'imageS'
  },
-  
+
  rating:{
    type: Number,
    value:0
@@ -56,15 +56,16 @@ var serviceSchema = mongoose.Schema({
   type:Number,
   required: true
   },
-  
- currentOffers:{
+  currentOffers:{
   type: String
   },
+
+  time : { type : Date, default: Date.now },
   
-  time : {type : Date, default: Date.now },
-
- reviews: {type: String}
-
+  review :[{
+    type: mongoose.Schema.Types.ObjectId,
+    ref:'Review'
+  }];
 
 });
 

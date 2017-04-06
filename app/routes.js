@@ -8,6 +8,10 @@ var multer = require ('multer');
 var Reservation = require('../app/models/reservation');
 var randomstring=require("randomstring");
 var nodemailer = require("nodemailer");
+var complaintController = require('/home/youssef/Desktop/folder/app/controllers/complaintController.js');
+var reviewController = require('/home/youssef/Desktop/folder/app/controllers/reviewController.js');
+
+module.exports = router;
 
 
 
@@ -25,9 +29,17 @@ var smtpTransport = nodemailer.createTransport({
 //module.exports = emailController;
 
 
+
+router.get('/',function(req, res){
+	  res.render('complains.ejs');
+	});
+
+router.get('/addreview',function(req, res){
+	  res.render('reviews.ejs');
+	});
+
+
 //nadeen
-
-
 router.get('/addservice', function(req, res){
    console.log("addservice");
    res.render('addservice');
@@ -324,3 +336,4 @@ service.findOne({serviceName:req.body.serviceName},function(err,service2){
 
 
 module.exports = router;
+
