@@ -5,7 +5,7 @@ var serviceSchema = mongoose.Schema({
         required:true,
         unique:true
     },
-	
+
     description : {
     type: String,
     required:true
@@ -35,43 +35,43 @@ var serviceSchema = mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'imageS'
     },
-	
+
    rating:{
    type: Number,
    value:0
  },
-	
+
    workingdays : {
    type:String,
    required: true
  },
-	
+
   beginWorkingHours :{
   type:Number,
   required: true
 },
-	
+
   endWorkingHours :{
   type:Number,
   required: true
 },
-	
+
   offerDescription:{
   type: String
 },
-	
+
   currentOffers: {type: Boolean, default: false},
-	
+
   time : { type : Date, default: Date.now },
-  
+
   review :[{
     type: mongoose.Schema.Types.ObjectId,
     ref:'Review'
-  }];
+  }]
 
 });
 
-});
+
 
 var Service = mongoose.model("service", serviceSchema);
 

@@ -36,7 +36,7 @@ let userController  = {
           user.save(function(err,user){
               if (err){
                   res.send(err.message)
-                  console.log(err);
+              
               } else {
                   console.log("success");
                   console.log(user);

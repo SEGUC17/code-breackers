@@ -112,7 +112,7 @@ getServiceByKeyword: function (req,res)
 			if(err) {
 				res.send(err.message);
 			} if(services.length < 1) {
-				res.render('FilteredServices.ejs', {services});  ///plugs in some flags g is global and i is ignore upper case
+				res.send("No Services Found") ///plugs in some flags g is global and i is ignore upper case
 			} else {
 				res.render('FilteredServices.ejs', {services});
 			}
@@ -120,12 +120,12 @@ getServiceByKeyword: function (req,res)
 
 
 }},
-  
-  
+
+
     getAllServices:function(req, res){
-        
+
         Service.find(function(err, services){
-            
+
             if(err)
                 res.send(err.message);
             else
@@ -138,21 +138,19 @@ getServiceByKeyword: function (req,res)
 
       getDetails: function(req, res){
       Service.find({Service_id:req.body._id},function(err, servicex){
-      
+
       if(err)
         res.send(err.message)
       else
         res.render('sprofile', {servicex});
-    
+
       });
 }}
-  
 
-}
 
-	
+
+
 function escapeRegex(text) {
 return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&"); }
 
 module.exports = serviceController;
-
