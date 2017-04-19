@@ -1,0 +1,32 @@
+
+<%- include('partials/header') %>
+<div class="container">
+    <h2>All Reviews</h2>
+    <div id="reviews" class="row" style="margin-top: 20px;">
+    <div class="col-sm-4">
+    <ul >
+    <% for(var i=0; i < services.length; i++) { %>
+            <li>
+                <%= services[i].firstName %><%= services[i].lastName %>
+                <% if (services[i].review) { %>
+                <ul>
+                    <% for(var k=0; k < services[i].review.length; k++) { %>
+                    <li>
+                        <label><%= services[i].review[k].reviewName %></label>
+                        <ul>
+                             <li><label>Add Review: </label> <%= services[i].review[k].reviewName %></li>
+                            //  <li><label>Repo URL: </label> <%= students[i].works[k].repo %></li>
+                            //  <li><label>Screenshot: </label> <%= students[i].works[k].screenshot %></li>
+                        </ul>
+                    </li>
+                    <% } %>
+                </ul>
+                <% } %>
+            </li>
+        <% } %>
+</ul>
+
+    </div>
+</div>
+</div>
+<%- include('partials/footer') %>
