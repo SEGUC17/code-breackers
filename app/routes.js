@@ -1,5 +1,4 @@
 var User = require('./models/user');
-var sp = require('./models/sp');
 var express = require('express');
 var router = express.Router();
 var complaintController = require('../app/controllers/complaintController.js');
@@ -51,7 +50,7 @@ router.get('/images', function(req, res, next) {
 
 router.get('/addservice', function(req, res){
    res.render('addservice');
-   console.log("addservice"); 
+   console.log("addservice");
 });
 
 
@@ -135,35 +134,25 @@ router.put('/updateservice',function(req, res) {
 	            description : description,
 	            address : address,
 	            price : price,
-                    location : location,
-                    category : category,
-		    beginWorkingHours : beginWorkingHours,
-		    endWorkingHours : endWorkingHours,
-	            offerDescription : offerDescription
+              location : location,
+              category : category,
+		          beginWorkingHours : beginWorkingHours,
+		          endWorkingHours : endWorkingHours,
+	            offerDescription : offerDescription,
 
-	        } if (services.offerDescription = ""){
-			services.currentOffers == false;
-		}
-		    else if (services.offerDescription !== ""){
-			services.currentOffers == true;
-		}
-		    , function (err, serviceID) {
-	          if (err) {
-	              res.send("There was a problem updating the information to the database: " + err);
-	          }
-	          else {
-	                  res.format({
-	                      html: function(){
-	                           res.redirect("/serviceview/" + service._id);
-	                     },
-	                    json: function(){
-	                           res.json(service);
-	                     } 
-                 });
-            } 
-          })
+	        })
+
+          if (services.offerDescription = ""){
+          services.currentOffers == false;
+        }
+            else if (services.offerDescription !== ""){
+          services.currentOffers == true;
+        }
+
+
+
       });
-});
+}),
 
 
 router.delete('/:id/edit', function (req, res){
@@ -192,7 +181,7 @@ router.delete('/:id/edit', function (req, res){
     });
 });
 
-// sarah and omar 
+// sarah and omar
 router.post('/reserve', function(req, res){
 	var userName = req.body.userName;
 	var serviceName = req.body.serviceName;
@@ -201,7 +190,7 @@ router.post('/reserve', function(req, res){
 	var working_days = req.body.working_days;
 	var reservation_date = req.body.reservation_date;
 	var reservation_hour = req.body.reservation_hour;
-        console.log(userName); 
+        console.log(userName);
 
 		var newReservation = new Reservation({
 			userName: userName,
@@ -217,7 +206,7 @@ router.post('/reserve', function(req, res){
 		Reservation.findOne({serviceName:req.body.serviceName, reservation_date: req.body.reservation_date, reservation_hour:
 				req.body.reservation_hour},function(err,trackReservation){
 				if(trackReservation){
-					
+
 				console.log("Reserved!");
 			}
 				if (!(trackReservation)){
@@ -229,7 +218,7 @@ router.post('/reserve', function(req, res){
 				}
 
 			});
-			
+
 
 });
 
@@ -242,12 +231,12 @@ router.post('/change', function(req, res){
 	var old_reservation_hour = req.body.old_reservation_hour;
 	var new_reservation_date = req.body.new_reservation_date;
 	var new_reservation_hour = req.body.new_reservation_hour;
-        console.log(userName); 
-		
+        console.log(userName);
+
 		Reservation.findOne({userName:req.body.userName,serviceName:req.body.serviceName,reservation_date: req.body.old_reservation_date,reservation_hour:
 				req.body.old_reservation_hour},function(err,trackReservation2){
 				if(trackReservation2){
-				
+
 				trackReservation2.reservation_hour = req.body.new_reservation_hour;
 				trackReservation2.reservation_date = req.body.new_reservation_date;
 
@@ -266,9 +255,9 @@ router.post('/change', function(req, res){
 				}
 
 			});
-				
 
-		
+
+
 });
 
 //sarah
@@ -286,10 +275,10 @@ router.post('/delete', function(req, res){
 				Reservation.deleteReservation(trackReservation3, function(err){
       				console.log("Deleted!");
 			});
-				 } 
+				 }
 
 				if (!(trackReservation3)){
-				
+
 				console.log("No such reservation");
 
 
@@ -336,5 +325,3 @@ service.findOne({serviceName:req.body.serviceName},function(err,service2){
 
 
 module.exports = router;
-
-

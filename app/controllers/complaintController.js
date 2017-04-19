@@ -1,4 +1,4 @@
-let Complaint = require('../app/models/complaint.js');
+let Complaint = require('../models/complaint.js');
 
 
 let ComplaintController  = {

@@ -15,20 +15,19 @@ var mongo = require('mongodb');
 var http = require('http');
 require('rootpath')();
 var serviceController = require('./app/controllers/serviceController');
+var userController = require('./app/controllers/userController');
 let Service = require('./app/models/service');
 var passport = require('passport');
-
-
-
-
-var nodemailer = require("nodemailer");  
-
-var serviceController = require('./app/controllers/serviceController');
+var nodemailer = require("nodemailer");
+var complaintController = require('./app/controllers/complaintController');
+var reviewController = require('./app/controllers/reviewController');
 
 mongoose.connect('mongodb://localhost/milestone');
 var db = mongoose.connection;
 
+
 require('./config/passport')(passport);
+
 
 
 app.set('views',__dirname + '/views');
@@ -39,15 +38,15 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(router);
-app.use(session({secret: 'anystringoftext', 
+app.use(session({secret: 'anystringoftext',
                   saveUninitialized: true,
                   resave: true}));
 
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash()); 
-app.use(morgan('dev'));
+app.use(flash());
+//app.use(morgan('dev'));
 
 
 
@@ -100,19 +99,28 @@ var smtpTransport = nodemailer.createTransport({
 	});
 
 	app.post('/getLocation',serviceController.getServiceByLocation,function(req, res){
-		console.log(req.body);
 		res.render('FilteredServices.ejs');
 	});
-  
+
+
+  app.get('/update', function(req, res){
+	res.render('updateInfo.ejs');
+  });
+
+  app.post('/updateinfo',userController.updateUser ,function(req, res){
+	res.render('profile.ejs');
+  });
+
+
 //youssef
   app.post('/createComplaint', complaintController.createComplaint, function(req, res){
     res.render('complains.ejs');
   });
-  
+
   app.post('/createReview', reviewController.createReview, function(req, res){
     res.render('reviews.ejs');
   });
-  
+
 /////
 //ahmed
 
@@ -130,7 +138,7 @@ var smtpTransport = nodemailer.createTransport({
 	  res.render('sprofile.ejs');
 
 	});
-  
+
 
 //merna
 
@@ -143,13 +151,13 @@ app.get('/signupSP', function(req, res){
         failureRedirect: '/signupSP',
         failureFlash: true
     }));
-   
+
   app.get('/index', function(req, res){
-        res.render('index.ejs', { message: req.flash('signupMessage') });
+        res.render('page.ejs', { message: req.flash('signupMessage') });
     });
- 
-    app.get('/', function(req, res){
-        res.render('index.ejs');
+
+    app.get('/page', function(req, res){
+        res.render('page.ejs');
     });
 
     app.get('/login', function(req, res){
@@ -178,23 +186,13 @@ app.get('/signupSP', function(req, res){
 
 
 
-    app.get('/:email/:password', function(req, res){
-        var newUser = new User();
-        newUser.local.email = req.params.email;
-        newUser.local.email = req.params.email;
-        console.log(newUser.local.email + " " + newUser.local.password);
-        newUser.save(function(err){
-            if(err)
-                throw err;
-        });
-        res.send("Success!");
-    });
+    
 
     app.get('/logout', function(req, res){
         req.logout();
         res.redirect('/');
-    })
-};
+    });
+
 
 function isLoggedIn(req, res, next) {
     if(req.isAuthenticated()){
@@ -203,12 +201,9 @@ function isLoggedIn(req, res, next) {
 
     res.redirect('/login');
 
-
+};
 
 app.listen(3000, function(){
 console.log("The app is running on port 3000!!!")
 
 });
-
-  
-
