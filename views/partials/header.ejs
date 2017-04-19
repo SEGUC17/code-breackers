@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Login</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <style type="text/css">
+        body {
+            padding-top: 100px;
+        }
+
+        .form-container {
+            width: 400px;
+            margin: auto;
+        }
+
+        .credits {
+            border-top: 1px solid #ddd;
+            margin-top: 40px;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<header>
+        <ul class="nav nav-tabs">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/login">Login/Register</a></li>
+        </ul>
+        <div class="flash-message" ng-if="flash">
+            <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
+        </div>
+    </header>
+<body>
