@@ -1,6 +1,8 @@
+
 var mongoose = require('mongoose');
 
-var spSchema = mongoose.Schema({
+var serviceProviderSchema = mongoose.Schema({
+
 	local: {
 		email: String,
 		password: String,
@@ -16,4 +18,4 @@ var spSchema = mongoose.Schema({
 	}
 });
 
-module.exports = mongoose.model('sp', spSchema);
+module.exports = mongoose.model('ServiceProvider', serviceProviderSchema);

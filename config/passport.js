@@ -1,8 +1,8 @@
 var LocalStrategy = require('passport-local').Strategy;
 
 
-var User   = require('../app/models/user');
-
+var User = require('../app/models/user');
+var ServiceProvider = require('../app/models/serviceProvider');
 module.exports = function(passport) {
 
 
@@ -56,21 +56,20 @@ module.exports = function(passport) {
     },
     function(req, email, password, done){
         process.nextTick(function(){
-            User.findOne({'local.email': email}, function(err, sp){
+            ServiceProvider.findOne({'local.email': email}, function(err, sp){
                 if(err)
                     return done(err);
                 if(sp){
                     return done(null, false, req.flash('signupMessage', 'That email already taken'));
                 } else {
-                    var newsp = new sp();
-                    newsp.email = email;
-                    newsp.password = password;
-                    newsp.username = req.body.username;
+                    var newsp = new ServiceProvider();
+                    newsp.local.email = email;
+                    newsp.local.password = password;
+                    newsp.local.username = req.body.username;
                     
-
                     newsp.save(function(err){
                         if(err)
-                            throw err;
+                        throw err;
                         return done(null, newsp);
                     })
                 }

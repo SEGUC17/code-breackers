@@ -10,17 +10,17 @@ var serviceSchema = mongoose.Schema({
 
   description : {
   type: String,
-  required:true
+  //required:true
   },
 
   address:{
     type: String,
-    required: true
+    //required: true
   },
 
   price:{
     type:Number,
-    required: true
+    //required: true
   },
 
   location:{
@@ -45,17 +45,17 @@ var serviceSchema = mongoose.Schema({
 
  workingdays : {
  type:String,
- required: true
+ //required: true
 },
 
 beginWorkingHours :{
 type:Number,
-required: true
+//required: true
 },
 
 endWorkingHours :{
 type:Number,
-required: true
+//required: true
 },
 
 offerDescription:{
@@ -69,7 +69,13 @@ time : { type : Date, default: Date.now },
 review :[{
   type: mongoose.Schema.Types.ObjectId,
   ref:'Review'
-}]
+}],
+
+WebsiteURL:String,
+
+FacebookURL: String
+
+
 
 })
 

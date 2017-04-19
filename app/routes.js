@@ -1,5 +1,4 @@
 var User = require('./models/user');
-var sp = require('./models/sp');
 var express = require('express');
 var router = express.Router();
 var complaintController = require('../app/controllers/complaintController.js');

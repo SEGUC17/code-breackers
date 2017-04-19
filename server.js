@@ -186,17 +186,7 @@ app.get('/signupSP', function(req, res){
 
 
 
-    app.get('/:email/:password', function(req, res){
-        var newUser = new User();
-        newUser.local.email = req.params.email;
-        newUser.local.email = req.params.email;
-        console.log(newUser.local.email + " " + newUser.local.password);
-        newUser.save(function(err){
-            if(err)
-                throw err;
-        });
-        res.send("Success!");
-    });
+    
 
     app.get('/logout', function(req, res){
         req.logout();
