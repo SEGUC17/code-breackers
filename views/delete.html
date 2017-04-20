@@ -1,17 +1,37 @@
 <html>
+<script src="//code.angularjs.org/1.4.0/angular.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
+<script src="./public/js/app.js"></script>
+
 <head>
-<title>Delete Reservtion</title>
+<link rel = "stylesheet" href = "../css/styles.css"
 </head>
-<Body background = "">
-<H1>Delete Reservition</H1>
+<h1>Cancel your Reservation</h1>
+
 <pre>
-<form method = "post">
-UserName : <input type="text" name="userName">
-ServiceName:<input type="text" name="serviceName">
-Reservation Date : <input type="date" name="reservation_date">
-Reservation Hour : <input type="number" name="reservation_hour">
+<form class = "reservationForm" method = "post">
+Username : <input type="text" name="userName" ng-model= "userName" required>
+<div class = "help-block" ng-messages= "reservationForm.userName.$error">
+  <div ng-messages-include = "messages.html"</div>
+</div>
+
+Service Name:<input type="text" name="serviceName" ng-model= "serviceName"required>
+<div class = "help-block" ng-messages= "reservationForm.serviceName.$error">
+  <div ng-messages-include = "messages.html"</div>
+</div>
+
+Reservation Date : <input type="date" name="reservation_date" ng-model= "reservation_date" required>
+<div class = "help-block" ng-messages= "reservationForm.reservation_date.$error">
+  <div ng-messages-include = "messages.html"</div>
+</div>
+
+Reservation Hour : <input type="time" name="reservation_hour" ng-model= "reservation_hour" required>
+<div class = "help-block" ng-messages= "reservationForm.reservation_hour.$error">
+  <div ng-messages-include = "messages.html"</div>
+</div>
+
 </pre>
-<button type = "submit">Delete</button>
+<button type = "submit">Cancel the Reservation</button>
 </form>
 </Body>
 </html>
