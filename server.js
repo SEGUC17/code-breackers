@@ -29,12 +29,12 @@ var db = mongoose.connection;
 require('./config/passport')(passport);
 
 
-
-app.set('views',__dirname + '/views');
-app.set('view engine', 'ejs');
-app.engine('html', require('ejs').renderFile);
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
+app.use('/app', express.static(__dirname + "/app" ));
+app.use('/public', express.static(__dirname + "/public" ));
+app.use('/node_modules', express.static(__dirname + "/node_modules"));
 app.use(bodyParser.urlencoded({extended:false}));
+app.use(express.static(__dirname+ '/public'));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(router);
@@ -186,7 +186,7 @@ app.get('/signupSP', function(req, res){
 
 
 
-    
+
 
     app.get('/logout', function(req, res){
         req.logout();
