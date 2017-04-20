@@ -65,43 +65,50 @@ var smtpTransport = nodemailer.createTransport({
 
 
 //layla
-	app.get('/search',function(req, res){
-	  res.render('index.ejs');
-	});
 
-	app.get('/Date',serviceController.getServiceByDate,function(req, res){
-		console.log(req.body);
-		res.render('FilteredServices.ejs');
-	});
+app.get('/',function(req, res){
+res.sendfile('public/index.html');
 
-	app.get('/Offers',serviceController.getServiceByOffer,function(req, res){
-		res.render('FilteredServices.ejs');
-	});
+});
 
-	app.get('/Rating',serviceController.getServiceByRating,function(req, res){
-		res.render('FilteredServices.ejs');
+app.post('/api/search', serviceController.getServiceByKeyword,function(req, res){
 
-	});
+});
 
-	app.get('/searchByKeyword',serviceController.getServiceByKeyword,function(req, res){
- 	 res.render('FilteredServices.ejs');
+app.post('/api/searchByCategory', serviceController.getServiceByCategory,function(req, res){
+
+});
+
+app.post('/api/searchByLocation', serviceController.getServiceByLocation,function(req, res){
+
+ });
+
+app.post('/api/searchByDate', serviceController.getServiceByDate,function(req, res){
 
   });
+app.post('/api/searchByOffers', serviceController.getServiceByOffer,function(req, res){
 
-    app.post('/createService',serviceController.createService,function(req, res){
-		res.render('index.ejs');
+    });
+app.post('/api/searchByRating', serviceController.getServiceByRating,function(req, res){
 
-	});
+      });
 
-	app.post('/getCategory',serviceController.getServiceByCategory,function(req, res){
-		res.render('FilteredServices.ejs');
+app.get('/api/serviceslist',serviceController.getAllServices,function(req, res){
 
-	});
+});
 
-	app.post('/getLocation',serviceController.getServiceByLocation,function(req, res){
-		res.render('FilteredServices.ejs');
-	});
+app.get('/api/service/:id', function(req, res){
+console.log(req.body);
 
+Service.find({_id:req.params.id},function(err, service){
+
+if(err)
+  res.send(err.message)
+else
+  res.json(service);
+
+});
+});
 
   app.get('/update', function(req, res){
 	res.render('updateInfo.ejs');
