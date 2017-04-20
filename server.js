@@ -9,7 +9,7 @@ mongoose.connect('mongodb://localhost/m2');
 var db = mongoose.connection;
 
 var engines = require('consolidate');
-app.set('views', path.join(__dirname, '/views'));
+app.set('views', path.join(__dirname, '/public/views'));
 app.engine('html', engines.mustache);
 app.set('view engine', 'html');
 
