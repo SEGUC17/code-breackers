@@ -1,6 +1,5 @@
-var mongoose = require('mongoose');
+var mongoose= require('mongoose');
 var Schema = mongoose.Schema;
-var bcrypt = require('bcryptjs');
 
 var ReservationSchema = mongoose.Schema({
 	userName: {
@@ -22,12 +21,11 @@ var ReservationSchema = mongoose.Schema({
 		type: Date
 	},
 	reservation_hour: {
-		type: Number
+		type: String
 	}
 });
 
 var Reservation = module.exports = mongoose.model('Reservation', ReservationSchema);
-
 
 module.exports.createReservation = function(newReservation, callback){
 	newReservation.save(callback);
@@ -47,10 +45,7 @@ module.exports.createPromoCode = function(text, callback){
 }
 
 
-module.exports.getUserByUsername = function(userName, callback){
-	var query = {userName: userName};
-	Reservation.findOne(query, callback);
-}
-
-
-
+// module.exports.getUserByUsername = function(userName, callback){
+// 	var query = {userName: userName};
+// 	Reservation.findOne(query, callback);
+// }
