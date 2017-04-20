@@ -11,21 +11,18 @@
                 controller: "SearchController"
             })
 
-            .state('service', {
+               .state('service', {
             url: "/service/:id",
             templateUrl: "public/views/service.html",
             controller: "ServiceController"
-        })
+            })
 
-          .state('home', {
-           url: "/",
-          templateUrl: "public/views/home.html",
-          controller: "SearchController"
+               .state('home', {
+               url: "/",
+               templateUrl: "public/views/home.html",
+               controller: "SearchController"
 
-         })
-
-
-
+            })
 
         })
 }());

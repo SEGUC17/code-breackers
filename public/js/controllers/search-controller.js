@@ -12,11 +12,6 @@
 
      refresh();
 
-     
-
-
-
-
 
        $scope.searchByKeyword = function() {
        console.log("nkjwndjkwnqknkqHOOORAAY");
@@ -28,7 +23,7 @@
 
      };
 
-     $scope.searchByCategory = function(){
+       $scope.searchByCategory = function(){
        console.log("CATEGORRRRRRRY");
        console.log($scope.selectpicker);
        $http.post('api/searchByCategory', $scope.selectpicker).then(function(response) {
@@ -38,7 +33,7 @@
      });
    };
 
-   $scope.searchByLocation = function(){
+     $scope.searchByLocation = function(){
      console.log("LOCAAATIOOOON");
      console.log($scope.selectpicker);
      $http.post('api/searchByLocation', $scope.selectpicker).then(function(response) {
@@ -48,7 +43,7 @@
    });
  };
 
- $scope.searchByDate = function(){
+   $scope.searchByDate = function(){
    console.log("DATEEEE");
    $http.post('api/searchByDate').then(function(response) {
    console.log(response.data);
@@ -57,7 +52,7 @@
  });
 };
 
-$scope.searchByOffers= function(){
+  $scope.searchByOffers= function(){
   console.log("OFFEEEERS");
   $http.post('api/searchByOffers').then(function(response) {
   console.log(response.data);
@@ -66,7 +61,7 @@ $scope.searchByOffers= function(){
 });
 };
 
-$scope.searchByRating = function(){
+  $scope.searchByRating = function(){
   console.log("OFFEEEERS");
   $http.post('api/searchByRating').then(function(response) {
   console.log(response.data);
@@ -74,9 +69,6 @@ $scope.searchByRating = function(){
 
 });
 };
-
-
-
 
 
     }]);

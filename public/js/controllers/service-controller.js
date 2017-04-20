@@ -15,10 +15,5 @@
         $scope.service = response.data[0];
        });
 
-
-
-
-
-
     }]);
 }());
