@@ -6,7 +6,7 @@ let ReviewController  = {
 
     let review = new Review(req.body);
 
-    review.save(function(err, complaint){
+    review.save(function(err, review){
         if(err){
             res.send(err.message)
             console.log(err);
