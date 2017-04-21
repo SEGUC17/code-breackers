@@ -65,8 +65,9 @@
     	<div class="col-sm-9">
         <ul class="nav nav-tabs" id="myTab">
               <li><a ui-sref="service({id: service._id})" data-toggle="tab">Home</a></li>
-            <li><a ui-sref="reviews({id: service._id})" data-toggle="tab">Reviews</a></li>
-            <li class="active"><a href="#home" data-toggle="tab">Reserve Now</a></li>
+              <li class="active"><a href="#home" data-toggle="tab">Reviews</a></li>
+              <li><a ui-sref="reserve({id: service._id})" data-toggle="tab">Reserve Now</a></li>
+
           </ul>
 
           <div class="tab-content">
