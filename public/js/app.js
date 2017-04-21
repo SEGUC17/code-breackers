@@ -24,5 +24,12 @@
 
             })
 
+              .state('reserve', {
+              url: "/service/:id/reserve",
+              templateUrl: "public/views/reservation.html",
+              controller: "ServiceController"
+
+             })
+
         })
 }());
