@@ -23,7 +23,22 @@
 <div class="container bootstrap snippet">
     <div class="row">
   		<div class="col-sm-10"><h1>{{service.serviceName}}</h1></div>
-    	<div class="col-sm-2"><a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a></div>
+    	<div class="col-sm-2">
+
+        <form>
+            Select a rating:
+            <select ng-model="rate.rating" class="form-control">
+              <option value="">
+              <option value="1"> 1
+              <option value="2"> 2
+              <option value="3"> 3
+              <option value="4"> 4
+              <option value="5"> 5
+            </select>
+          </form>
+
+
+      </div>
     </div>
     <div class="row">
   		<div class="col-sm-3"><!--left col-->
@@ -32,34 +47,34 @@
             <li class="list-group-item text-muted">Profile</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Category</strong></span>{{service.category}}</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Location</strong></span>{{service.location}}</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Rating</strong></span> STARS</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Price</strong></span> PRICE</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Rating</strong></span> {{service.rating}}</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Price</strong></span> {{service.price}}</li>
 
           </ul>
 
+          <div class="panel panel-default">
+            <div class="panel-heading">Address</div>
+            <div class="panel-body">{{service.address}}</div>
+          </div>
+
           <ul class="list-group">
             <li class="list-group-item text-muted">Working Hours</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Days: </strong></span>DAYSS</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Hours: </strong></span>HOURS</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>From: </strong></span>{{service.beginWorkingHours}}</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>To: </strong></span>{{service.endWorkingHours}}</li>
           </ul>
 
           <div class="panel panel-default">
             <div class="panel-heading">Current Offers</div>
-            <div class="panel-body">DESCRIPTIOOON</div>
+            <div class="panel-body">{{service.offerDescription}}</div>
           </div>
 
           <div class="panel panel-default">
             <div class="panel-heading">Website</div>
-            <div class="panel-body"><a href="http://bootnipets.com">bootnipets.com</a></div>
+        <div class="panel-body">{{service.WebsiteURL}}</div>
           </div>
 
 
-          <div class="panel panel-default">
-            <div class="panel-heading">Social Media</div>
-            <div class="panel-body">
-            	<i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
-            </div>
-          </div>
+
 
         </div><!--/col-3-->
     	<div class="col-sm-9">
@@ -77,7 +92,7 @@
                     <tr>
 
                       <blockquote>
-                      <p class="small" class="text-justify">For 50 years, WWF has been protecting the future of nature. The world's leading conservation organization, WWF works in 100 countries and is supported by 1.2 million members in the United States and close to 5 million globally.</p>
+                      <p class="small" class="text-justify">{{service.description}}</p>
                      </blockquote>
                     </tr>
                   </thead>

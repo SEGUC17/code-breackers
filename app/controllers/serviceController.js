@@ -7,6 +7,7 @@ let serviceController = {
 
     let service = new Service(req.body);
 
+
     service.save(function(err, service){
         if(err){
             res.send(err.message);
@@ -242,8 +243,20 @@ getServiceByKeyword: function (req,res)
         res.json(servicex);
 
       });
-}
+},
 
+getCreatedService : function(req,res)
+{
+  Service.find({_id:req.ServiceProvider._id},function(err, service){
+
+  if(err)
+    res.send(err.message)
+  else
+    res.json(service);
+
+  });
+
+}
 
 
 
