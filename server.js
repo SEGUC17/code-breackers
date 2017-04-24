@@ -1,5 +1,4 @@
 var express = require('express');
-var router = require('./app/routes');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
@@ -29,15 +28,15 @@ var db = mongoose.connection;
 require('./config/passport')(passport);
 
 
-
-app.set('views',__dirname + '/views');
-app.set('view engine', 'ejs');
-app.engine('html', require('ejs').renderFile);
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
+app.use('/app', express.static(__dirname + "/app" ));
+app.use('/public', express.static(__dirname + "/public" ));
+app.use('/node_modules', express.static(__dirname + "/node_modules"));
 app.use(bodyParser.urlencoded({extended:false}));
+app.use(express.static(__dirname+ '/public'));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(router);
+
 app.use(session({secret: 'anystringoftext',
                   saveUninitialized: true,
                   resave: true}));
@@ -65,51 +64,73 @@ var smtpTransport = nodemailer.createTransport({
 
 
 //layla
-	app.get('/search',function(req, res){
-	  res.render('index.ejs');
-	});
 
-	app.get('/Date',serviceController.getServiceByDate,function(req, res){
-		console.log(req.body);
-		res.render('FilteredServices.ejs');
-	});
+app.get('/',function(req, res){
+res.sendfile('public/index.html');
 
-	app.get('/Offers',serviceController.getServiceByOffer,function(req, res){
-		res.render('FilteredServices.ejs');
-	});
+});
 
-	app.get('/Rating',serviceController.getServiceByRating,function(req, res){
-		res.render('FilteredServices.ejs');
+app.post('/api/search', serviceController.getServiceByKeyword,function(req, res){
 
-	});
+});
 
-	app.get('/searchByKeyword',serviceController.getServiceByKeyword,function(req, res){
- 	 res.render('FilteredServices.ejs');
+app.post('/api/searchByCategory', serviceController.getServiceByCategory,function(req, res){
+
+});
+
+app.post('/api/searchByLocation', serviceController.getServiceByLocation,function(req, res){
+
+ });
+
+app.post('/api/searchByDate', serviceController.getServiceByDate,function(req, res){
 
   });
+app.post('/api/searchByOffers', serviceController.getServiceByOffer,function(req, res){
 
-    app.post('/createService',serviceController.createService,function(req, res){
-		res.render('index.ejs');
+    });
+app.post('/api/searchByRating', serviceController.getServiceByRating,function(req, res){
 
-	});
+      });
 
-	app.post('/getCategory',serviceController.getServiceByCategory,function(req, res){
-		res.render('FilteredServices.ejs');
+app.get('/api/serviceslist',serviceController.getAllServices,function(req, res){
 
-	});
+});
 
-	app.post('/getLocation',serviceController.getServiceByLocation,function(req, res){
-		res.render('FilteredServices.ejs');
-	});
+app.get('/api/service/:id', function(req, res){
+console.log(req.body);
+
+Service.find({_id:req.params.id},function(err, service){
+
+if(err)
+  res.send(err.message)
+else
+  res.json(service);
+
+});
+});
+
+
+///nadeen
+
+app.post('/api/addService', serviceController.createService,function(req, res){
+
+      });
+app.put('/api/updateService', serviceController.updateService,function(req, res){
+
+      });
+app.get ('/api/deleteService', serviceController.deleteService, function(req,res){
+
+});
+
+//
+
 
 
   app.get('/update', function(req, res){
 	res.render('updateInfo.ejs');
   });
 
-  app.post('/updateinfo',userController.updateUser ,function(req, res){
-	res.render('profile.ejs');
-  });
+
 
 
 //youssef
@@ -186,7 +207,7 @@ app.get('/signupSP', function(req, res){
 
 
 
-    
+
 
     app.get('/logout', function(req, res){
         req.logout();
