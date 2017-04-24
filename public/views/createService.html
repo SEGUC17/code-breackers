@@ -26,7 +26,7 @@
 
         <div class="row">
             <strong>Address</strong>
-            <input type="text" ng-model="newService.address" class="form-control"required>
+            <input type="text" ng-model="newService.address" class="form-control">
         </div>
 
         <div class="row">
@@ -61,7 +61,7 @@
 
             <div class="row">
                 <strong>Facebook Page</strong>
-                <input type="url" ng-model="newService.endWorkingHours" class="form-control" required>
+                <input type="url" ng-model="newService.endWorkingHours" class="form-control">
             </div>
 
             <form>
@@ -79,23 +79,13 @@
 
 
 
+                <div class="col-md-6">
+                    <input type="file" fileinput="file" filepreview="filepreview"/>
+                </div>
+                <div class="col-md-6">
+                   <img ng-src="{{filepreview}}" class="img-responsive" ng-show="filepreview"/>
+              
 
-            <div class="row"><div class="button" ngf-select ng-model="newService.img" name="file" ngf-pattern="'image/*'"
-            accept="image/*" >Select a Picture</div></div>
-
-
-
-            <!--button onclick="myFunction()">Add Service</button>
-
-            <script>
-            if (newService.address = " ")
-            function myFunction() {
-                alert("There are empty fields");
-            }
-            else {
-
-            }
-          </script>-->
 
 
 

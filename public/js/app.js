@@ -51,6 +51,12 @@
            controller: "SController"
 
           })
+          .state('updateRating', {
+          url: "/api/rateview",
+          templateUrl: "public/views/rating.html",
+          controller: "ServiceController"
+
+         })
 
 
         })

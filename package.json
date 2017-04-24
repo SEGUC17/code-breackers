@@ -2,8 +2,6 @@
 { "name": "milestone",
   "version": "1.0.0",
   "dependencies": {
-    "angular": "^1.6.4",
-    "bootstrap": "^3.3.7",
     "body-parser": "^1.17.1",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",

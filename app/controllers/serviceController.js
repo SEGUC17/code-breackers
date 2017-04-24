@@ -56,6 +56,7 @@ let serviceController = {
 
 
                 })
+
             });
 
   // })
@@ -66,26 +67,8 @@ deleteService: function (req, res){
 
   //serviceProvider.findById(req.serviceProvider._id,function(err,sprovider){
   //sProvider.serviceId
-    Service.findById("58fb8196284f5f17473b6e0e",function(err,service1){
+    Service.findById("58fcc9eb80c6020e0ccbe29f",function(err,service1){
       Service.DeleteService(service1,function(err){
-        if (err) {
-                    return console.error(err);
-                } else {
-                    //Returning success messages saying it was deleted
-                    console.log('DELETE removing ID: ' + service1._id);
-                    res.format({
-                        //HTML returns us back to the main or success page
-                          html: function(){
-                               res.redirect("/");
-                         },
-                         //JSON returns the item with the message that is has been deleted
-                        json: function(){
-                               res.json({message : 'deleted',
-                                   item : service1
-                               });
-                         }
-                      });
-                }
 
       });
     });
@@ -242,8 +225,33 @@ getServiceByKeyword: function (req,res)
         res.json(servicex);
 
       });
-}
+},
+  updateRating: function(req,res){
 
+  var rating = req.body.rating;
+
+  service.findById({_id:req.params.id},function(err,service1){
+
+
+  				var currRating = service1.rating;
+          var avg = currRating+rating/2;
+          service1.rating = avg;
+
+  				service.changeRating(service1, function(err, service){
+
+  				if(err) throw err;
+  				console.log(service1);
+
+  				});
+
+  				if (!(service)){
+
+  				console.log("not a rating");
+  				}
+
+
+  			});
+}
 
 
 

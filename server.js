@@ -223,6 +223,11 @@ function isLoggedIn(req, res, next) {
     res.redirect('/login');
 
 };
+//Kareem Angular
+
+app.post('/api/rating', serviceController.updateRating,function(req, res){
+
+          });
 
 app.listen(3000, function(){
 console.log("The app is running on port 3000!!!")

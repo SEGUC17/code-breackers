@@ -121,9 +121,9 @@ router.put('/updateservice',function(req, res) {
 	    var description = req.body.description;
 	    var address = req.body.address;
 	    var price = req.body.price;
-            var location = req.body.location;
-            var category = req.body.category;
-            var workingdays = req.body.workingdays;
+      var location = req.body.location;
+      var category = req.body.category;
+      var workingdays = req.body.workingdays;
 	    var beginWorkingHours = req.body.beginWorkingHours;
 	    var endWorkingHours = req.body.endWorkingHours;
             var offerDescription = req.body.offerDescription;
@@ -295,7 +295,33 @@ console.log(promo);
 	//kareem
 
 
+router.post('/rate', function(req, res){
+  var serviceName = req.body.rating;
+	var rating = req.body.rating;
 
+console.log(serviceName);
+
+service.findOne({serviceName:req.body.serviceName},function(err,service2){
+
+				var currRating = service2.rating;
+        var avg = currRating+rating/2;
+        service2.rating = avg;
+
+				service.changeRating(service2, function(err, service){
+
+				if(err) throw err;
+				console.log(service2);
+
+				});
+
+				if (!(service)){
+
+				console.log("not a rating");
+				}
+
+
+			});
+      });
 
 
 module.exports = router;
