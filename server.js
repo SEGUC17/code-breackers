@@ -86,6 +86,30 @@ app.post('/delete', reservationController.deleteReservation,function(req, res){
 app.get('/checkout', paymentController.checkout,function(req, res){
 });
 
+//youssef
+app.get('/',function(req, res){
+    res.render('complains.html');
+  });
+
+app.get('/addreview',function(req, res){
+    res.render('reviews.html');
+  });
+
+//post el kano fe server.js
+app.post("/complaint/createComplaint", complaintController.createComplaint, function(req, res){
+
+});
+
+app.post("/createReview", reviewController.createReview, function(req, res){
+  console.log("mjanj");
+
+});
+
+app.post("/review/getReviews", reviewController.getAllReviews, function(req, res){
+
+});
+
+
 //layla
 
 app.get('/',function(req, res){

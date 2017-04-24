@@ -2,13 +2,11 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var ReviewsSchema = mongoose.Schema({
-	review: {
+	reviewName: {
 		type: String
+
 	},
-	username: {
-		type: String
-	},
-	servicename: {
+	serviceName:{
 		type: String
 	}
 });
