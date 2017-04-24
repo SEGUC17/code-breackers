@@ -60,13 +60,6 @@
 
 });
 };
-$scope.deleteService = function() {
-
-$http.get('/api/deleteService').then(function(response) {
-//console.log(response.data);
-});
-
-};
 
   $scope.searchByRating = function(){
   console.log("OFFEEEERS");

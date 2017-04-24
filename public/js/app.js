@@ -66,20 +66,56 @@
 
         })
 
+                .state('updateUser', {
+                url: "/api/updateUser",
+                templateUrl: "public/views/updateUser.html",
+                controller: "UController"
 
-         .state('createService', {
-            url: "/api/addService",
-            templateUrl: "public/views/createService.html",
-            controller: "SController"
+            })
 
-           })
+                .state('deleteOffer', {
+                url: "/service",
+               templateUrl: "public/views/home.html",
+                 controller: "UController"
 
-           .state('updateService', {
-           url: "/api/updateService",
-           templateUrl: "public/views/updateService.html",
-           controller: "SController"
+            })
 
-          })
+                .state('serviceProvider', {
+                url: "/serviceProvider",
+                templateUrl: "public/views/serviceProvider.html",
+                 controller: "ServiceProviderController"
+           })       
+            .state('userProfile', {
+                url: "/userProfile",
+                templateUrl: "public/views/userProfile.html",
+                 controller: "ServiceProviderController"
+           })               
+              .state('signup', {
+                url: "/signup",
+                templateUrl: "public/views/signup.html",
+                controller: "SignUpCtrl"
+            })
+
+                .state('login', { 
+                url: "/login",
+                templateUrl: "public/views/login.html",
+                controller: "LoginCtrl"
+            })
+
+                .state('signupsp', {
+                url: "/signupsp",
+                templateUrl: "public/views/signupsp.html",
+                controller: "SignUpSPCtrl"
+
+            })
+
+        
+                .state('home', {
+                url: "/home",
+                templateUrl: "public/views/home.html",
+                // controller: "ServiceController"
+
+            })
 
     })
 }());

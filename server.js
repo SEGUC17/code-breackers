@@ -71,6 +71,8 @@ var smtpTransport = nodemailer.createTransport({
     debug:true
 });
 
+require('./routes/auth.js')(app, passport);
+
 //app call create Reservation function
 app.post('/reserve', reservationController.createReservation,function(req, res){
 });
@@ -130,11 +132,11 @@ else
 });
 
   app.get('/update', function(req, res){
-  res.render('updateInfo.ejs');
+	res.render('updateInfo.ejs');
   });
 
   app.post('/updateinfo',userController.updateUser ,function(req, res){
-  res.render('profile.ejs');
+	res.render('profile.ejs');
   });
 
 ///nadeen
@@ -163,19 +165,29 @@ app.get ('/api/deleteService', serviceController.deleteService, function(req,res
 //ahmed
 
  app.get('/rezk',function(req, res){
-    res.render('xyz.ejs');
+	  res.render('xyz.ejs');
 
-  });
+	});
 
-  app.get('/services',serviceController.getAllServices,function(req, res){
-    res.render('index2.ejs');
+ app.post('/api/updateUser', userController.updateUser,function(req, res){
 
-  });
+      });
+ 
+ //  app.get('/api/service', serviceController.deleteOffer, function(req, res){
+ //  res.render('serviceProfile.html');
+ //  console.log("shgh");
+ // });
 
-  app.get('/service',serviceController.getDetails,function(req, res){
-    res.render('sprofile.ejs');
 
-  });
+	app.get('/services',serviceController.getAllServices,function(req, res){
+	  res.render('index2.ejs');
+
+	});
+
+	app.get('/service',serviceController.getDetails,function(req, res){
+	  res.render('sprofile.ejs');
+
+	});
 
 
 //merna
@@ -246,6 +258,3 @@ console.log("The app is running on port 3000!!!");
 });
 
 app = exports = module.exports;
-
-
-

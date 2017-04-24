@@ -3,7 +3,6 @@ var stripe= require('stripe')('sk_test_IHpYlc4fvoVyRJzbkFHgMAax');
 //Payment controller = create Payment
 let paymentController = {
 
-
     checkout: function(req, res) {
       var Token = req.body.stripeToken;
       var chargeAmount = "900";

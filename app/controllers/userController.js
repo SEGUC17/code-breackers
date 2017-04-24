@@ -9,6 +9,7 @@ let userController  = {
     var username = req.body.email;
     var password = req.body.password;
     var userId = req.user._id;
+
       User.findById(userId, function (err, userData){
           var user = userData;
           var oldusername = user.local.username;
@@ -35,7 +36,7 @@ let userController  = {
           user.save(function(err,user){
               if (err){
                   res.send(err.message)
-
+              
               } else {
                   console.log("success");
                   console.log(user);
