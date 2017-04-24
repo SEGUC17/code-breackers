@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="row">
+            <strong>Service Name: </strong>
+            <input type="text" ng-model="service.serviceName" class="form-control">
+        </div>
+
+        <div class="row">
+            <strong>Description</strong>
+            <input type="text" ng-model="service.description" class="form-control">
+        </div>
+
+        <div class="row">
+            <strong>Category</strong>
+            <input type="text" ng-model="service.category" class="form-control">
+        </div>
+
+        <div class="row">
+            <strong>Address</strong>
+            <input type="text" ng-model="service.address" class="form-control">
+        </div>
+
+        <div class="row">
+            <strong>Price</strong>
+            <input type="number" ng-model="service.price" class="form-control">
+        </div>
+
+        <div class="row">
+            <strong>Offer Descripiton </strong>
+            <input type="text" ng-model="service.offerDescription" class="form-control">
+        </div>
+
+        <div class="row">
+            <strong>Beginning Working Hours</strong>
+            <input type="time" ng-model="service.beginWorkingHours" class="form-control">
+        </div>
+
+        <div class="row">
+            <strong>Ending Working Hours</strong>
+            <input type="time" ng-model="service.endWorkingHours" class="form-control">
+        </div>
+
+        <div class="row">
+            <strong>Website Link</strong>
+            <input type="url" ng-model="service.WebsiteURL" class="form-control">
+         </div>
+
+            <div class="row">
+                <strong>Facebook Page</strong>
+                <input type="url" ng-model="service.endWorkingHours" class="form-control">
+            </div>
+
+
+            <div class="row"><div class="button" ngf-select ng-model="service.img" name="file" ngf-pattern="'image/*'"
+            accept="image/*" >Select a Picture</div></div>
+
+
+
+
+        <button ng-click="updateService()">Update Service</button>
+    </div>
+</div>

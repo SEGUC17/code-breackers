@@ -1,5 +1,5 @@
 let Service = require('../models/service');
-
+var ServiceProvider = require ('../models/serviceProvider');
 
 let serviceController = {
 
@@ -9,15 +9,93 @@ let serviceController = {
 
     service.save(function(err, service){
         if(err){
-            res.send(err.message)
+            res.send(err.message);
             console.log(err);
         }
         else{
             console.log(service);
-            res.redirect('/');
+//            res.json(service);
         }
     })
+   ServiceProvider.findById(req.serviceProvider._id, function(err, sprovider) {
+
+    sProvider.serviceId = service._id;
+
+
+
+  })
   },
+
+
+  updateService: function(req,res){
+
+
+    var serviceName = req.body.serviceName;
+    var description = req.body.description;
+    var address = req.body.address;
+    var price = req.body.price;
+    var location = req.body.location;
+    var category = req.body.category;
+    var workingdays = req.body.workingdays;
+    var beginWorkingHours = req.body.beginWorkingHours;
+    var endWorkingHours = req.body.endWorkingHours;
+
+    //ServiceProvider.findById(req.serviceProvider._id, function(err, serviceprovider) {
+
+//serviceprovider.serviceId
+        mongoose.model('service').findById("58fca84dcd03301ffac43cff", function (err, services) {
+                services.update({
+                    serviceName : serviceName,
+                    description : description,
+                    address : address,
+                    price : price,
+                    location : location,
+                    category : category,
+                    beginWorkingHours : beginWorkingHours,
+                    endWorkingHours : endWorkingHours,
+
+
+                })
+            });
+
+  // })
+
+},
+
+deleteService: function (req, res){
+
+  //serviceProvider.findById(req.serviceProvider._id,function(err,sprovider){
+  //sProvider.serviceId
+    Service.findById("58fb8196284f5f17473b6e0e",function(err,service1){
+      Service.DeleteService(service1,function(err){
+        if (err) {
+                    return console.error(err);
+                } else {
+                    //Returning success messages saying it was deleted
+                    console.log('DELETE removing ID: ' + service1._id);
+                    res.format({
+                        //HTML returns us back to the main or success page
+                          html: function(){
+                               res.redirect("/");
+                         },
+                         //JSON returns the item with the message that is has been deleted
+                        json: function(){
+                               res.json({message : 'deleted',
+                                   item : service1
+                               });
+                         }
+                      });
+                }
+
+      });
+    });
+
+  //});
+
+
+},
+
+
 
       getServiceByCategory:function(req, res){
         console.log(req.body);
