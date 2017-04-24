@@ -1,0 +1,25 @@
+<div class = "col-sm-8 col-md-push-0">
+  <div ng-repeat="review in reviews track by $index">
+    <div class="col-sm-3">
+      <div class="thumbnail">
+          <div class+"caption">
+            <hv class="text-center"><strong>{{review.reviewName}}</strong></h4>
+
+            </div>
+            </div>
+            </div>
+          </div>
+      </div>
+    <div>
+
+
+      
+      <h5>Review:</h5>
+      <form role="form">
+        <div class="form-group">
+          <textarea class="form-control" ng-model = "review.reviewName"rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm" ng-click = "reviewsubmit()" >Submit</button>
+      </form>
+      <br><br>
+    </div>
