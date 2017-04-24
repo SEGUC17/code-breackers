@@ -52,6 +52,28 @@
 
           })
 
+           .state('updateUser', {
+           url: "/api/updateUser",
+           templateUrl: "public/views/updateUser.html",
+           controller: "UController"
+
+          })
+
+            .state('deleteOffer', {
+           url: "/service",
+           templateUrl: "public/views/home.html",
+           // controller: "UController"
+
+          })
+
+            .state('serviceProvider', {
+                url: "/serviceProvider",
+                templateUrl: "public/views/serviceProvider.html",
+                controller: "ServiceProviderController"
+            })            
+
+
+
 
         })
 }());

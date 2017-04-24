@@ -1,9 +1,12 @@
 var User = require('./models/user');
+var Service = require('./models/service');
+var ServiceProvider = ('./models/serviceProvider');
 var express = require('express');
 var router = express.Router();
 var complaintController = require('../app/controllers/complaintController.js');
 var reviewController = require('../app/controllers/reviewController.js');
-var serviceController = require('../app/controllers/serviceController');
+var serviceController = require('../app/controllers/serviceController.js');
+var userController = require('../app/controllers/userController.js');
 //var upload = multer ({ dest:'public/uploads'});
 var multer = require ('multer');
 var Reservation = require('../app/models/reservation');
@@ -30,6 +33,11 @@ var smtpTransport = nodemailer.createTransport({
 router.get('/',function(req, res){
 	  res.render('complains.ejs');
 	});
+
+router.get('service'){
+	console.log("service.html");
+};
+	
 
 router.get('/addreview',function(req, res){
 	  res.render('reviews.ejs');

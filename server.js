@@ -150,6 +150,16 @@ app.get ('/api/deleteService', serviceController.deleteService, function(req,res
 
 	});
 
+ app.post('/api/updateUser', userController.updateUser,function(req, res){
+
+      });
+ 
+  app.post('/api/service', serviceController.deleteOffer, function(req, res){
+  res.render('serviceProfile.html');
+  console.log("shgh");
+ });
+
+
 	app.get('/services',serviceController.getAllServices,function(req, res){
 	  res.render('index2.ejs');
 

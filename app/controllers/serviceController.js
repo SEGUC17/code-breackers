@@ -94,10 +94,17 @@ deleteService: function (req, res){
 
 
 },
+    deleteOffer: function(req, res){
+  Service.findById({_id:req.body._id},function(err, offer){
+    offer.deleteOffer(offer,function(err){
+      
+    })
+        console.log("ay haga");
+    });
+  },
 
-
-
-      getServiceByCategory:function(req, res){
+    
+    getServiceByCategory:function(req, res){
         console.log(req.body);
         var Category = req.body.text;
         //console.log(Category.name);
