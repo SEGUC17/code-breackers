@@ -25,12 +25,12 @@ var serviceSchema = mongoose.Schema({
 
   location:{
     type: String,
-    required: true
+    //required: true
   },
 
   category:{
       type: String,
-      required: true
+      //required: true
     },
 
  img:{
@@ -40,7 +40,7 @@ var serviceSchema = mongoose.Schema({
 
  rating:{
  type: Number,
- value:0
+
 },
 
  workingdays : {
@@ -49,12 +49,12 @@ var serviceSchema = mongoose.Schema({
 },
 
 beginWorkingHours :{
-type:Number,
+type:String,
 //required: true
 },
 
 endWorkingHours :{
-type:Number,
+type:String,
 //required: true
 },
 
@@ -66,6 +66,10 @@ currentOffers: {type: Boolean, default: false},
 
 time : { type : Date, default: Date.now },
 
+review :[{
+  type: mongoose.Schema.Types.ObjectId,
+  ref:'Review'
+}],
 
 WebsiteURL:String,
 
@@ -79,6 +83,9 @@ var Service = mongoose.model("service", serviceSchema);
 
 module.exports = Service;
 
-module.exports.updateReview = function({service1, review1}, callback){
-  service1.review.push(review1);
+module.exports.DeleteService = function(deletedService, callback){
+	deletedService.remove(callback);
+}
+module.exports.changeRating = function(changeRating,callback){
+	 changeRating.save(callback);
 }

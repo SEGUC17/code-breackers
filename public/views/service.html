@@ -35,6 +35,7 @@
               <option value="4"> 4
               <option value="5"> 5
             </select>
+              <button ng-click="updateRating()">Rate</button>
           </form>
 
 
@@ -66,12 +67,6 @@
           <div class="panel panel-default">
             <div class="panel-heading">Current Offers</div>
             <div class="panel-body">{{service.offerDescription}}</div>
-          </div>
-
-          <div class="panel panel-default">
-          <a class="navbar-brand" href="createOffer.html">Add Offer</a>
-          <div class="panel-heading"></div>
-          <a class="navbar-brand" href="deleteOffer()">Remove Offer</a>
           </div>
 
           <div class="panel panel-default">

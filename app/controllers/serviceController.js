@@ -6,7 +6,7 @@ let serviceController = {
   createService: function(req, res){
 
     let service = new Service(req.body);
-
+    service.rating = 0;
 
     service.save(function(err, service){
         if(err){
@@ -245,19 +245,31 @@ getServiceByKeyword: function (req,res)
       });
 },
 
-getCreatedService : function(req,res)
-{
-  Service.find({_id:req.ServiceProvider._id},function(err, service){
+updateRating: function(req,res){
 
-  if(err)
-    res.send(err.message)
-  else
-    res.json(service);
+ var rating = req.body.rating;
+//
+//58fe7140d31406305f9f169e dummy data for testing
+ Service.findById("{_id:req.params.id}",function(err,service1){
 
-  });
 
+          var currRating = service1.rating;
+           var avg = currRating+rating/2;
+           service1.rating = avg;
+console.log(avg);
+
+         Service.changeRating(service1, function(err){
+
+         if(err) throw err;
+         console.log(service1);
+
+         });
+
+
+
+
+       });
 }
-
 
 
 }
