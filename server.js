@@ -20,6 +20,9 @@ var passport = require('passport');
 var nodemailer = require("nodemailer");
 var complaintController = require('./app/controllers/complaintController');
 var reviewController = require('./app/controllers/reviewController');
+var methodOverride = require('method-override');
+var reservationController = require('./app/controllers/reservationController');
+var paymentController = require('./app/controllers/paymentController');
 
 mongoose.connect('mongodb://localhost/milestone');
 var db = mongoose.connection;
@@ -27,16 +30,22 @@ var db = mongoose.connection;
 
 require('./config/passport')(passport);
 
+var engines = require('consolidate');
+app.set('views', path.join(__dirname, '/public/views'));
+// app.engine('html', engines.mustache);
+app.set('view engine', 'html');
+// app.use(router);
 
 //app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('X-HTTP-Method-Override'));
 app.use('/app', express.static(__dirname + "/app" ));
 app.use('/public', express.static(__dirname + "/public" ));
 app.use('/node_modules', express.static(__dirname + "/node_modules"));
-app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static(__dirname+ '/public'));
-app.use(bodyParser.json());
 app.use(cookieParser());
-
+// app.use(router);
 app.use(session({secret: 'anystringoftext',
                   saveUninitialized: true,
                   resave: true}));
@@ -62,12 +71,23 @@ var smtpTransport = nodemailer.createTransport({
     debug:true
 });
 
+//app call create Reservation function
+app.post('/reserve', reservationController.createReservation,function(req, res){
+});
+//app call change Reservation function
+app.post('/change', reservationController.changeReservation,function(req, res){
+});
+//app call delete Reservation function
+app.post('/delete', reservationController.deleteReservation,function(req, res){
+});
+//app call checkout Payment function
+app.get('/checkout', paymentController.checkout,function(req, res){
+});
 
 //layla
 
 app.get('/',function(req, res){
 res.sendfile('public/index.html');
-
 });
 
 app.post('/api/search', serviceController.getServiceByKeyword,function(req, res){
@@ -98,7 +118,7 @@ app.get('/api/serviceslist',serviceController.getAllServices,function(req, res){
 
 app.get('/api/service/:id', function(req, res){
 console.log(req.body);
-
+console.log("jwebjxwbjxcwbj");
 Service.find({_id:req.params.id},function(err, service){
 
 if(err)
@@ -109,6 +129,13 @@ else
 });
 });
 
+  app.get('/update', function(req, res){
+  res.render('updateInfo.ejs');
+  });
+
+  app.post('/updateinfo',userController.updateUser ,function(req, res){
+  res.render('profile.ejs');
+  });
 
 ///nadeen
 
@@ -121,16 +148,6 @@ app.put('/api/updateService', serviceController.updateService,function(req, res)
 app.get ('/api/deleteService', serviceController.deleteService, function(req,res){
 
 });
-
-//
-
-
-
-  app.get('/update', function(req, res){
-	res.render('updateInfo.ejs');
-  });
-
-
 
 
 //youssef
@@ -146,19 +163,19 @@ app.get ('/api/deleteService', serviceController.deleteService, function(req,res
 //ahmed
 
  app.get('/rezk',function(req, res){
-	  res.render('xyz.ejs');
+    res.render('xyz.ejs');
 
-	});
+  });
 
-	app.get('/services',serviceController.getAllServices,function(req, res){
-	  res.render('index2.ejs');
+  app.get('/services',serviceController.getAllServices,function(req, res){
+    res.render('index2.ejs');
 
-	});
+  });
 
-	app.get('/service',serviceController.getDetails,function(req, res){
-	  res.render('sprofile.ejs');
+  app.get('/service',serviceController.getDetails,function(req, res){
+    res.render('sprofile.ejs');
 
-	});
+  });
 
 
 //merna
@@ -206,13 +223,11 @@ app.get('/signupSP', function(req, res){
     });
 
 
-
-
-
     app.get('/logout', function(req, res){
         req.logout();
         res.redirect('/');
     });
+
 
 
 function isLoggedIn(req, res, next) {
@@ -225,6 +240,12 @@ function isLoggedIn(req, res, next) {
 };
 
 app.listen(3000, function(){
-console.log("The app is running on port 3000!!!")
+console.log("The app is running on port 3000!!!");
+
 
 });
+
+app = exports = module.exports;
+
+
+
