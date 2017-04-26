@@ -14,7 +14,7 @@ let serviceController = {
         }
         else{
             console.log(service);
-            res.redirect('/');
+            res.json(service);
         }
     })
   },
@@ -35,8 +35,6 @@ let serviceController = {
       })
 
     },
-
-
 
       getServiceByLocation: function(req,res){
         console.log(req.body);

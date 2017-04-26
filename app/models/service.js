@@ -25,12 +25,12 @@ var serviceSchema = mongoose.Schema({
 
   location:{
     type: String,
-    required: true
+    //required: true
   },
 
   category:{
       type: String,
-      required: true
+      //required: true
     },
 
  img:{
@@ -40,7 +40,9 @@ var serviceSchema = mongoose.Schema({
 
  rating:{
  type: Number,
- value:0
+ value:0,
+ default :0
+
 },
 
  workingdays : {

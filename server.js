@@ -1,5 +1,4 @@
 var express = require('express');
-var router = require('./app/routes');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
@@ -37,7 +36,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static(__dirname+ '/public'));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(router);
+
 app.use(session({secret: 'anystringoftext',
                   saveUninitialized: true,
                   resave: true}));
@@ -110,13 +109,22 @@ else
 });
 });
 
+
+///nadeen
+
+app.post('/api/addService', serviceController.createService,function(req, res){
+
+      });
+
+
+
+
+
   app.get('/update', function(req, res){
 	res.render('updateInfo.ejs');
   });
 
-  app.post('/updateinfo',userController.updateUser ,function(req, res){
-	res.render('profile.ejs');
-  });
+
 
 
 //youssef

@@ -25,7 +25,7 @@
             })
 
               .state('reserve', {
-              url: "/service/:id/reserve",
+              url: "/service/:id/reservation",
               templateUrl: "public/views/reservation.html",
               controller: "ServiceController"
 
@@ -37,6 +37,14 @@
              controller: "ServiceController"
 
             })
+
+            .state('createService', {
+            url: "/api/addService",
+            templateUrl: "public/views/createService.html",
+            controller: "SController"
+
+           })
+
 
         })
 }());
