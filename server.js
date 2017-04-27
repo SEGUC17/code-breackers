@@ -82,7 +82,7 @@ app.post("/createReview", reviewController.createReview, function(req, res){
 
 });
 
-app.post("/review/getReviews", reviewController.getAllReviews, function(req, res){
+app.post("/getReviews", reviewController.getAllReviews, function(req, res){
 
 });
 

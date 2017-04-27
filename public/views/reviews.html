@@ -76,11 +76,29 @@
                 <table class="table table-hover">
 
 
+                        <div  ng-repeat="review in reviews track by $index">
 
 
+                            <h2></h2>
 
+                            <ul class="list-group">
 
+                               <li class="list-group-item text-left"> {{review.reviewName}} </li>
+
+                             </ul>
                 </table>
+
+                <div>
+                  <h5>Review:</h5>
+                  <form role="form">
+                    <div class="form-group">
+                      <textarea class="form-control" ng-model = "review.reviewName"rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm" ng-click = "reviewsubmit()" >Submit</button>
+                  </form>
+                  <br><br>
+                </div>
+
 
 
               </div><!--/table-resp-->

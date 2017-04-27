@@ -31,10 +31,18 @@
 
              })
 
+             .state('complain', {
+             url: "/service/:id/complain",
+             templateUrl: "public/views/complains.html",
+             controller: "complaintController"
+
+            })
+
+
              .state('reviews', {
              url: "/service/:id/reviews",
-             templateUrl: "public/views/youssefreview.html",
-             controller: "ServiceController"
+             templateUrl: "public/views/reviews.html",
+             controller: "ReviewController"
 
             })
 

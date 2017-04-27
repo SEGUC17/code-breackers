@@ -2,12 +2,6 @@
     angular.module('myApp')
 .controller('ServiceController', ['$scope', '$state', '$http', '$stateParams', function($scope, $state, $http, $stateParams){
 
-        var serviceID = $stateParams.id;
-        console.log(serviceID);
-        var n = serviceID.toString();
-        console.log("mxkwnjwWWWWWWWW");
-        console.log(n);
-
 
 
        $http.get('/api/service/' + $stateParams.id).then(function(response) {
@@ -25,6 +19,29 @@
             });
 
           };
+
+
+          $scope.createComplain = function() {
+          console.log("createComplain");
+          console.log($scope.complain);
+          $http.post('/complaint/createComplaint', $scope.complain).then(function(response) {
+
+               });
+
+             };
+
+             var refresh = function() {
+               console.log("cannot get")
+               $http.post('/getReviews').then(function(response) {
+                 console.log("I got the reviews I requested");
+                 console.log(response.data);
+                 $scope.reviews = response.data;
+               });
+             };
+
+             refresh();
+
+
 
 
 

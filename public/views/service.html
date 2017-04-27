@@ -85,9 +85,9 @@
                   <h5>Any Problems?</h5>
                   <form role="form">
                     <div class="form-group">
-                      <textarea class="form-control" rows="3" required></textarea>
+                      <textarea class="form-control" ng-model = "complain.complaintName"rows="3" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                    <button type="submit" class="btn btn-primary btn-sm" ng-click = "createComplain()">Submit</button>
                   </form>
                   <br><br>
 

@@ -6,7 +6,7 @@ var ReviewsSchema = mongoose.Schema({
 		type: String
 
 	},
-	serviceName:{
+	serviceid:{
 		type: String
 	}
 });
