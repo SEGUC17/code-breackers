@@ -19,7 +19,6 @@
     "jquery": "^3.2.1",
     "jsdom": "^9.12.0",
     "jsonwebtoken": "^7.3.0",
-    "method-override": "^2.3.8",
     "mongodb": "^2.2.24",
     "mongoose": "^4.9.2",
     "morgan": "^1.8.1",
@@ -32,12 +31,10 @@
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
-    "randomstring": "^1.1.5",
     "request": "^2.81.0",
     "rootpath": "^0.1.2",
     "routes": "^2.1.0",
-    "serve-favicon": "^2.4.2",
-    "stripe": "^4.18.0"
+    "serve-favicon": "^2.4.2"
   },
   "scripts": {
     "start": "node server.js"

@@ -7,7 +7,7 @@ var serviceProviderSchema = mongoose.Schema({
 		email: String,
 		password: String,
 		username : String,
-		service: {type: mongoose.Schema.Types.ObjectId, ref: 'Service'},
+		serviceId: String,
 		complaints : [{
 			type: mongoose.Schema.Types.ObjectId,
 			ref : 'complaint'

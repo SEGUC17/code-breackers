@@ -6,7 +6,6 @@ let serviceController = {
   createService: function(req, res){
 
     let service = new Service(req.body);
-    service.rating = 0;
 
     service.save(function(err, service){
         if(err){
@@ -95,10 +94,40 @@ deleteService: function (req, res){
 
 
 },
+    deleteOffer: function(req, res){
+    Service.findById({_id:req.body._id},function(err, service){
+    service.update({
+    offerDescription : "",
+    currentOffer : false     
+    });
 
+  console.log("Offer deleted successfully");
 
+    });
+  },
 
-      getServiceByCategory:function(req, res){
+   offerCreate: function(req, res){
+    console.log("djds");
+    console.log(req.body.offerDescription);
+
+    let offer = new Offer(req.body.offerDescription);
+    Service.findById("58ecece7d51ba715431fd5ad",function(err, service){
+      console.log(service);
+      /*review.serviceid = service._id;*/
+      service.offerDescription.save(function(err, offerDescription) {
+        if(err){
+          res.send(err.message)
+          console.log(err);
+        } 
+        else{
+          console.log(offerDescription);
+        }
+      })
+    })
+   },
+
+    
+    getServiceByCategory:function(req, res){
         console.log(req.body);
         var Category = req.body.text;
         //console.log(Category.name);
@@ -243,33 +272,9 @@ getServiceByKeyword: function (req,res)
         res.json(servicex);
 
       });
-},
-
-updateRating: function(req,res){
-
- var rating = req.body.rating;
-//
-//58fe7140d31406305f9f169e dummy data for testing
- Service.findById("{_id:req.params.id}",function(err,service1){
-
-
-          var currRating = service1.rating;
-           var avg = currRating+rating/2;
-           service1.rating = avg;
-console.log(avg);
-
-         Service.changeRating(service1, function(err){
-
-         if(err) throw err;
-         console.log(service1);
-
-         });
-
-
-
-
-       });
 }
+
+
 
 
 }

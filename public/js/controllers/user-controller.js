@@ -16,6 +16,5 @@ $scope.user = response.data;
 };
 
 
-
     }]);
 }());

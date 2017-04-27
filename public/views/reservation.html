@@ -7,7 +7,7 @@
              <span class="icon-bar"></span>
              <span class="icon-bar"></span>
            </button>
-           <a class="navbar-brand" href="#">Project name</a>
+           <a class="navbar-brand" href="#">jnknjkn</a>
          </div>
 
          <div id="navbar" class="navbar-collapse collapse">
@@ -22,89 +22,71 @@
 
 <div class="container bootstrap snippet">
     <div class="row">
-      <div class="col-sm-10"><h1>{{service.serviceName}}</h1></div>
-      <!-- <div class="col-sm-2"><a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a></div> -->
+  		<div class="col-sm-10"><h1>{{service.serviceName}}</h1></div>
+    	<div class="col-sm-2"><a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a></div>
     </div>
     <div class="row">
-      <div class="col-sm-3"><!--left col-->
+  		<div class="col-sm-3"><!--left col-->
 
           <ul class="list-group">
             <li class="list-group-item text-muted">Profile</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Category</strong></span>{{service.category}}</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Location</strong></span>{{service.location}}</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Rating</strong></span> {{service.rating}}</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Price</strong></span> {{service.price}}</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Rating</strong></span> STARS</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Price</strong></span> PRICE</li>
 
           </ul>
 
-          <div class="panel panel-default">
-            <div class="panel-heading">Address</div>
-            <div class="panel-body">{{service.address}}</div>
-          </div>
-
           <ul class="list-group">
             <li class="list-group-item text-muted">Working Hours</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>From: </strong></span>{{service.beginWorkingHours}}</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>To: </strong></span>{{service.endWorkingHours}}</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Days: </strong></span>DAYSS</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Hours: </strong></span>HOURS</li>
           </ul>
 
           <div class="panel panel-default">
             <div class="panel-heading">Current Offers</div>
-            <div class="panel-body">{{service.offerDescription}}</div>
+            <div class="panel-body">DESCRIPTIOOON</div>
           </div>
 
           <div class="panel panel-default">
             <div class="panel-heading">Website</div>
-        <div class="panel-body">{{service.WebsiteURL}}</div>
+            <div class="panel-body"><a href="http://bootnipets.com">bootnipets.com</a></div>
           </div>
 
 
+          <div class="panel panel-default">
+            <div class="panel-heading">Social Media</div>
+            <div class="panel-body">
+            	<i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
+            </div>
+          </div>
 
-
-        <div class="col-sm-9">
+        </div><!--/col-3-->
+    	<div class="col-sm-9">
         <ul class="nav nav-tabs" id="myTab">
-          <li><a ui-sref="service({id: service._id})" data-toggle="tab">Home</a></li>
-          <li><a ui-sref="reviews({id: service._id})" data-toggle="tab">Reviews</a></li>
-          <li class="active"><a href="#home" data-toggle="tab">Reserve Now</a></li>
+              <li><a ui-sref="service({id: service._id})" data-toggle="tab">Home</a></li>
+            <li><a ui-sref="reviews({id: service._id})" data-toggle="tab">Reviews</a></li>
+            <li class="active"><a href="#home" data-toggle="tab">Reserve Now</a></li>
           </ul>
 
-         
-
-            <div class="tab-content">
-              <div class="tab-pane active" id="reservation">
-                <div class="table-responsive">
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <ul class="nav navbar-nav">
-                          <li><a class="navbar-brand" ui-sref="reservenow({id: service._id})">Reserve</a>
-                        </ul>
-                        <br><br><br>
-                        <nav>
-                          <ul class="nav navbar-nav">
-                            <li><a ui-sref="change({id: service._id})">Change your Reservation Date or Hour</a></li>
-                          </ul>
-                        </nav>
-                        <br><br><br>
-                        <nav>
-                          <ul class="nav navbar-nav">
-                            <li><a ui-sref="delete({id: service._id})">Cancel your Reservation</a></li>
-                          </ul>
-                        </nav>
-
-                        <br><br>
+          <div class="tab-content">
+            <div class="tab-pane active" id="home">
+              <div class="table-responsive">
+                <table class="table table-hover">
 
 
 
 
-                  
 
+
+                </table>
+
+
+              </div><!--/table-resp-->
+
+             </div><!--/tab-pane-->
 
           </div><!--/tab-content-->
-
-        </div><!--/col-9-->
-    </div><!--/row-->
-
 
         </div><!--/col-9-->
     </div><!--/row-->

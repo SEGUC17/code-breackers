@@ -40,7 +40,7 @@ var serviceSchema = mongoose.Schema({
 
  rating:{
  type: Number,
-
+ value:0
 },
 
  workingdays : {
@@ -85,7 +85,4 @@ module.exports = Service;
 
 module.exports.DeleteService = function(deletedService, callback){
 	deletedService.remove(callback);
-}
-module.exports.changeRating = function(changeRating,callback){
-	 changeRating.save(callback);
 }

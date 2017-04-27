@@ -5,6 +5,14 @@
 <div>
   <h2>Welcome {{ vm.serviceProvider.username }}</h2>
   <h3>Your email is {{ vm.serviceProvider.email }} !</h3>
-  <a class="navbar-brand" href="updateService.html">Edit services</a>
-  <a class="navbar-brand" href="service.html">Service</a>
-</div>
+  <li><a ui-sref="updateService" >Edit Profile</a></li>
+  <li><a ui-sref="service" >Service</a></li>
+  <form role="form">
+  	<div class="form-group">
+  	<textarea class="form-control" ng-model="service._id" rows="3" required></textarea>
+  </div>
+<button type="submit"  class="btn btn-primary btn-sm" ng-click="createOffer()" >Add offer</button>
+  </form>
+ 
+<!-- <button type="submit" ng-click="deleteOffer()"  class="btn btn-primary btn-sm">Add Offer</button>
+  </div> -->
