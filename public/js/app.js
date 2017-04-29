@@ -94,21 +94,21 @@
 
 
         .state('createService', {
-            url: "/api/addService",
+            url: "/addService",
             templateUrl: "public/views/createService.html",
             controller: "SController"
 
            })
 
            .state('updateService', {
-           url: "/api/updateService",
+           url: "/updateService",
            templateUrl: "public/views/updateService.html",
            controller: "SController"
 
           })
 
          .state('updateUser', {
-        url: "/api/updateUser",
+        url: "/updateUser",
         templateUrl: "public/views/updateUser.html",
         controller: "UController"
 
