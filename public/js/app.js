@@ -94,23 +94,43 @@
 
 
         .state('createService', {
+<<<<<<< HEAD
           url: "/api/addService",
           templateUrl: "public/views/createService.html",
           controller: "SController"
+=======
+            url: "/addService",
+            templateUrl: "public/views/createService.html",
+            controller: "SController"
+>>>>>>> bb8ba7f76a6857b9e99864b29fd966938ac687c4
 
         })
 
+<<<<<<< HEAD
         .state('updateService', {
           url: "/api/updateService",
           templateUrl: "public/views/updateService.html",
           controller: "SController"
+=======
+           .state('updateService', {
+           url: "/updateService",
+           templateUrl: "public/views/updateService.html",
+           controller: "SController"
+>>>>>>> bb8ba7f76a6857b9e99864b29fd966938ac687c4
 
         })
 
+<<<<<<< HEAD
         .state('updateUser', {
           url: "/api/updateUser",
           templateUrl: "public/views/updateUser.html",
           controller: "UController"
+=======
+         .state('updateUser', {
+        url: "/updateUser",
+        templateUrl: "public/views/updateUser.html",
+        controller: "UController"
+>>>>>>> bb8ba7f76a6857b9e99864b29fd966938ac687c4
 
         })
         .state('serviceProvider', {
