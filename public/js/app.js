@@ -125,7 +125,6 @@
         controller: "ServiceProviderController"
         })
 
-<<<<<<< HEAD
 
 
         .state('updateRating', {
@@ -134,8 +133,6 @@
          controller: "ServiceController"
 
         })
-=======
->>>>>>> eee729e778b10dfce500d35160fc9c1ac37a8334
 
 
     })
