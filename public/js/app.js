@@ -1,5 +1,5 @@
 (function() {
-  angular.module('myApp', ['ui.router', 'ngMessages'])
+  angular.module('myApp', ['ui.router'])
     .config(function($stateProvider, $urlRouterProvider) {
 
       $urlRouterProvider.otherwise('/');
@@ -24,7 +24,7 @@
 
         })
 
-        .state('reserven', {
+        .state('reserve', {
           url: "/service/:id/reservation",
           templateUrl: "public/views/reservation.html",
           controller: "ServiceController"
@@ -53,7 +53,7 @@
         })
 
         .state('checkout', {
-          url: "/service/:id/checkout",
+          url: "/checkout",
           templateUrl: "public/views/checkout.html",
           controller: "PaymentController"
 
@@ -61,61 +61,50 @@
 
         .state('reviews', {
           url: "/service/:id/reviews",
-          templateUrl: "public/views/youssefreview.html",
+          templateUrl: "public/views/reviews.html",
           controller: "ServiceController"
 
         })
 
-                .state('updateUser', {
-                url: "/api/updateUser",
-                templateUrl: "public/views/updateUser.html",
-                controller: "UController"
 
-            })
+        .state('signup', {
+        url: "/signup",
+        templateUrl: "public/views/signup.html",
+        controller: "SignUpCtrl"
+        })
 
-                .state('deleteOffer', {
-                url: "/service",
-               templateUrl: "public/views/home.html",
-                 controller: "UController"
+        .state('login', {
+        url: "/login",
+        templateUrl: "public/views/login.html",
+        controller: "LoginCtrl"
+        })
 
-            })
+        .state('signupsp', {
+        url: "/signupsp",
+        templateUrl: "public/views/signupsp.html",
+        controller: "SignUpSPCtrl"
+        })
 
-                .state('serviceProvider', {
-                url: "/serviceProvider",
-                templateUrl: "public/views/serviceProvider.html",
-                 controller: "ServiceProviderController"
-           })       
-            .state('userProfile', {
-                url: "/userProfile",
-                templateUrl: "public/views/userProfile.html",
-                 controller: "ServiceProviderController"
-           })               
-              .state('signup', {
-                url: "/signup",
-                templateUrl: "public/views/signup.html",
-                controller: "SignUpCtrl"
-            })
-
-                .state('login', { 
-                url: "/login",
-                templateUrl: "public/views/login.html",
-                controller: "LoginCtrl"
-            })
-
-                .state('signupsp', {
-                url: "/signupsp",
-                templateUrl: "public/views/signupsp.html",
-                controller: "SignUpSPCtrl"
-
-            })
-
-        
-                .state('home', {
-                url: "/home",
-                templateUrl: "public/views/home.html",
-                // controller: "ServiceController"
-
-            })
 
     })
 }());
+
+
+
+  var checkLoggedin = function($q, $timeout, $http, $location, $rootScope) {
+  var deferred = $q.defer();
+
+  $http.get('/loggedin').success(function(user) {
+    $rootScope.errorMessage = null;
+    //User is Authenticated
+    if (user !== '0') {
+      $rootScope.currentUser = user;
+      deferred.resolve();
+    } else { //User is not Authenticated
+      $rootScope.errorMessage = 'You need to log in.';
+      deferred.reject();
+      $location.url('/login');
+    }
+  });
+  return deferred.promise;
+}

@@ -25,12 +25,12 @@ var serviceSchema = mongoose.Schema({
 
   location:{
     type: String,
-    //required: true
+    required: true
   },
 
   category:{
       type: String,
-      //required: true
+      required: true
     },
 
  img:{
@@ -40,7 +40,7 @@ var serviceSchema = mongoose.Schema({
 
  rating:{
  type: Number,
-
+ default: 0
 },
 
  workingdays : {
@@ -49,12 +49,12 @@ var serviceSchema = mongoose.Schema({
 },
 
 beginWorkingHours :{
-type:String,
+type:Number,
 //required: true
 },
 
 endWorkingHours :{
-type:String,
+type:Number,
 //required: true
 },
 
@@ -82,10 +82,3 @@ FacebookURL: String
 var Service = mongoose.model("service", serviceSchema);
 
 module.exports = Service;
-
-module.exports.DeleteService = function(deletedService, callback){
-	deletedService.remove(callback);
-}
-module.exports.changeRating = function(changeRating,callback){
-	 changeRating.save(callback);
-}

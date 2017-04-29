@@ -4,16 +4,20 @@ var bcrypt = require('bcryptjs');
 
 var ReservationSchema = mongoose.Schema({
 	serviceid: {
-		type: String
+		type: String,
+		required: true
 	},
 	userName: {
-		type: String
+		type: String,
+		required: true
 	},
 	reservation_date: {
-		type: Date
+		type: Date,
+		required: true
 	},
 	reservation_hour: {
-		type: String
+		type: String,
+		required: true
 	}
 });
 

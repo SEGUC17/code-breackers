@@ -1,6 +1,7 @@
+// "use strict";
 (function() {
   angular.module('myApp')
-    .controller('ReservationController', ['$scope', '$state', '$http', '$stateParams', function($scope, $state, $http, $stateParams) {
+    .controller('ReservationController', ['$scope', '$state', '$http', '$stateParams', '$location', function($scope, $state, $http, $stateParams, $location) {
 
 
       //Getting Service ID
@@ -13,9 +14,16 @@
       var serviceID = $stateParams.id;
       console.log($stateParams.id);
 
+      var scopesarah = $scope.sarah;
+      var scopechange = $scope.change2;
+      var scopedelete = $scope.delete2;
 
       //Reservation Creation
       $scope.reserve = function() {
+        if (typeof $scope.reservation == 'undefined'){
+            $scope.noreserve = "Please enter a valid reservation.";
+       }
+        else {
         console.log($scope.reservation);
         $scope.reservation.serviceid = serviceID;
         $http.post('/reserve', $scope.reservation).then(function(response) {
@@ -23,7 +31,8 @@
           $scope.sarah = response;
           console.log(response);
         });
-      }
+       }
+      };
 
       //Reservation Change
       $scope.change = function() {
@@ -34,7 +43,7 @@
           $scope.change2 = response;
           console.log(response);
         });
-      }
+      };
 
 
       //Reservation Delete
@@ -46,7 +55,23 @@
           $scope.delete2 = response;
 
         });
-      }
+      };
+
+      //Redirection to checkout page from reservation
+      $scope.redirect = function() {
+        if (typeof $scope.sarah == 'undefined') {
+          $scope.noReservation = "Please select a reservation before paying.";
+        }
+        else {
+          if ($scope.sarah.data == "You've reserved the slot. Please proceed to pay and get your reservation confirmation.") {
+            $location.url('/checkout');
+          }
+          else {
+          $scope.noReservation = "Please select a reservation before paying.";}
+        }
+
+
+      };
 
 
 

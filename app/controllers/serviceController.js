@@ -1,12 +1,12 @@
 let Service = require('../models/service');
-var ServiceProvider = require ('../models/serviceProvider');
+var ServiceProvider = require ('../models/serviceprovider');
 
 let serviceController = {
 
   createService: function(req, res){
 
     let service = new Service(req.body);
-    service.rating = 0;
+
 
     service.save(function(err, service){
         if(err){
@@ -139,12 +139,6 @@ deleteService: function (req, res){
       Service.find(function(err, services){
 
       services.reverse();
-      //   services.sort(function(a, b) {
-      // a = new Date(a.dateModified);
-      // b = new Date(b.dateModified);
-      // return a>b ? -1 : a<b ? 1 : 0;
-      //   });
-      //   console.log(services);
 
       if (err)
        res.send(err.message)
@@ -170,7 +164,6 @@ deleteService: function (req, res){
    getServiceByRating: function(req,res){
      console.log(req.body);
 
-
      Service.find(function(err, services){
        services.sort(function(a, b) {
      a = a.rating;
@@ -193,7 +186,7 @@ deleteService: function (req, res){
 
 getServiceByKeyword: function (req,res)
 {
-  console.log("IJNWQJDNJQWNDJQWN");
+
   console.log(req.body);
   if(req.body.text) {
 		const regex = new RegExp(escapeRegex(req.body.text), 'gi');
@@ -233,8 +226,6 @@ getServiceByKeyword: function (req,res)
     },
 
     getDetails: function(req, res){
-      console.log(req.body);
-      console.log("HEREEEEEEEEEEEEEE");
       Service.find({_id:req.body._id},function(err, servicex){
 
       if(err)
@@ -245,31 +236,31 @@ getServiceByKeyword: function (req,res)
       });
 },
 
-updateRating: function(req,res){
+getCreatedService : function(req,res)
+{
+  Service.find({_id:req.ServiceProvider._id},function(err, service){
 
- var rating = req.body.rating;
-//
-//58fe7140d31406305f9f169e dummy data for testing
- Service.findById("{_id:req.params.id}",function(err,service1){
+  if(err)
+    res.send(err.message)
+  else
+    res.json(service);
+
+  });
+
+},
+getServiceByID:function(req, res){
+
+  Service.find({_id:req.params.id},function(err, service){
+
+  if(err)
+    res.send(err.message)
+  else
+    res.json(service);
+
+  });
+   }
 
 
-          var currRating = service1.rating;
-           var avg = currRating+rating/2;
-           service1.rating = avg;
-console.log(avg);
-
-         Service.changeRating(service1, function(err){
-
-         if(err) throw err;
-         console.log(service1);
-
-         });
-
-
-
-
-       });
-}
 
 
 }

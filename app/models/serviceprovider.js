@@ -4,7 +4,7 @@ var bcrypt   = require('bcrypt-nodejs');
 
 // define the schema for our user model
 var serviceproviderSchema = mongoose.Schema({
-  
+
   password: String,
   email: String,
   service: String,
@@ -12,7 +12,7 @@ var serviceproviderSchema = mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref : 'complaint'
     }]
-  
+
   // facebook: {
   // 	id: String,
   // 	token: String,
@@ -32,4 +32,4 @@ serviceproviderSchema.methods.validPassword = function(password) {
 };
 
 // create the model for users and expose it to our app
-module.exports = mongoose.model('serviceprovider', serviceproviderSchema);
+module.exports = mongoose.model('ServiceProvider', serviceproviderSchema);

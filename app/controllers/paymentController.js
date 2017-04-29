@@ -4,12 +4,13 @@ var stripe= require('stripe')('sk_test_IHpYlc4fvoVyRJzbkFHgMAax');
 let paymentController = {
 
     checkout: function(req, res) {
-      var Token = req.body.stripeToken;
-      var chargeAmount = "900";
+      console.log(req.body);
+      var Token = req.body.token;
+      var chargeAmount = "2000";
       var charge = stripe.charges.create({
           amount:chargeAmount,
           currency:"usd",
-          source: Token
+          source: req.body.token
       },function(err,charge){
           if(err && err.type === "StripeCardError"){
               console.log("stripeCardError")

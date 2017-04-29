@@ -2,7 +2,13 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var ComplaintsSchema = mongoose.Schema({
-	complaintName: {
+	complaint: {
+		type: String
+	},
+	username: {
+		type: String
+	},
+	servicename: {
 		type: String
 	}
 });

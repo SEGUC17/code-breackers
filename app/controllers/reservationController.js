@@ -6,6 +6,8 @@ let reservationController = {
   createReservation: function(req, res) {
 
     let reservation = new Reservation(req.body);
+    console.log(req.body);
+    console.log(req.body.reservation_date);
 
     Reservation.findOne({
       serviceid: req.body.serviceid,

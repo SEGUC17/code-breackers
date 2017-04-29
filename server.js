@@ -23,6 +23,8 @@ var reviewController = require('./app/controllers/reviewController');
 var methodOverride = require('method-override');
 var reservationController = require('./app/controllers/reservationController');
 var paymentController = require('./app/controllers/paymentController');
+var User = require('./app/models/user');
+var ServiceProvider = require('./app/models/serviceprovider');
 
 mongoose.connect('mongodb://localhost/milestone');
 var db = mongoose.connection;
@@ -46,9 +48,11 @@ app.use('/node_modules', express.static(__dirname + "/node_modules"));
 app.use(express.static(__dirname+ '/public'));
 app.use(cookieParser());
 // app.use(router);
-app.use(session({secret: 'anystringoftext',
-                  saveUninitialized: true,
-                  resave: true}));
+app.use(session({
+  secret: 'this is the secret',
+  resave: true,
+  saveUninitialized: true
+}));
 
 
 app.use(passport.initialize());
@@ -71,8 +75,6 @@ var smtpTransport = nodemailer.createTransport({
     debug:true
 });
 
-require('./routes/auth.js')(app, passport);
-
 //app call create Reservation function
 app.post('/reserve', reservationController.createReservation,function(req, res){
 });
@@ -83,32 +85,9 @@ app.post('/change', reservationController.changeReservation,function(req, res){
 app.post('/delete', reservationController.deleteReservation,function(req, res){
 });
 //app call checkout Payment function
-app.get('/checkout', paymentController.checkout,function(req, res){
-});
-
-//youssef
-app.get('/',function(req, res){
-    res.render('complains.html');
-  });
-
-app.get('/addreview',function(req, res){
-    res.render('reviews.html');
-  });
-
-//post el kano fe server.js
-app.post("/complaint/createComplaint", complaintController.createComplaint, function(req, res){
+app.post('/checkout', paymentController.checkout,function(req, res){
 
 });
-
-app.post("/createReview", reviewController.createReview, function(req, res){
-  console.log("mjanj");
-
-});
-
-app.post("/review/getReviews", reviewController.getAllReviews, function(req, res){
-
-});
-
 
 //layla
 
@@ -116,44 +95,39 @@ app.get('/',function(req, res){
 res.sendfile('public/index.html');
 });
 
+//app call getting service by keyword
 app.post('/api/search', serviceController.getServiceByKeyword,function(req, res){
-
 });
 
+//app call getting service by Category
 app.post('/api/searchByCategory', serviceController.getServiceByCategory,function(req, res){
-
 });
 
+//app call getting service by Location
 app.post('/api/searchByLocation', serviceController.getServiceByLocation,function(req, res){
+});
 
- });
-
+ //app call getting service by Date
 app.post('/api/searchByDate', serviceController.getServiceByDate,function(req, res){
+});
 
-  });
+//app call getting service by Offers
 app.post('/api/searchByOffers', serviceController.getServiceByOffer,function(req, res){
+});
 
-    });
+//app call getting service by Rating
 app.post('/api/searchByRating', serviceController.getServiceByRating,function(req, res){
+});
 
-      });
-
+//app call getting all services
 app.get('/api/serviceslist',serviceController.getAllServices,function(req, res){
-
 });
 
-app.get('/api/service/:id', function(req, res){
-console.log(req.body);
-console.log("jwebjxwbjxcwbj");
-Service.find({_id:req.params.id},function(err, service){
-
-if(err)
-  res.send(err.message)
-else
-  res.json(service);
-
+//app call getting service by id
+app.get('/api/service/:id',serviceController.getServiceByID, function(req, res){
 });
-});
+
+//ahmed
 
   app.get('/update', function(req, res){
 	res.render('updateInfo.ejs');
@@ -193,16 +167,6 @@ app.get ('/api/deleteService', serviceController.deleteService, function(req,res
 
 	});
 
- app.post('/api/updateUser', userController.updateUser,function(req, res){
-
-      });
- 
- //  app.get('/api/service', serviceController.deleteOffer, function(req, res){
- //  res.render('serviceProfile.html');
- //  console.log("shgh");
- // });
-
-
 	app.get('/services',serviceController.getAllServices,function(req, res){
 	  res.render('index2.ejs');
 
@@ -216,69 +180,71 @@ app.get ('/api/deleteService', serviceController.deleteService, function(req,res
 
 //merna
 
-
-app.get('/signupSP', function(req, res){
-        res.render('signupSP.ejs', { message: req.flash('signupMessage') });
-    });
-  app.post('/signupSP', passport.authenticate('local-signup2', {
-        successRedirect: '/',
-        failureRedirect: '/signupSP',
-        failureFlash: true
-    }));
-
-  app.get('/index', function(req, res){
-        res.render('page.ejs', { message: req.flash('signupMessage') });
+    app.post("/login", passport.authenticate('local-login'), function(req, res) {
+      res.json(req.user);
     });
 
-    app.get('/page', function(req, res){
-        res.render('page.ejs');
+    // handle logout
+    app.post("/logout", function(req, res) {
+      req.logOut();
+      res.send(200);
+    })
+
+    // loggedin
+    app.get("/loggedin", function(req, res) {
+      res.send(req.isAuthenticated() ? req.user : '0');
     });
 
-    app.get('/login', function(req, res){
-        res.render('login.ejs', { message: req.flash('loginMessage') });
-    });
-    app.post('/login', passport.authenticate('local-login', {
-        successRedirect: '/profile',
-        failureRedirect: '/login',
-        failureFlash: true
-    }));
-
-    app.get('/signup', function(req, res){
-        res.render('signup.ejs', { message: req.flash('signupMessage') });
-    });
-
-
-    app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect: '/',
-        failureRedirect: '/signup',
-        failureFlash: true
-    }));
-
-    app.get('/profile', isLoggedIn, function(req, res){
-        res.render('profile.ejs', { user: req.user });
-    });
-
-
-    app.get('/logout', function(req, res){
-        req.logout();
-        res.redirect('/');
-    });
-
-
-
-function isLoggedIn(req, res, next) {
-    if(req.isAuthenticated()){
-        return next();
-    }
-
-    res.redirect('/login');
-
-};
-
-
-app.post('/api/rating', serviceController.updateRating,function(req, res){
-
+    // signup
+    app.post("/signup", function(req, res) {
+      console.log(req.body);
+      User.findOne({
+        username: req.body.username
+      }, function(err, user) {
+        if (user) {
+          res.json(null);
+          return;
+        } else {
+          var newUser = new User();
+          newUser.username = req.body.username.toLowerCase();
+          newUser.password = newUser.generateHash(req.body.password);
+          newUser.save(function(err, user) {
+            req.login(user, function(err) {
+              if (err) {
+                return next(err);
+              }
+              res.json(user);
+            });
           });
+        }
+      });
+    });
+
+    app.post("/signupsp", function(req, res) {
+      console.log(req.body);
+      ServiceProvider.findOne({
+        email: req.body.email
+      }, function(err, serviceprovider) {
+        if (serviceprovider) {
+          res.json(null);
+          return;
+        } else {
+          var newServiceProvider = new ServiceProvider();
+          newServiceProvider.email = req.body.email.toLowerCase();
+          newServiceProvider.password = newServiceProvider.generateHash(req.body.password);
+          newServiceProvider.save(function(err, newServiceProvider) {
+            req.login(newServiceProvider, function(err) {
+              if (err) {
+                return next(err);
+              }
+              res.json(newServiceProvider);
+            });
+          });
+        }
+      });
+    });
+
+
 
 app.listen(3000, function(){
 console.log("The app is running on port 3000!!!");

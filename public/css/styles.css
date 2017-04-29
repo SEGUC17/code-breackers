@@ -1,6 +1,6 @@
 .help-block
 {
-  line-height:0px;
+  line-height:10px;
 }
 
 .alert {
@@ -54,3 +54,15 @@
   display: block;
    min-height: 30px;
 }
+
+
+.ng-valid       {  }
+.ng-invalid     {  }
+.ng-pristine    {  }
+.ng-dirty       {  }
+.ng-touched     {  }
+
+/* really specific css rules applied by angular */
+.ng-invalid-required        {  }
+.ng-invalid-minlength       {  }
+.ng-valid-max-length        {  }
