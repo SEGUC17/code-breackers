@@ -6,7 +6,7 @@ let serviceController = {
   createService: function(req, res){
 
     let service = new Service(req.body);
-
+    service.rating = 0;
 
     service.save(function(err, service){
         if(err){
@@ -29,8 +29,6 @@ let serviceController = {
 
 
   updateService: function(req,res){
-
-
     var serviceName = req.body.serviceName;
     var description = req.body.description;
     var address = req.body.address;
@@ -42,24 +40,47 @@ let serviceController = {
     var endWorkingHours = req.body.endWorkingHours;
 
     //ServiceProvider.findById(req.serviceProvider._id, function(err, serviceprovider) {
-
 //serviceprovider.serviceId
-        mongoose.model('service').findById("58fca84dcd03301ffac43cff", function (err, services) {
-                services.update({
-                    serviceName : serviceName,
-                    description : description,
-                    address : address,
-                    price : price,
-                    location : location,
-                    category : category,
-                    beginWorkingHours : beginWorkingHours,
-                    endWorkingHours : endWorkingHours,
 
+  Service.findById("59049a5ad2fabb16816e876b",function(err,service1){
+    if(serviceName != ""){
+      service1.serviceName = serviceName;
+    }
+    if (category != ""){
 
-                })
-            });
+      service1.category = category;
+    }
+    if (price != ""){
 
-  // })
+      service1.price = price;
+    }
+    if (location != ""){
+      service1.location = location;
+    }
+    if (workingdays != ""){
+      service1.workingdays = workingdays;
+    }
+    if (beginWorkingHours != ""){
+      service1.beginWorkingHours = beginWorkingHours;
+    }
+   if (endWorkingHours !=""){
+     service1.endWorkingHours = endWorkingHours;
+   }
+   if(description != ""){
+     service1.description = description;
+   }
+  if(address != ""){
+      service1.address = address;
+  }
+
+    Service.changeService(service1,function(err){
+      if (err){
+        return console.error(err);
+      }else{
+        console.log("service is updated");
+      }
+    });
+  });
 
 },
 
@@ -67,7 +88,7 @@ deleteService: function (req, res){
 
   //serviceProvider.findById(req.serviceProvider._id,function(err,sprovider){
   //sProvider.serviceId
-    Service.findById("58fb8196284f5f17473b6e0e",function(err,service1){
+    Service.findById("5904853ea1b3010deae941b7",function(err,service1){
       Service.DeleteService(service1,function(err){
         if (err) {
                     return console.error(err);
@@ -90,8 +111,6 @@ deleteService: function (req, res){
 
       });
     });
-
-  //});
 
 
 },

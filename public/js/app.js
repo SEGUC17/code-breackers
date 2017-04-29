@@ -92,6 +92,20 @@
         controller: "SignUpSPCtrl"
         })
 
+        .state('createService', {
+            url: "/api/addService",
+            templateUrl: "public/views/createService.html",
+            controller: "SController"
+
+           })
+
+           .state('updateService', {
+           url: "/api/updateService",
+           templateUrl: "public/views/updateService.html",
+           controller: "SController"
+
+          })
+
 
     })
 }());
