@@ -4,14 +4,24 @@ var bcrypt   = require('bcrypt-nodejs');
 
 // define the schema for our user model
 var serviceproviderSchema = mongoose.Schema({
-
-  password: String,
+  
   email: String,
-  service: String,
-    complaints : [{
-      type: mongoose.Schema.Types.ObjectId,
-      ref : 'complaint'
-    }]
+  password: String,
+  username : String,
+  serviceId: String,
+  complaints : [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref : 'complaint'
+  }]
+
+
+//   password: String,
+//   email: String,
+//   service: String,
+//     complaints : [{
+//       type: mongoose.Schema.Types.ObjectId,
+//       ref : 'complaint'
+//     }]
 
   // facebook: {
   // 	id: String,
