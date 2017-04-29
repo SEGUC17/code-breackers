@@ -245,10 +245,9 @@ app.get ('/api/deleteService', serviceController.deleteService, function(req,res
     });
 
 
- app.set('port', process.env.PORT || 3000);
 
-app.listen(port, function(){
-console.log("The app is running on port" +port);
+app.listen(3000, function(){
+console.log("The app is running on port 3000!!");
 
 
 });
