@@ -96,6 +96,38 @@ deleteService: function (req, res){
 
 },
 
+ deleteOffer: function(req, res){
+    Service.findById({_id:req.body._id},function(err, service){
+    service.update({
+    offerDescription : "",
+    currentOffer : false     
+    });
+
+  console.log("Offer deleted successfully");
+
+    });
+  },
+
+   offerCreate: function(req, res){
+    console.log("djds");
+    console.log(req.body.offerDescription);
+
+    let offer = new Offer(req.body.offerDescription);
+    Service.findById("58ecece7d51ba715431fd5ad",function(err, service){
+      console.log(service);
+      /*review.serviceid = service._id;*/
+      service.offerDescription.save(function(err, offerDescription) {
+        if(err){
+          res.send(err.message)
+          console.log(err);
+        } 
+        else{
+          console.log(offerDescription);
+        }
+      })
+    })
+   },
+
 
 
       getServiceByCategory:function(req, res){
