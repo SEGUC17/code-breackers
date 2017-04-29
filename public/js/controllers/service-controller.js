@@ -5,7 +5,7 @@
        $http.get('/api/service/' + $stateParams.id).then(function(response) {
         console.log(response.data);
         $scope.service = response.data[0];
-        
+
 
 
        });
