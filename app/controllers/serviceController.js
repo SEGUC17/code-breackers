@@ -309,6 +309,7 @@ getServiceByID:function(req, res){
     res.json(service);
 
   });
+
 },
 
 updateRating: function(req,res){
@@ -335,6 +336,7 @@ updateRating: function(req,res){
 
 
        });
+
 }
 
 

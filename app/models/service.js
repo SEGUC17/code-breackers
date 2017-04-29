@@ -83,9 +83,11 @@ var Service = mongoose.model("service", serviceSchema);
 
 module.exports = Service;
 
+
 module.exports.DeleteService = function(deletedService, callback){
 	deletedService.remove(callback);
 }
+
 module.exports.changeService = function(service1,callback){
 	 service1.save(callback);
    console.log("done");
