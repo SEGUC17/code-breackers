@@ -94,6 +94,27 @@
 
 
  </div>
+
+ <!-- <div class="row">
+    <div class="classWithPad">
+       <form id="tableForm"  method="post">
+           <select class="selectpicker" data-style="btn-info" ng-model = "selectpicker.text" name="selectpicker">
+               <optgroup label="Select Location">
+
+                   <option name="table1" value="6th of October">6th of October</option>
+                   <option name="table2" value="Agouza">Agouza</option>
+                   <option name="table3" value="Ard el Golf">Ard el Golf</option>
+                   <option name="table3" value="Dokki">Dokki</option>
+                   <option name="table3" value="Downtown">Downtown</option>
+                   <option name="table3" value="El Katameya">El Katameya</option>
+                   <option name="table3" value="El Obour City">El Obour City</option>
+               </optgroup>
+           </select>
+             <input type="submit" class="btn btn-primary btn-xs" ng-click = "searchByLocation()"/>
+       </form>
+   </div>
+</div> -->
+
 </div>
    <div class="col-sm-7 col-md-push-3">
    <div ng-show="!services.length">
@@ -108,13 +129,56 @@
 
             <div class="thumbnail">
               <a ui-sref="service({id: service._id})">
-              <img src="http://placehold.it/800x600">
+              <img src="public/breakout.png">
                 <div class="caption">
                   <h4 class="text-center"><strong>{{service.serviceName}}</strong></h4>
               </div>
             </div>
           </div>
+   </div>
+
+
+      <!-- <div class="row" ng-repeat="service in services track by $index">
+        <div class="media">
+          <div class="media-left media-middle">
+             <a href="#">
+            <img class="media-object" src="..." alt="...">
+            </a>
+          </div>
+        <div class="media-body">
+          <a ui-sref="service({id: service._id})">
+          <h4 class="media-heading"><strong>{{service.serviceName}}</strong></h4>
+          <h5>Location: {{service.location}}</h5>
        </div>
+       </div>
+       <hr> -->
+
+
+       <!-- <div class="col-md-push-2">
+             <div  ng-repeat="service in services track by $index">
+
+               <div class="thumbnail">
+                 <div class="media">
+                   <div class="media-left media-middle">
+                      <a href="#">
+                     <img class="media-object" src="..." alt="...">
+                     </a>
+                   </div>
+                 <div class="media-body">
+                   <a ui-sref="service({id: service._id})">
+                   <h4 class="media-heading"><strong>{{service.serviceName}}</strong></h4>
+                   <h5>Location: {{service.location}}</h5>
+                </div>
+               </div>
+             </div>
+
+      </div> -->
+
+
+
+
+
+
 
     </div>
   </div>

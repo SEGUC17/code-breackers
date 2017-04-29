@@ -40,7 +40,7 @@ var serviceSchema = mongoose.Schema({
 
  rating:{
  type: Number,
- default: 0
+ value:0
 },
 
  workingdays : {
@@ -49,12 +49,12 @@ var serviceSchema = mongoose.Schema({
 },
 
 beginWorkingHours :{
-type:Date,
+type:Number,
 //required: true
 },
 
 endWorkingHours :{
-type:Date,
+type:Number,
 //required: true
 },
 
@@ -66,10 +66,6 @@ currentOffers: {type: Boolean, default: false},
 
 time : { type : Date, default: Date.now },
 
-review :[{
-  type: mongoose.Schema.Types.ObjectId,
-  ref:'Review'
-}],
 
 WebsiteURL:String,
 
@@ -82,3 +78,7 @@ FacebookURL: String
 var Service = mongoose.model("service", serviceSchema);
 
 module.exports = Service;
+
+module.exports.updateReview = function({service1, review1}, callback){
+  service1.review.push(review1);
+}
