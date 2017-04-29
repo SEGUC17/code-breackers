@@ -13,7 +13,7 @@ let ComplaintController  = {
         }
         else{
             console.log(complaint);
-            res.redirect('/');
+            
         }
     })
   },

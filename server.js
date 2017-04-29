@@ -244,6 +244,25 @@ app.get ('/api/deleteService', serviceController.deleteService, function(req,res
       });
     });
 
+    ///youssef
+
+  
+
+//post el kano fe server.js
+app.post("/complaint/createComplaint", complaintController.createComplaint, function(req, res){
+
+});
+
+app.post("/createReview", reviewController.createReview, function(req, res){
+  console.log("mjanj");
+
+});
+
+app.post("/getReviews", reviewController.getAllReviews, function(req, res){
+
+});
+
+
 
 
 app.listen(3000, function(){

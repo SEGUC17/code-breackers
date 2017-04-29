@@ -62,9 +62,16 @@
         .state('reviews', {
           url: "/service/:id/reviews",
           templateUrl: "public/views/reviews.html",
-          controller: "ReviewController"
+          controller: "ServiceController"
 
         })
+
+           .state('complain', {
+            url: "/service/:id/complain",
+            templateUrl: "public/views/complains.html",
+            controller: "ServiceController"
+
+           })
 
 
         .state('signup', {
