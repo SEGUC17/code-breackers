@@ -15,9 +15,7 @@
         $scope.rate = response.data [0];
        });
 
-       $http.get('/api/rating').then(function(response) {
-       //console.log(response.data);
-       });
+       
 
     }]);
 }());
