@@ -92,6 +92,7 @@
         controller: "SignUpSPCtrl"
         })
 
+
         .state('createService', {
             url: "/api/addService",
             templateUrl: "public/views/createService.html",
@@ -105,6 +106,25 @@
            controller: "SController"
 
           })
+
+         .state('updateUser', {
+        url: "/api/updateUser",
+        templateUrl: "public/views/updateUser.html",
+        controller: "UController"
+
+        })
+       .state('serviceProvider', {
+       url: "/serviceProvider",
+       templateUrl: "public/views/serviceProvider.html",
+       controller: "ServiceProviderController"
+        })
+
+        .state('userProfile', {
+        url: "/userProfile",
+        templateUrl: "public/views/userProfile.html",
+        controller: "ServiceProviderController"
+        })
+
 
 
     })
