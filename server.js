@@ -127,15 +127,8 @@ app.get('/api/serviceslist',serviceController.getAllServices,function(req, res){
 app.get('/api/service/:id',serviceController.getServiceByID, function(req, res){
 });
 
-//ahmed
 
-  app.get('/update', function(req, res){
-  res.render('updateInfo.ejs');
-  });
 
-  app.post('/updateinfo',userController.updateUser ,function(req, res){
-  res.render('profile.ejs');
-  });
 
   app.post('/api/createOffer', serviceController.offerCreate, function(req,res){
    console.log("xyz");
@@ -143,11 +136,11 @@ app.get('/api/service/:id',serviceController.getServiceByID, function(req, res){
 app.post('/api/updateUser', userController.updateUser,function(req, res){
 
       });
- 
+
   app.post('/api/service', serviceController.deleteOffer, function(req, res){
 
     console.log("abc");
- 
+
  });
 
 ///nadeen
@@ -163,32 +156,7 @@ app.get ('/api/deleteService', serviceController.deleteService, function(req,res
 });
 
 
-//youssef
-  app.post('/createComplaint', complaintController.createComplaint, function(req, res){
-    res.render('complains.ejs');
-  });
 
-  app.post('/createReview', reviewController.createReview, function(req, res){
-    res.render('reviews.ejs');
-  });
-
-/////
-//ahmed
-
- app.get('/rezk',function(req, res){
-	  res.render('xyz.ejs');
-
-	});
-
-	app.get('/services',serviceController.getAllServices,function(req, res){
-	  res.render('index2.ejs');
-
-	});
-
-	app.get('/service',serviceController.getDetails,function(req, res){
-	  res.render('sprofile.ejs');
-
-	});
 
 
 //merna
@@ -259,7 +227,7 @@ app.get ('/api/deleteService', serviceController.deleteService, function(req,res
 
     ///youssef
 
-  
+
 
 //post el kano fe server.js
 app.post("/complaint/createComplaint", complaintController.createComplaint, function(req, res){

@@ -92,6 +92,21 @@
         controller: "SignUpSPCtrl"
         })
 
+
+        .state('createService', {
+            url: "/api/addService",
+            templateUrl: "public/views/createService.html",
+            controller: "SController"
+
+           })
+
+           .state('updateService', {
+           url: "/api/updateService",
+           templateUrl: "public/views/updateService.html",
+           controller: "SController"
+
+          })
+
          .state('updateUser', {
         url: "/api/updateUser",
         templateUrl: "public/views/updateUser.html",
@@ -110,6 +125,7 @@
         controller: "ServiceProviderController"
         })
 
+<<<<<<< HEAD
 
 
         .state('updateRating', {
@@ -118,6 +134,8 @@
          controller: "ServiceController"
 
         })
+=======
+>>>>>>> eee729e778b10dfce500d35160fc9c1ac37a8334
 
 
     })
