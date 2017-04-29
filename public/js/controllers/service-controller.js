@@ -9,12 +9,6 @@
       });
 
 
-      $http.post('/api/rating/' + $stateParams.id).then(function(response) {
-        //console.log(response.data);
-        $scope.rate = response.data[0];
-      });
-
-
 
       var serviceID = $stateParams.id;
 
