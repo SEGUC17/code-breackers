@@ -11,14 +11,14 @@
 
 
 
-      //  $scope.reviewsubmit = function() {
-      //  console.log("fvismiovmsimi");
-      //  console.log($scope.review);
-      //  $http.post('/createReview', $scope.review).then(function(response) {
-       //
-      //       });
-       //
-      //     };
+       $scope.reviewsubmit = function() {
+       console.log("fvismiovmsimi");
+       console.log($scope.review);
+       $http.post('/createReview', $scope.review).then(function(response) {
+
+            });
+
+          };
 
 
           $scope.createComplain = function() {
