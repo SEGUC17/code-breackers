@@ -1,6 +1,6 @@
 (function() {
   angular.module('myApp')
-    .controller('PaymentController', ['$scope', '$state', '$http', '$stateParams', 
+    .controller('PaymentController', ['$scope', '$state', '$http', '$stateParams',
       function($scope, $state, $http, $stateParams) {
 
 
@@ -11,7 +11,11 @@ var handler = StripeCheckout.configure({
     console.log(token.id);
     var token2 = token.id;
     console.log(token2);
-    $http.post('/checkout', token2).then(function(response) {
+    var data = {
+      token: token.id
+    }
+    console.log(data);
+    $http.post('/checkout', data).then(function(response) {
     console.log("hello3");
     });
     // Use the token to create the charge with a server-side script.
