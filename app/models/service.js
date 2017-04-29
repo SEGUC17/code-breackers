@@ -82,3 +82,12 @@ FacebookURL: String
 var Service = mongoose.model("service", serviceSchema);
 
 module.exports = Service;
+
+
+module.exports.DeleteService = function(deletedService, callback){
+	deletedService.remove(callback);
+}
+
+module.exports.changeRating = function(changedRating, callback){
+  changedRating.save(callback);
+}

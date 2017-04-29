@@ -102,13 +102,22 @@
        url: "/serviceProvider",
        templateUrl: "public/views/serviceProvider.html",
        controller: "ServiceProviderController"
-        })       
-            
+        })
+
         .state('userProfile', {
         url: "/userProfile",
         templateUrl: "public/views/userProfile.html",
         controller: "ServiceProviderController"
-        })       
+        })
+
+
+
+        .state('updateRating', {
+         url: "/api/rateview",
+         templateUrl: "public/views/rating.html",
+         controller: "ServiceController"
+
+        })
 
 
     })

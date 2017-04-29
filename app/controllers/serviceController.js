@@ -100,7 +100,7 @@ deleteService: function (req, res){
     Service.findById({_id:req.body._id},function(err, service){
     service.update({
     offerDescription : "",
-    currentOffer : false     
+    currentOffer : false
     });
 
   console.log("Offer deleted successfully");
@@ -120,7 +120,7 @@ deleteService: function (req, res){
         if(err){
           res.send(err.message)
           console.log(err);
-        } 
+        }
         else{
           console.log(offerDescription);
         }
@@ -290,7 +290,35 @@ getServiceByID:function(req, res){
     res.json(service);
 
   });
-   }
+},
+
+
+updateRating: function(req,res){
+
+ var rating = req.body.rating;
+
+ service.findById({_id:req.params.id},function(err,service1){
+
+
+         var currRating = service1.rating;
+         var avg = currRating+rating/2;
+         service1.rating = avg;
+
+         service.changeRating(service1, function(err, service){
+
+         if(err) throw err;
+         console.log(service1);
+
+         });
+
+         if (!(service)){
+
+         console.log("not a rating");
+         }
+
+
+       });
+}
 
 
 
