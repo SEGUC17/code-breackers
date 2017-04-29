@@ -20,7 +20,7 @@ let serviceController = {
     })
    ServiceProvider.findById(req.serviceProvider._id, function(err, sprovider) {
 
-    sProvider.serviceId = service._id;
+    sprovider.serviceId = service._id;
 
 
 
