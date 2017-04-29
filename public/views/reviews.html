@@ -59,8 +59,8 @@
 
           <ul class="list-group">
             <li class="list-group-item text-muted">Working Hours</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>From: </strong></span>{{service.beginWorkingHours}}</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>To: </strong></span>{{service.endWorkingHours}}</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>From: </strong></span>9:00 AM</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>To: </strong></span>12:00 PM</li>
           </ul>
 
           <div class="panel panel-default">
@@ -94,26 +94,29 @@
 
                   <h2></h2>
 
-                  <ul class="list-group">
-
-                     <li class="list-group-item text-right"><a href="#" class="pull-left">Here is your a link to the latest summary report from the..</a> 2.13.2014</li>
-                     <li class="list-group-item text-right"><a href="#" class="pull-left">Hi Joe, There has been a request on your account since that was..</a> 2.11.2014</li>
-                     <li class="list-group-item text-right"><a href="#" class="pull-left">Nullam sapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
-                     <li class="list-group-item text-right"><a href="#" class="pull-left">Thllam sapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
-                     <li class="list-group-item text-right"><a href="#" class="pull-left">Wesm sapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
-                     <li class="list-group-item text-right"><a href="#" class="pull-left">For therepien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
-                     <li class="list-group-item text-right"><a href="#" class="pull-left">Also we, havesapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
-                     <li class="list-group-item text-right"><a href="#" class="pull-left">Swedish chef is assaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
-
-                   </ul>
+                   <div  ng-repeat="review in reviews track by $index">
 
 
+                            <h2></h2>
 
+                            <ul class="list-group">
 
+                               <li class="list-group-item text-left"> {{review.reviewName}} </li>
 
-
-
+                             </ul>
                 </table>
+
+                <div>
+                  <h5>Review:</h5>
+                  <form role="form">
+                    <div class="form-group">
+                      <textarea class="form-control" ng-model = "review.reviewName"rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm" ng-click = "reviewsubmit()" >Submit</button>
+                  </form>
+                  <br><br>
+                </div>
+
 
 
               </div><!--/table-resp-->
