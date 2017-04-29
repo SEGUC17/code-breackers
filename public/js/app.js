@@ -62,7 +62,7 @@
         .state('reviews', {
           url: "/service/:id/reviews",
           templateUrl: "public/views/reviews.html",
-          controller: "ServiceController"
+          controller: "ReviewController"
 
         })
 
