@@ -49,12 +49,12 @@ var serviceSchema = mongoose.Schema({
 },
 
 beginWorkingHours :{
-type:Number,
+type:Date,
 //required: true
 },
 
 endWorkingHours :{
-type:Number,
+type:Date,
 //required: true
 },
 
