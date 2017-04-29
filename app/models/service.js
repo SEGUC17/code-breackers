@@ -90,3 +90,6 @@ module.exports.changeService = function(service1,callback){
 	 service1.save(callback);
    console.log("done");
 }
+module.exports.changeRating = function(changeRating,callback){
+	 changeRating.save(callback);
+}

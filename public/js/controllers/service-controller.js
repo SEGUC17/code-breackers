@@ -21,7 +21,7 @@
        $http.post('/createReview', $scope.review).then(function(response) {
 
       });
-      
+
 
 
           };
@@ -48,6 +48,15 @@
              };
 
              refresh();
+
+             $scope.updateRating = function() {
+              console.log($scope.rate);
+
+             $http.post('/api/rating',$scope.rate).then(function(response) {
+
+             });
+
+             };
 
 
 

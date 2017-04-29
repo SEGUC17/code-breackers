@@ -309,7 +309,33 @@ getServiceByID:function(req, res){
     res.json(service);
 
   });
-   }
+},
+
+updateRating: function(req,res){
+
+ var rating = req.body.rating;
+//
+//58fe7140d31406305f9f169e dummy data for testing
+ Service.findById("{_id:req.params.id}",function(err,service1){
+
+
+          var currRating = service1.rating;
+           var avg = currRating+rating/2;
+           service1.rating = avg;
+
+
+         Service.changeRating(service1, function(err){
+
+         if(err) throw err;
+         console.log(service1);
+
+         });
+
+
+
+
+       });
+}
 
 
 
