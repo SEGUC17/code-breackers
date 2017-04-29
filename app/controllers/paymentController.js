@@ -13,11 +13,17 @@ let paymentController = {
           source: req.body.token
       },function(err,charge){
           if(err && err.type === "StripeCardError"){
-              console.log("stripeCardError")
+            var paiderror = "There has been an error. Please try refreshing the page.";
+            res.json(paiderror);
+          }
+          if (charge){
+            console.log("successfully paid!");
+            console.log(Token);
+            var paid = "You have successfully paid!!";
+            res.json(paid);
           }
       });
-      console.log("successfully paid!");
-      console.log(Token);
+
     }
   }
 

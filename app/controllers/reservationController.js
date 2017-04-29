@@ -11,7 +11,6 @@ let reservationController = {
 
     Reservation.findOne({
       serviceid: req.body.serviceid,
-      userName: req.body.userName,
       reservation_date: req.body.reservation_date,
       reservation_hour: req.body.reservation_hour
     }, function(err, trackReservation) {
@@ -47,13 +46,23 @@ let reservationController = {
       reservation_hour: req.body.old_reservation_hour
     }, function(err, trackReservation4) {
       if (trackReservation4) {
-            trackReservation4.update({
-              reservation_date: req.body.new_reservation_date,
-              reservation_hour: req.body.new_reservation_hour
-            });
+        trackReservation4.reservation_date = req.body.new_reservation_date;
+        trackReservation4.reservation_hour = req.body.new_reservation_hour;
+        trackReservation4.save(function(err, reservation) {
+          if (err) {
+            res.send(err.message)
+            console.log(err);
+          } else {
             var title2 = "We've successfully changed your reservation.";
             res.json(title2);
             console.log(title2);
+          }
+        })
+            // trackReservation4.update({
+            //   reservation_date: req.body.new_reservation_date,
+            //   reservation_hour: req.body.new_reservation_hour
+            // });
+
           }
       if (!(trackReservation4)) {
         var title2 = ":( There is no reservation. Please check your info and try again.";
