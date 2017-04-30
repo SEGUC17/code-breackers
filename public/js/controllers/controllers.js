@@ -59,6 +59,17 @@ app.controller("LoginCtrl", ['$scope', '$http', '$rootScope', '$location',functi
   }
 }]);
 
+app.controller("LoginspCtrl", ['$scope', '$http', '$rootScope', '$location',function($scope, $http, $rootScope, $location) {
+
+    $scope.login = function(serviceprovider) {
+    $http.post('/login', serviceprovider)
+      .then(function(response) {
+        $rootScope.currentServiceProvider = response;
+        $location.url("/profile");
+      });
+  }
+}]);
+
 
 
 

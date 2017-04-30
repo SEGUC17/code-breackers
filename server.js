@@ -163,6 +163,10 @@ app.get ('/api/deleteService', serviceController.deleteService, function(req,res
     
     });
 
+    app.post("/loginsp", passport.authenticate('local-loginsp'), function(req, res) {
+      res.json(req.serviceprovider);
+    });
+
     // handle logout
     app.post("/logout", function(req, res) {
       req.logOut();
@@ -172,6 +176,10 @@ app.get ('/api/deleteService', serviceController.deleteService, function(req,res
     // loggedin
     app.get("/loggedin", function(req, res) {
       res.send(req.isAuthenticated() ? req.user : '0');
+    });
+
+    app.get("/loggedin", function(req, res) {
+      res.send(req.isAuthenticated() ? req.serviceprovider : '0');
     });
 
     // signup
