@@ -11,6 +11,13 @@
           controller: "SearchController"
         })
 
+        .state('search2', {
+          url: "/search2",
+          templateUrl: "public/views/search2.html",
+          controller: "SearchController"
+        })
+
+
         .state('service', {
           url: "/service/:id",
           templateUrl: "public/views/service.html",
@@ -104,14 +111,17 @@
             templateUrl: "public/views/createService.html",
             controller: "SController"
 
-           })
+        })
+
 
            .state('updateService', {
            url: "/updateService",
            templateUrl: "public/views/updateService.html",
            controller: "SController"
 
-          })
+        })
+
+
 
          .state('updateUser', {
         url: "/updateUser",
@@ -119,23 +129,24 @@
         controller: "UController"
 
         })
-       .state('serviceProvider', {
-       url: "/serviceProvider",
-       templateUrl: "public/views/serviceProvider.html",
-       controller: "ServiceProviderController"
-        })
 
-        .state('userProfile', {
-        url: "/userProfile",
-        templateUrl: "public/views/userProfile.html",
-        controller: "ServiceProviderController"
+        .state('serviceProvider', {
+          url: "/serviceProvider",
+          templateUrl: "public/views/serviceProvider.html",
+          controller: "ServiceProviderController"
         })
 
 
 
+        .state('profile', {
+        url: "/profile",
+        templateUrl: "public/views/profile.html",
+        controller: "LoginCtrl"
+         })
 
 
-    })
+       })
+
 }());
 
 

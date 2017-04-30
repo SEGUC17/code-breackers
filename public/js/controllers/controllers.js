@@ -47,8 +47,13 @@ app.controller("LoginCtrl", ['$scope', '$http', '$rootScope', '$location',functi
     $scope.login = function(user) {
     $http.post('/login', user)
       .then(function(response) {
-        $rootScope.currentUser = response;
+        console.log(response.data);
+
+        // $rootScope.currentUser = response;
+        
         $location.url("/profile");
+        $scope.user = response.data[0];
+
       });
   }
 }]);
@@ -63,6 +68,8 @@ app.controller("LoginspCtrl", ['$scope', '$http', '$rootScope', '$location',func
       });
   }
 }]);
+
+
 
 
 }());

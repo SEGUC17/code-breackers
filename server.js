@@ -157,6 +157,8 @@ app.get ('/api/deleteService', serviceController.deleteService, function(req,res
 //merna
 
     app.post("/login", passport.authenticate('local-login'), function(req, res) {
+      console.log("signed in");
+      console.log(req.user._id);
       res.json(req.user);
     });
 
