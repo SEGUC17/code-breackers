@@ -5,8 +5,8 @@ app.controller("NavCtrl", ['$rootScope', '$scope', '$http', '$location', functio
   $scope.logout = function() {
     $http.post("/logout")
       .then(function() {
-        $rootScope.currentUser = null;
-        //$location.url("/home");
+        // $rootScope.currentUser = null;
+        // $location.url("/");
       });
   }
 }]);

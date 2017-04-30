@@ -107,6 +107,12 @@
         controller: "SignUpSPCtrl"
         })
 
+        .state('logout', {
+        url: "/logout",
+        templateUrl: "public/views/home.html",
+        controller: "NavCtrl"
+        })
+
 
         .state('createService', {
             url: "/addService",
