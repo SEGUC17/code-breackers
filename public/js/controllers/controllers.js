@@ -50,9 +50,10 @@ app.controller("LoginCtrl", ['$scope', '$http', '$rootScope', '$location',functi
         console.log(response.data);
 
         // $rootScope.currentUser = response;
-        
+
         $location.url("/profile");
-        $scope.user = response.data[0];
+        $scope.user = response.data;
+        
 
       });
   }
