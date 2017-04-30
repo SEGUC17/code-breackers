@@ -18,7 +18,7 @@ let serviceController = {
 //            res.json(service);
         }
     })
-   ServiceProvider.findById(req.serviceProvider._id, function(err, sprovider) {
+     ServiceProvider.findById(req.serviceProvider._id, function(err, sprovider) {
 
     sprovider.serviceId = service._id;
 
@@ -195,29 +195,22 @@ deleteService: function (req, res){
   },
 
     getServiceByOffer : function(req,res){
-
      Service.find({currentOffers: true}, function(err, services){
-
      if (err)
       res.send(err.message)
-
      else
       res.json(services);
-
    })},
 
    getServiceByRating: function(req,res){
-
      Service.find(function(err, services){
        services.sort(function(a, b) {
      a = a.rating;
      b = b.rating;
      return a>b ? -1 : a<b ? 1 : 0;
        });
-
      if (err)
       res.send(err.message)
-
      else
       res.json(services);
 
@@ -226,7 +219,6 @@ deleteService: function (req, res){
  },
 
    getServiceByKeyword: function (req,res){
-
      if(req.body.text) {
 		const regex = new RegExp(escapeRegex(req.body.text), 'gi');
 		Service.find({"serviceName": regex}, function(err, services) {
@@ -235,25 +227,19 @@ deleteService: function (req, res){
 			}  else {
         console.log(services);
         res.json(services);
-
 			}
 		});
-
-
    } else {
   Service.find(function(err, services){
-
       if(err)
           res.send(err.message);
       else
           res.json(services);
   })
-
 }
-
 },
 
-       getAllServices:function(req, res){
+      getAllServices:function(req, res){
 
         Service.find(function(err, services){
 
@@ -275,19 +261,19 @@ deleteService: function (req, res){
       });
 },
 
-getCreatedService : function(req,res)
-{
-  Service.find({_id:req.ServiceProvider._id},function(err, service){
+        getCreatedService : function(req,res)
+      {
+      Service.find({_id:req.ServiceProvider._id},function(err, service){
 
-  if(err)
-    res.send(err.message)
-  else
-    res.json(service);
+        if(err)
+          res.send(err.message)
+       else
+         res.json(service);
 
-  });
+      });
 
-},
-getServiceByID:function(req, res){
+    },
+  getServiceByID:function(req, res){
 
   Service.find({_id:req.params.id},function(err, service){
 

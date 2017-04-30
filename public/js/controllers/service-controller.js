@@ -6,7 +6,6 @@
         console.log(response.data);
         $scope.service = response.data[0];
 
-
       });
 
       var serviceID = $stateParams.id;
@@ -38,12 +37,12 @@
         });
       };
 
-      refresh();
+         refresh();
 
-             $scope.updateRating = function() {
-              $scope.rate.serviceID = $stateParams.id
-                console.log($scope.rate);
-             $http.post('/api/rating',$scope.rate).then(function(response) {
+        $scope.updateRating = function() {
+         $scope.rate.serviceID = $stateParams.id
+         console.log($scope.rate);
+         $http.post('/api/rating',$scope.rate).then(function(response) {
 
              });
 
