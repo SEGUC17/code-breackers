@@ -42,16 +42,23 @@ app.controller("SignUpSPCtrl", ['$scope', '$http', '$rootScope', '$location', fu
 }]);
 
 
-app.controller("LoginCtrl", ['$scope', '$http', '$rootScope', '$location',function($location, $scope, $http, $rootScope) {
+app.controller("LoginCtrl", ['$scope', '$http', '$rootScope', '$location',function($scope, $http, $rootScope, $location) {
 
     $scope.login = function(user) {
     $http.post('/login', user)
       .then(function(response) {
-        $rootScope.currentUser = response;
+        console.log(response.data);
+
+        // $rootScope.currentUser = response;
+        
         $location.url("/profile");
+        $scope.user = response.data[0];
+
       });
   }
 }]);
+
+
 
 
 }());

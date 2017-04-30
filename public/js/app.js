@@ -11,6 +11,13 @@
           controller: "SearchController"
         })
 
+        .state('search2', {
+          url: "/search2",
+          templateUrl: "public/views/search2.html",
+          controller: "SearchController"
+        })
+
+
         .state('service', {
           url: "/service/:id",
           templateUrl: "public/views/service.html",
@@ -119,10 +126,10 @@
        controller: "ServiceProviderController"
         })
 
-        .state('userProfile', {
-        url: "/userProfile",
-        templateUrl: "public/views/userProfile.html",
-        controller: "ServiceProviderController"
+        .state('profile', {
+        url: "/profile",
+        templateUrl: "public/views/profile.html",
+        controller: "LoginCtrl"
         })
 
 
