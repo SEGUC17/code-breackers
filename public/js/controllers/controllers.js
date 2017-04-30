@@ -50,15 +50,23 @@ app.controller("LoginCtrl", ['$scope', '$http', '$rootScope', '$location',functi
         console.log(response.data);
 
         // $rootScope.currentUser = response;
-        
+
         $location.url("/profile");
-        $scope.user = response.data[0];
+        $scope.user = response.data;
 
       });
   }
 }]);
 
+app.controller("LoginspCtrl", ['$scope', '$http', '$rootScope', '$location',function($scope, $http, $rootScope, $location) {
 
-
+    $scope.login = function(serviceprovider) {
+    $http.post('/login', serviceprovider)
+      .then(function(response) {
+        $rootScope.currentServiceProvider = response;
+        $location.url("/profile");
+      });
+  }
+}]);
 
 }());
