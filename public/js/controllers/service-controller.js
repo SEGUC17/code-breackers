@@ -52,7 +52,9 @@
       refresh();
 
              $scope.updateRating = function() {
+              
               console.log($scope.rate);
+              $scope.serviceID = $stateParams.id
 
              $http.post('/api/rating',$scope.rate).then(function(response) {
 
