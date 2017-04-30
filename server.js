@@ -160,7 +160,6 @@ app.get ('/api/deleteService', serviceController.deleteService, function(req,res
       console.log("signed in");
       console.log(req.user._id);
       res.json(req.user);
-    
     });
 
     app.post("/loginsp", passport.authenticate('local-loginsp'), function(req, res) {

@@ -53,7 +53,6 @@ app.controller("LoginCtrl", ['$scope', '$http', '$rootScope', '$location',functi
 
         $location.url("/profile");
         $scope.user = response.data;
-        
 
       });
   }
