@@ -69,5 +69,4 @@ app.controller("LoginspCtrl", ['$scope', '$http', '$rootScope', '$location',func
   }
 }]);
 
-
 }());
