@@ -117,6 +117,8 @@
         url: "/updateUser",
         templateUrl: "public/views/updateUser.html",
         controller: "UController"
+
+
         })
 
         .state('serviceProvider', {
@@ -125,11 +127,14 @@
           controller: "ServiceProviderController"
         })
 
+
         .state('profile', {
         url: "/profile",
         templateUrl: "public/views/profile.html",
         controller: "LoginCtrl"
-    })
+         })
+
+       })
 }());
 
 
