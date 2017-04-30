@@ -126,7 +126,7 @@ app.get('/api/service/:id',serviceController.getServiceByID, function(req, res){
 
 
   app.post('/api/createOffer', serviceController.offerCreate, function(req,res){
-   console.log("xyz");
+
 });
 app.post('/api/updateUser', userController.updateUser,function(req, res){
 
@@ -134,7 +134,7 @@ app.post('/api/updateUser', userController.updateUser,function(req, res){
 
   app.post('/api/service', serviceController.deleteOffer, function(req, res){
 
-    console.log("abc");
+    
 
  });
 

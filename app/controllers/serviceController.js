@@ -149,12 +149,9 @@ deleteService: function (req, res){
 
 
 
-      getServiceByCategory:function(req, res){
-        console.log(req.body);
+       getServiceByCategory:function(req, res){
+
         var Category = req.body.text;
-        //console.log(Category.name);
-
-
         Service.find({category: Category}, function(err, services) {
 
               if(err)
@@ -167,11 +164,10 @@ deleteService: function (req, res){
     },
 
 
-
       getServiceByLocation: function(req,res){
-        console.log(req.body);
+
         var locationn = req.body.text;
-        console.log(locationn.name);
+
         Service.find({location: locationn}, function(err, services){
 
         if (err)
@@ -185,8 +181,6 @@ deleteService: function (req, res){
 
     getServiceByDate: function(req,res){
 
-
-      console.log(req.body);
       Service.find(function(err, services){
 
       services.reverse();
@@ -201,7 +195,7 @@ deleteService: function (req, res){
   },
 
     getServiceByOffer : function(req,res){
-    console.log(req.body);
+
      Service.find({currentOffers: true}, function(err, services){
 
      if (err)
@@ -213,7 +207,6 @@ deleteService: function (req, res){
    })},
 
    getServiceByRating: function(req,res){
-     console.log(req.body);
 
      Service.find(function(err, services){
        services.sort(function(a, b) {
@@ -221,7 +214,6 @@ deleteService: function (req, res){
      b = b.rating;
      return a>b ? -1 : a<b ? 1 : 0;
        });
-       console.log(services);
 
      if (err)
       res.send(err.message)
@@ -233,13 +225,9 @@ deleteService: function (req, res){
 
  },
 
+   getServiceByKeyword: function (req,res){
 
-
-getServiceByKeyword: function (req,res)
-{
-
-  console.log(req.body);
-  if(req.body.text) {
+     if(req.body.text) {
 		const regex = new RegExp(escapeRegex(req.body.text), 'gi');
 		Service.find({"serviceName": regex}, function(err, services) {
 			if(err) {
@@ -265,7 +253,7 @@ getServiceByKeyword: function (req,res)
 
 },
 
- getAllServices:function(req, res){
+       getAllServices:function(req, res){
 
         Service.find(function(err, services){
 
@@ -276,12 +264,12 @@ getServiceByKeyword: function (req,res)
         })
     },
 
-    getDetails: function(req, res){
-      Service.find({_id:req.body._id},function(err, servicex){
+       getDetails: function(req, res){
+       Service.find({_id:req.body._id},function(err, servicex){
 
-      if(err)
+         if(err)
         res.send(err.message)
-      else
+         else
         res.json(servicex);
 
       });
@@ -332,14 +320,9 @@ updateRating: function(req,res){
 
          });
 
-
-
-
        });
 
 }
-
-
 
 
 }

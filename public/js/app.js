@@ -110,9 +110,7 @@
             url: "/addService",
             templateUrl: "public/views/createService.html",
             controller: "SController"
-
         })
-
 
            .state('updateService', {
            url: "/updateService",
@@ -120,7 +118,6 @@
            controller: "SController"
 
         })
-
 
 
          .state('updateUser', {
@@ -135,7 +132,6 @@
           templateUrl: "public/views/serviceProvider.html",
           controller: "ServiceProviderController"
         })
-
 
 
         .state('profile', {
@@ -186,4 +182,3 @@ var checkLoggedin = function($q, $timeout, $http, $location, $rootScope) {
   });
   return deferred.promise;
 }
-

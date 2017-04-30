@@ -25,7 +25,6 @@ module.exports = function(passport) {
   });
 
 
-
 	passport.use('local-login', new LocalStrategy(
 
 	  function(username, password, done) {
@@ -54,6 +53,8 @@ module.exports = function(passport) {
   passport.use('local-loginsp', new LocalStrategy(
 
     function(email, password, done) {
+      console.log("nxjw");
+
       ServiceProvider.findOne({
         email: email.toLowerCase()
       }, function(err, serviceprovider) {
@@ -73,6 +74,7 @@ module.exports = function(passport) {
            return done(null, serviceprovider);
       });
     }
+
   ));
 
   }

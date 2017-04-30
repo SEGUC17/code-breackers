@@ -60,11 +60,16 @@ app.controller("LoginCtrl", ['$scope', '$http', '$rootScope', '$location',functi
 
 app.controller("LoginspCtrl", ['$scope', '$http', '$rootScope', '$location',function($scope, $http, $rootScope, $location) {
 
-    $scope.login = function(serviceprovider) {
-    $http.post('/login', serviceprovider)
+     $scope.login = function(serviceprovider) {
+       console.log(serviceprovider);
+
+
+     $http.post('/loginsp', serviceprovider)
       .then(function(response) {
-        $rootScope.currentServiceProvider = response;
-        $location.url("/profile");
+
+        console.log(response.data);
+        //$rootScope.currentServiceProvider = response;
+        //$location.url("/profile");
       });
   }
 }]);
