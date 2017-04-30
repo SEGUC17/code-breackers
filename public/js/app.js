@@ -30,35 +30,35 @@
           controller: "SearchController"
 
         })
-
+        //state in service page
         .state('reserve', {
           url: "/service/:id/reservation",
           templateUrl: "public/views/reservation.html",
           controller: "ServiceController"
 
         })
-
+        //state of creating a reservation
         .state('reservenow', {
           url: "/service/:id/reserve",
           templateUrl: "public/views/reserve.html",
           controller: "ReservationController"
 
         })
-
+        //state of changing a reservation
         .state('change', {
           url: "/service/:id/change",
           templateUrl: "public/views/change.html",
           controller: "ReservationController"
 
         })
-
+        //state of deleting a reservation
         .state('delete', {
           url: "/service/:id/delete",
           templateUrl: "public/views/delete.html",
           controller: "ReservationController"
 
         })
-
+        //state of paying after a reservation
         .state('checkout', {
           url: "/service/:id/checkout",
           templateUrl: "public/views/checkout.html",
