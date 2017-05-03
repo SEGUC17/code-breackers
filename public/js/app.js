@@ -12,9 +12,9 @@
           controller: "SearchController"
         })
 
-        .state('search2', {
-          url: "/search2",
-          templateUrl: "public/views/search2.html",
+        .state('loggedin', {
+          url: "/loggedin",
+          templateUrl: "public/views/loggedin.html",
           controller: "SearchController"
         })
 

@@ -14,7 +14,7 @@ app.controller("NavCtrl", ['$rootScope', '$scope', '$http', '$location', functio
 app.controller("SignUpCtrl", ['$scope', '$http', '$rootScope', '$location', function($scope, $http, $rootScope, $location) {
 
   $scope.signup = function(user) {
-    console.log($scope.user);
+
     // TODO: verify passwords are the same and notify user
     if (user.password == user.password2) {
       $http.post('/signup', user)
@@ -29,7 +29,7 @@ app.controller("SignUpCtrl", ['$scope', '$http', '$rootScope', '$location', func
 
 app.controller("SignUpSPCtrl", ['$scope', '$http', '$rootScope', '$location', function($scope, $http, $rootScope, $location) {
   $scope.signupSP = function(serviceprovider) {
-   console.log(serviceprovider);
+   
     // TODO: verify passwords are the same and notify user
     if (serviceprovider.password == serviceprovider.password2) {
       $http.post('/signupsp', serviceprovider)
