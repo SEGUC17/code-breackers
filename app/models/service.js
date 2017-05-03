@@ -62,7 +62,7 @@ offerDescription:{
 type: String
 },
 
-currentOffers: {type: Boolean, default: false},
+currentOffers: {type: Boolean},
 
 time : { type : Date, default: Date.now },
 

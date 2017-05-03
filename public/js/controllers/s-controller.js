@@ -6,6 +6,11 @@
 
   $scope.createService = function() {
 
+  if ($scope.newService.offerDescription != "")
+      $scope.newService.currentOffers = true;
+  else if ($scope.newService.offerDescription == "") 
+      $scope.newService.currentOffers = false;
+
   $http.post('/api/addService', $scope.newService).then(function(response) {
   //console.log(response.data);
   $scope.services = response.data;

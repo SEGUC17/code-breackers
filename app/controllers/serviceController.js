@@ -8,6 +8,15 @@ let serviceController = {
     let service = new Service(req.body);
     service.rating = 0;
 
+    if (service.offerDescription != "")
+    service.currentOffers = true;
+    else if (service.offerDescription == "") {
+      console.log("dkwqnk");
+      service.currentOffers = false;
+
+    }
+
+
     service.save(function(err, service){
         if(err){
             res.send(err.message);
@@ -18,13 +27,13 @@ let serviceController = {
 //            res.json(service);
         }
     })
-     ServiceProvider.findById(req.serviceProvider._id, function(err, sprovider) {
-
-    sprovider.serviceId = service._id;
-
-
-
-  })
+  //    ServiceProvider.findById(req.serviceProvider._id, function(err, sprovider) {
+  //
+  //   sprovider.serviceId = service._id;
+  //
+  //
+  //
+  // })
   },
 
 
