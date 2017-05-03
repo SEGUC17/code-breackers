@@ -6,9 +6,7 @@
 
   $scope.createService = function() {
 
-  
   $http.post('/api/addService', $scope.newService).then(function(response) {
-  //console.log(response.data);
   $scope.services = response.data;
   });
 
@@ -26,7 +24,7 @@ $scope.services = response.data;
 $scope.deleteService = function() {
 
 $http.get('/api/deleteService').then(function(response) {
-//console.log(response.data);
+
 });
 
 };

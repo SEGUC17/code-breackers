@@ -64,7 +64,7 @@
 
         <div class="row">
             <strong>Website Link</strong>
-            <input type="url" ng-model="service.WebsiteURL" class="form-control">
+            <input type="url" ng-model="service.WebsiteURL" pattern="https?://.+" class="form-control">
          </div>
 
         <button ng-click="updateService()">Update Service</button>
