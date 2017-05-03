@@ -48,11 +48,6 @@
         </div>
 
         <div class="row">
-            <strong>Offer Descripiton </strong>
-            <input type="text" ng-model="service.offerDescription" class="form-control">
-        </div>
-
-        <div class="row">
             <strong>Beginning Working Hours</strong>
             <input type="time" ng-model="service.beginWorkingHours" class="form-control">
         </div>
@@ -72,8 +67,10 @@
             <input type="url" ng-model="service.WebsiteURL" class="form-control">
          </div>
 
-
-
         <button ng-click="updateService()">Update Service</button>
+
+        <div class="classWithPad">
+              <button type="button"  class="btn btn-primary btn-sm" ng-click = "deleteService()">Delete Service</button>
+            </div>
     </div>
 </div>

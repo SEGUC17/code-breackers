@@ -8,13 +8,6 @@ let serviceController = {
     let service = new Service(req.body);
     service.rating = 0;
 
-    if (service.offerDescription != "")
-    service.currentOffers = true;
-    else if (service.offerDescription == "") {
-      console.log("dkwqnk");
-      service.currentOffers = false;
-
-    }
 
 
     service.save(function(err, service){
@@ -51,7 +44,7 @@ let serviceController = {
     //ServiceProvider.findById(req.serviceProvider._id, function(err, serviceprovider) {
 //serviceprovider.serviceId
 
-  Service.findById("590614a297fe89be5f10665e",function(err,service1){
+  Service.findById("590a542cec691ac81a7b31ab",function(err,service1){
     if(serviceName != ""){
       service1.serviceName = serviceName;
     }
@@ -97,7 +90,7 @@ deleteService: function (req, res){
 
   //serviceProvider.findById(req.serviceProvider._id,function(err,sprovider){
   //sProvider.serviceId
-    Service.findById("590614a297fe89be5f10665e",function(err,service1){
+    Service.findById("590a542cec691ac81a7b31ab",function(err,service1){
       Service.DeleteService(service1,function(err){
         if (err) {
                     return console.error(err);
