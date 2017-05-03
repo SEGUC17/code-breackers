@@ -10,7 +10,6 @@
 2.7.3 Search by location - Layla Madany - Completed
 2.7.5 Search by date recently added -	Layla Madany - Completed
 2.7.6 Search by Offers/Promotions -	Layla Madany - Completed
-2.14 As a user, I can change account details to keep my account updated with new information. -	Layla Madany - Completed
 2.22 As a user, I can surf the directory to know all the options I have to reserve later.	- Layla Madany -	Completed
 2.4 As a user, I can check read description of a service to help me understand further information about a place and the activities offered there. - Layla Madany -	Completed
 2.6 As a user, I can post reviews to share my experience with other users.	- Youssef Yehia	 - Completed
@@ -20,6 +19,7 @@
 2.18 As a user, I can invite my friends to register at the platform to take advantage of offers and reservations capability.	- Kareem Abdelaziz	- In-progress
 3.3 As a service provider, I can add offers and promotions to attract more clients to my service.	- Ahmed Rezk	- In-progress
 As a user, I can view my profile.	- Ahmed Rezk	- In-progress
+2.14 As a user, I can change account details to keep my account updated with new information. - Ahmed Rezk	- In-progress
 As a service provider, I can view my profile.	- Ahmed Rezk -	In-progress
 3.2 As a service provider, I can add services because I have something new to offer. - Nadeen Ashraf - In-progress
 3.4 As a service provider, I can update my information to keep the platform updated with new information. - Nadeen Ashraf - In-progress

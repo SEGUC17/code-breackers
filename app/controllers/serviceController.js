@@ -42,7 +42,7 @@ let serviceController = {
     //ServiceProvider.findById(req.serviceProvider._id, function(err, serviceprovider) {
 //serviceprovider.serviceId
 
-  Service.findById("59049a5ad2fabb16816e876b",function(err,service1){
+  Service.findById("590614a297fe89be5f10665e",function(err,service1){
     if(serviceName != ""){
       service1.serviceName = serviceName;
     }
@@ -88,7 +88,7 @@ deleteService: function (req, res){
 
   //serviceProvider.findById(req.serviceProvider._id,function(err,sprovider){
   //sProvider.serviceId
-    Service.findById("5904853ea1b3010deae941b7",function(err,service1){
+    Service.findById("590614a297fe89be5f10665e",function(err,service1){
       Service.DeleteService(service1,function(err){
         if (err) {
                     return console.error(err);
