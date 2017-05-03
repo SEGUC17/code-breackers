@@ -150,7 +150,7 @@ deleteService: function (req, res){
    },
 
 
-
+       /// Search for service by Category
        getServiceByCategory:function(req, res){
 
         var Category = req.body.text;
@@ -165,7 +165,7 @@ deleteService: function (req, res){
 
     },
 
-
+       /// Search for service by Location
       getServiceByLocation: function(req,res){
 
         var locationn = req.body.text;
@@ -181,6 +181,7 @@ deleteService: function (req, res){
       })
     },
 
+     /// Search for service by recently added
     getServiceByDate: function(req,res){
 
       Service.find(function(err, services){
@@ -196,6 +197,7 @@ deleteService: function (req, res){
     })
   },
 
+     /// Search for service by offers
     getServiceByOffer : function(req,res){
      Service.find({currentOffers: true}, function(err, services){
      if (err)
@@ -204,6 +206,8 @@ deleteService: function (req, res){
       res.json(services);
    })},
 
+
+    /// Search for service by highest rating
    getServiceByRating: function(req,res){
      Service.find(function(err, services){
        services.sort(function(a, b) {
@@ -219,6 +223,8 @@ deleteService: function (req, res){
    })
 
  },
+
+   /// Search for service by keyword
 
    getServiceByKeyword: function (req,res){
      if(req.body.text) {
@@ -241,6 +247,7 @@ deleteService: function (req, res){
 }
 },
 
+       /// Search for all services
       getAllServices:function(req, res){
 
         Service.find(function(err, services){
@@ -275,6 +282,8 @@ deleteService: function (req, res){
       });
 
     },
+
+ /// Search for service by id
   getServiceByID:function(req, res){
 
   Service.find({_id:req.params.id},function(err, service){
@@ -288,7 +297,7 @@ deleteService: function (req, res){
 
 },
 
-updateRating: function(req,res){
+    updateRating: function(req,res){
 
     var rating = req.body.rating;
     console.log(rating);
@@ -315,7 +324,7 @@ updateRating: function(req,res){
 
 }
 
-function escapeRegex(text) {
-return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&"); }
+   function escapeRegex(text) {
+   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&"); }
 
 module.exports = serviceController;
