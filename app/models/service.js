@@ -71,9 +71,10 @@ review :[{
   ref:'Review'
 }],
 
-WebsiteURL:String,
+WebsiteURL:{
+type: String,
 
-
+}
 
 
 

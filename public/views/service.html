@@ -63,7 +63,7 @@
           <ul class="list-group">
             <li class="list-group-item text-muted">Working Hours</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>From: </strong></span>{{service.beginWorkingHours | date : 'mediumTime'}}</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>To: </strong></span>12:00 PM</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>To: </strong></span>{{service.endWorkingHours | date : 'mediumTime'}}</li>
           </ul>
 
           <div class="panel panel-default">
