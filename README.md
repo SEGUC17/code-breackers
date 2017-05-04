@@ -1,4 +1,8 @@
 # code-breackers
+
+http://52.26.175.237:3000/
+
+
 1.1 As a visitor, I can sign up to the directory to be able to use all the services and make use of offers.	- Merna Mohamed	- Completed
 3.7 As a service provider, I can sign up to the platform to create a profile to reach more customers. -	Merna Mohamed	- Completed
 2.2 As a user, I can log in to be able to access the services offered by the directory.	- Merna Mohamed	- Completed
