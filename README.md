@@ -12,6 +12,7 @@ http://52.26.175.237:3000/
 2.7.1 Search by Rating -	Layla Madany	- Completed
 2.7.2 Search by Category -	Layla Madany - Completed
 2.7.3 Search by location - Layla Madany - Completed
+2.7.4 Search by keyword - Layla Madany - Completed
 2.7.5 Search by date recently added -	Layla Madany - Completed
 2.7.6 Search by Offers/Promotions -	Layla Madany - Completed
 2.22 As a user, I can surf the directory to know all the options I have to reserve later.	- Layla Madany -	Completed
